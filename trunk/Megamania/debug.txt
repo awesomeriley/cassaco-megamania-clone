@@ -1,0 +1,2 @@
+ c:\workspace_c_c++\megamania\splash_screen.cpp Jan 23 2009 124 You must call SDL_Init(SDL_INIT_TIMER) first
+ c:\workspace_c_c++\megamania\splash_screen.cpp Jan 23 2009 124 You must call SDL_Init(SDL_INIT_TIMER) first
