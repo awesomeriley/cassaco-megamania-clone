@@ -3,10 +3,10 @@
 #include <string>
 
 //Altura da SCR
-const int SCR_HEIGHT = 480;
+const int SCR_HEIGHT = 600;
 
 //Largura da SCR
-const int SCR_WIDTH = 640;
+const int SCR_WIDTH = 800;
 
 //Bits Per Pixel
 const int SCR_BPP = 32;
