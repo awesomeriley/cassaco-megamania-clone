@@ -70,7 +70,7 @@ bool init()
 
 bool loadFiles()
 {
-	background = loadImage("c:\\source\\surface.jpg");
+	background = loadImage("surface.jpg");
 
 	if (background == NULL)
 	{
