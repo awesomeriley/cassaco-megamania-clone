@@ -174,18 +174,102 @@
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
+			<File
+				RelativePath=".\audio_exception.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\base_exception.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\initializer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\log.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\main.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\sdl_sound.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\splash_screen.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\video_exception.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath=".\audio_exception.h"
+				>
+			</File>
+			<File
+				RelativePath=".\base_exception.h"
+				>
+			</File>
+			<File
+				RelativePath=".\game_config.h"
+				>
+			</File>
+			<File
+				RelativePath=".\initializer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\log.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sdl_sound.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sdl_video.h"
+				>
+			</File>
+			<File
+				RelativePath=".\splash_screen.h"
+				>
+			</File>
+			<File
+				RelativePath=".\video_exception.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+			<File
+				RelativePath=".\icon.png"
+				>
+			</File>
+			<File
+				RelativePath=".\logo.png"
+				>
+			</File>
+			<File
+				RelativePath=".\msg.png"
+				>
+			</File>
+			<File
+				RelativePath=".\smell.wav"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>
