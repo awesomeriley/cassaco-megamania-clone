@@ -8,8 +8,11 @@
  */
 #include "audio_exception.h"
 
-/**
- * Construtor padrão que cria um novo objeto SDLVideoException
- * associando com uma mensagem de erro
- */
-SDLAudioException::SDLAudioException(const char *detail) : Exception(detail) {}
+namespace Megamania
+{
+	/**
+	 * Construtor padrão que cria um novo objeto SDLVideoException
+	 * associando com uma mensagem de erro
+	 */
+	SDLAudioException::SDLAudioException(const char *detail) : Exception(detail) {}
+}

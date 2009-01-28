@@ -18,18 +18,20 @@
 #define MIX_PLAY_FOREVER -1
 #define MIX_AVAILABLE_CHANNEL MIX_PLAY_FOREVER
 
-class SDL_Sound 
+namespace Megamania
 {
-	private:
-		Mix_Chunk *chunk;
-    public:
-		SDL_Sound(void)throw(SDLAudioException);
-		~SDL_Sound(void);		    
-		void Load(const char *file)throw(SDLAudioException);
-		void SetVolume(int volume = MIX_MAX_VOLUME);
-		void Play(void);
-		void Close(void);
-
-};
+	class SDL_Sound 
+	{
+		private:
+			Mix_Chunk *chunk;
+		public:
+			SDL_Sound(void)throw(SDLAudioException);
+			~SDL_Sound(void);		    
+			void Load(const char *file)throw(SDLAudioException);
+			void SetVolume(int volume = MIX_MAX_VOLUME);
+			void Play(void);
+			void Close(void);
+	};
+}
 
 #endif //__SDL_SOUND_H__

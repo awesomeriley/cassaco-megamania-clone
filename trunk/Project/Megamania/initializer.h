@@ -9,13 +9,16 @@
 #ifndef __INITIALIZER_H__
 #define __INITIALIZER_H__
 
-class Initializer 
-{    
-    private:
-        Initializer(void);
-    public:
-        static void Init(void);
-        static void Shutdow(void);
-};
+namespace Megamania
+{
+	class Initializer 
+	{    
+		private:
+			Initializer(void);
+		public:
+			static void Init(void);
+			static void Shutdow(void);
+	};
+}
 
 #endif //__INITIALIZER_H__

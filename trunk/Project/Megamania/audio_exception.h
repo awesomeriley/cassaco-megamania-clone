@@ -6,15 +6,18 @@
  * Author Adriano Braga Alencar (adrianobragaalencar@gmail.com)
  *
  */
-#ifndef __AUDIO_EXCEPTION__
-#define __AUDIO_EXCEPTION__
+#ifndef __AUDIO_EXCEPTION_H__
+#define __AUDIO_EXCEPTION_H__
 
 #include "base_exception.h"
 
-class SDLAudioException : public Exception 
+namespace Megamania
 {
-	public:
-        SDLAudioException(const char *);          
-};
+	class SDLAudioException : public Exception 
+	{
+		public:
+			SDLAudioException(const char *);          
+	};
+}
 
-#endif //__VIDEO_EXCEPTION__
+#endif //__VIDEO_EXCEPTION_H__

@@ -11,28 +11,29 @@
 #define __SPLASH_SCREEN_H__
 
 #include "SDL.h"
-#include "SDL_image.h"
 #include "game_config.h"
 #include "sdl_sound.h"
 #include "video_exception.h"
 
 Uint32 TimerCallback(Uint32, void*);
 
-class SplashScreen 
+namespace Megamania
 {
-    private:
-		SDL_Surface *screen;
-		SDL_Surface *icon;
-		SDL_Surface *logo;
-		SDL_Surface *msg;
-		SDL_Sound   *stfSound; //abreviação para smell the fun Sound
-		SDL_Surface * LoadImage(const char *file);
-	public:
-		SplashScreen(SDL_Surface *screen)throw(SDLVideoException);
-		~SplashScreen(void);
-		void Show(void);
-		SDL_Surface *GetMsg(void)const;
-		SDL_Sound * GetSound(void)const;
-};
+	class SplashScreen 
+	{
+		private:
+			SDL_Surface *screen;
+			SDL_Surface *icon;
+			SDL_Surface *logo;
+			SDL_Surface *msg;
+			SDL_Sound   *stfSound; //abreviação para smell the fun Sound
+		public:
+			SplashScreen(SDL_Surface *screen)throw(SDLVideoException);
+			~SplashScreen(void);
+			void Show(void);
+			SDL_Surface *GetMsg(void)const;
+			SDL_Sound * GetSound(void)const;
+	};
+}
 
 #endif //__SPLASH_SCREEN_H__
