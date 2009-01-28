@@ -6,15 +6,18 @@
  * Author Adriano Braga Alencar (adrianobragaalencar@gmail.com)
  *
  */
-#ifndef __VIDEO_EXCEPTION__
-#define __VIDEO_EXCEPTION__
+#ifndef __VIDEO_EXCEPTION_H__
+#define __VIDEO_EXCEPTION_H__
 
 #include "base_exception.h"
 
-class SDLVideoException : public Exception 
+namespace Megamania
 {
-	public:
-        SDLVideoException(const char *);          
-};
+	class SDLVideoException : public Exception 
+	{
+		public:
+			SDLVideoException(const char *);          
+	};
+}
 
-#endif //__VIDEO_EXCEPTION__
+#endif //__VIDEO_EXCEPTION_H__

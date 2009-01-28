@@ -13,43 +13,46 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-class Log 
-{    
-    private:
-        static int level;
-	    Log(void);
-        ~Log(void);
-	public:
-        static const int DEBUG = 0x01; 
-        static const int WARN  = 0x02;
-        static const int INFO  = 0x03;
-        static const int ERROR = 0x04;
-    public:
-		static void SetLogLevel(int) 
-		{	
-            if((level >= Log::DEBUG)&&(level <= Log::ERROR)) {
-                Log::level = level;
-            } else {
-                Log::level = Log::INFO;    
-	        }   
-        }
-		static std::string GetLogLevel(void) 
-		{
-            switch(Log::level) {
-	            case Log::DEBUG:
-	                return "DEBUG";
-				case Log::WARN:
-			        return "WARN";
-	            case Log::INFO:
-			        return "INFO";
-	            case Log::ERROR:
-			        return "ERROR";
-	            default:
-				    return "INFO";		        
+namespace Megamania
+{
+	class Log 
+	{    
+		private:
+			static int level;
+			Log(void);
+			~Log(void);
+		public:
+			static const int DEBUG = 0x01; 
+			static const int WARN  = 0x02;
+			static const int INFO  = 0x03;
+			static const int ERROR = 0x04;
+		public:
+			static void SetLogLevel(int) 
+			{	
+				if((level >= Log::DEBUG)&&(level <= Log::ERROR)) {
+					Log::level = level;
+				} else {
+					Log::level = Log::INFO;    
+				}   
 			}
-		}
-        static void LogMSG(int, std::string);	         
-};
+			static std::string GetLogLevel(void) 
+			{
+				switch(Log::level) {
+					case Log::DEBUG:
+						return "DEBUG";
+					case Log::WARN:
+						return "WARN";
+					case Log::INFO:
+						return "INFO";
+					case Log::ERROR:
+						return "ERROR";
+					default:
+						return "INFO";		        
+				}
+			}
+			static void LogMSG(int, std::string);	         
+	};
+}
 
 #ifdef LOG
 #  define LOG_DEBUG(msg)    Log::LogMSG(Log::DEBUG, msg)

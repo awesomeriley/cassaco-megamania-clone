@@ -21,7 +21,7 @@
 #define HEIGHT_SCREEN 640
 #define BPP 0    //exibe no formato atual do video
 #define GAME_FATAL_ERROR 1
-#define TIME_DELAY 3000
+#define TIME_DELAY 2000
 #define TIME_PER_TICKS 50
 #define SPLASH_SCREEN_TITLE "Splash Screen"
 #define PATH_FILE_AUDIO "smell.wav"

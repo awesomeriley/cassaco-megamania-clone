@@ -10,14 +10,17 @@
 
 #include <stdlib.h>
 
-class Exception 
+namespace Megamania 
 {
-    protected:
-	    char *detail;
-	public:
-        Exception(const char *);  
-		virtual ~Exception(void)throw() { free(detail); }
-        virtual const char * GetDetailError(void)const;
-};
+	class Exception 
+	{
+		protected:
+			char *detail;
+		public:
+			Exception(const char *);  
+			virtual ~Exception(void)throw() { free(detail); }
+			virtual const char * GetDetailError(void)const;
+	};
+}
 
 #endif //__BASE_EXCEPTION_H__

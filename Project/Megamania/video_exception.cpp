@@ -8,8 +8,11 @@
  */
 #include "video_exception.h"
 
-/**
- * Construtor padrão que cria um novo objeto SDLVideoException
- * associando com uma mensagem de erro
- */
-SDLVideoException::SDLVideoException(const char *detail) : Exception(detail) {}
+namespace Megamania
+{
+	/**
+	 * Construtor padrão que cria um novo objeto SDLVideoException
+	 * associando com uma mensagem de erro
+	 */
+	SDLVideoException::SDLVideoException(const char *detail) : Exception(detail) {}
+}
