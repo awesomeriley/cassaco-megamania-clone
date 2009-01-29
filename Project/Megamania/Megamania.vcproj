@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="8,00"
 	Name="Megamania"
 	ProjectGUID="{A8D7EB5D-27E6-4FD9-A114-94C1EA7893F8}"
 	RootNamespace="Megamania"
@@ -184,6 +184,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\cs_button.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\initializer.cpp"
 				>
 			</File>
@@ -197,6 +201,10 @@
 			</File>
 			<File
 				RelativePath=".\megamania_utils.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\menu_screen.cpp"
 				>
 			</File>
 			<File
@@ -234,6 +242,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\cs_button.h"
+				>
+			</File>
+			<File
 				RelativePath=".\game_config.h"
 				>
 			</File>
@@ -247,6 +259,10 @@
 			</File>
 			<File
 				RelativePath=".\megamania_utils.h"
+				>
+			</File>
+			<File
+				RelativePath=".\menu_screen.h"
 				>
 			</File>
 			<File
@@ -285,6 +301,22 @@
 			</File>
 			<File
 				RelativePath=".\logo.png"
+				>
+			</File>
+			<File
+				RelativePath=".\menu_background.png"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\..\Desktop\menu_button.png"
+				>
+			</File>
+			<File
+				RelativePath=".\menu_button_motion.png"
+				>
+			</File>
+			<File
+				RelativePath=".\menu_button_on.png"
 				>
 			</File>
 			<File

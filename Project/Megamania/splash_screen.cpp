@@ -129,7 +129,7 @@ namespace Megamania
 		 * for iniciada em outra THREAD, a função de callback não é
 		 * chamada
 		 */
-		if(SDL_WasInit(SDL_INIT_VIDEO) != 0) {
+		if(SDL_WasInit(SDL_INIT_TIMER) != 0) {
 			if(SDL_InitSubSystem(SDL_INIT_TIMER) == -1) {
 				LOG_DEBUG(SDL_GetError());  
 				LOG_ERROR("Erro ao iniciar Timer Subsystem\n");
