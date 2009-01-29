@@ -7,7 +7,7 @@
 #include "SDL.h"
 #include "initializer.h"
 #include "log.h"
-#include "splash_screen.h"
+#include "menu_screen.h"
 #include "game_config.h"
 
 using namespace Megamania;
@@ -15,8 +15,8 @@ using namespace Megamania;
 int main(int argc, char **argv) 
 {	
 	Initializer::Init();
-	SplashScreen *splash = new SplashScreen(screen);
-	splash->Show();	
+	MenuScreen *menu = new MenuScreen(screen);
+	menu->Show();	
 	return 0;
 }
 
