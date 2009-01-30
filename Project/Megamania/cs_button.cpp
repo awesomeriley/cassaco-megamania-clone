@@ -40,7 +40,7 @@ namespace Megamania
 	 * Seta a imagem de acordo com a localizacao do mouse 
 	 * e tipo do evento.
 	 ****************************************************/
-	SDL_Surface* CSButton::FireChangeImageEvent(SDL_Event* event)
+	void CSButton::FireChangeImageEvent(SDL_Event* event)
 	{
 		int x = event->button.x;
 		int y = event->button.y;
@@ -63,9 +63,7 @@ namespace Megamania
 				}
 		} else { 
 			ChangeState(MENU_BUTTON, DEFAULT);		
-		}
-		
-		return NULL;
+		}	
 	}
 
 	/****************************************************
@@ -90,6 +88,12 @@ namespace Megamania
 
 			if(label != NULL && strlen(label)){
 			
+				color.r = 190;
+				color.g = 58;
+				color.b = 40;
+				
+				TTF_Init() ;
+				font = TTF_OpenFont("invaders.ttf", 20);
 				WriteText(surface, font, color, label);
 			}
 		}

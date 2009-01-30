@@ -40,7 +40,12 @@ SDL_Surface * WriteText(SDL_Surface *surface, TTF_Font *font, SDL_Color color, c
 	}
 
 	SDL_Surface *txtSurface = TTF_RenderText_Solid(font, text, color);
-	SDL_BlitSurface(surface, NULL, txtSurface, NULL);
-	delete txtSurface;
+	txtSurface->clip_rect.h = surface->clip_rect.h;
+	txtSurface->clip_rect.w = surface->clip_rect.w;
+	txtSurface->clip_rect.x = surface->clip_rect.x;
+	txtSurface->clip_rect.y = surface->clip_rect.y;
+	SDL_BlitSurface(txtSurface, NULL, surface, NULL);
+
+	//delete txtSurface;
 	return surface;
 }

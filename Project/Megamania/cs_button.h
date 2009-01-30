@@ -37,7 +37,7 @@ namespace Megamania
 			char* defaultImagePath;
 
 			SDL_Surface *surface;
-			SDL_Surface *FireChangeImageEvent(SDL_Event*);
+			void FireChangeImageEvent(SDL_Event*);
 			void SetLabel(char*);
 			void SetFont(TTF_Font *);
 			void SetColor(SDL_Color);
