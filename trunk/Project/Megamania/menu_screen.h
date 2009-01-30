@@ -1,11 +1,12 @@
 /**
  * Arquivo que define a interface publica para a classe 
- * SplashScreen responsavel por somente exibir o logo da
- * empresa por alguns segundos e depois direcionar para a
- * a próxima tela.
+ * MenuScreen MenuScreen responsavel por 
+ * exibir o menu de opções do jogo.
+ * Atualmente este menu apresenta as opções:
+ * Start, Options, High Score, Credits
  *
- * Author Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
- *
+ * Author Marcelo Collyer (marcelocollyer@gmail.com)
+ * 
  */
 #ifndef __MENU_SCREEN_H__
 #define __MENU_SCREEN_H__
