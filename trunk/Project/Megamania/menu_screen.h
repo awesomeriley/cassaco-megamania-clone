@@ -1,4 +1,4 @@
-/**
+/******************************************************************
  * Arquivo que define a interface publica para a classe 
  * MenuScreen MenuScreen responsavel por 
  * exibir o menu de opções do jogo.
@@ -7,7 +7,7 @@
  *
  * Author Marcelo Collyer (marcelocollyer@gmail.com)
  * 
- */
+ *****************************************************************/
 #ifndef __MENU_SCREEN_H__
 #define __MENU_SCREEN_H__
 

@@ -1,4 +1,4 @@
-/**
+/**********************************************************************
  * Classe responsavel por manipular os dados relacionados com 
  * os sons do jogo , bem como a musica.
  * Esta classe possui operações básicas com tocar um som, uma musica
@@ -7,7 +7,7 @@
  *
  * Author: Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
  *
- */
+ *********************************************************************/
 #ifndef __SDL_SOUND_H__
 #define __SDL_SOUND_H__
 

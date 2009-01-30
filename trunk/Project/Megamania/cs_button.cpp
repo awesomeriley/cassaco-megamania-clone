@@ -1,11 +1,10 @@
-/**
+/***************************************************************
  * Implementação da classe CSButton que nada 
  * mais é do que a representação de um botão 
  * baseado em interfaces GUI.
  *
  * Author Marcelo Costa Collyer (marcelocollyer@gmail.com) 
- *
- */
+ **************************************************************/
 #include "SDL.h"
 #include "game_config.h"
 #include "megamania_utils.h"

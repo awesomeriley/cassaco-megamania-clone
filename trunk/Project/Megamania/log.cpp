@@ -1,8 +1,8 @@
-/**
+/*****************************************************************
  * Classe responsavel por realizar operações de log
  *  
  * Author: Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
- */
+ ****************************************************************/
 #include "log.h"
 
 #ifndef __func__
@@ -11,20 +11,19 @@
 
 namespace Megamania
 {
-	/**
-	 * Função responsavel por logar a mensagem de erro informada
-	 * bem como o level do log, aqui a mensagem de erro será gravada
-	 * no stream de erro (stderr).
-	 *
-	 * level -> indica o level do log, podendo ser:
-	 *    - DEBUG
-	 *    - ERROR
-	 *    - INFO
-	 *    - WARN
-	 * info -> indica a mensagem de erro do objeto
-	 *
-	 */
-
+   /*****************************************************************
+	* Função responsavel por logar a mensagem de erro informada
+	* bem como o level do log, aqui a mensagem de erro será gravada
+	* no stream de erro (stderr).
+	*
+	* level -> indica o level do log, podendo ser:
+	*    - DEBUG
+	*    - ERROR
+	*    - INFO
+	*    - WARN
+	* info -> indica a mensagem de erro do objeto
+	*
+	****************************************************************/
 	void Log::LogMSG(int level, std::string info) 
 	{    
 		const char *levelDesc = NULL;

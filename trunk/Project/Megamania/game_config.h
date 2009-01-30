@@ -1,11 +1,11 @@
-/**
+/*********************************************************************
  * Arquivo que define todas as configurações do Jogo MEGAMANIA
  * aqui são definidos os caminhos das imagens bem como configurações
  * do jogo
  *
  * Author Adriano Braga Alencar (adrianobragaalencar@gmail.com)
  *
- */
+ ********************************************************************/
 #ifndef __GAME_H__
 #define __GAME_H__
 
