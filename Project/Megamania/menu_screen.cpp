@@ -4,7 +4,8 @@
  * Atualmente este menu apresenta as opções:
  * Start, Options, High Score, Credits
  *
- * Author Marcelo Collyer (marcelocollyer@gmail.com) * 
+ * Author Marcelo Collyer (marcelocollyer@gmail.com) 
+ *
  **************************************************************/
 #include "menu_screen.h"
 #include "megamania_utils.h"
@@ -33,9 +34,9 @@ namespace Megamania
 
 		//TODO colocar esses valores em um XML
 		this->screen = screen;
-		int buttonsX = 500;
-		int buttonsY = 250;
-		int verticalspace = 80;
+		int buttonsX = MENU_BUTTON_X;
+		int buttonsY = MENU_BUTTON_Y;
+		int verticalspace = MENU_BUTTON_VERTICAL_SPACE;
 		
 		background = LoadImage(MENU_BACKGROUND);
 		startBT   = new CSButton(MENU_BUTTON, buttonsX, buttonsY);
@@ -58,6 +59,7 @@ namespace Megamania
 	/***************************************************************
 	 * Destruidor responsavel por desalocar todas as imagens
 	 * utilizadas pela MenuScreen
+	 *
 	 **************************************************************/
 	MenuScreen::~MenuScreen() 
 	{    
@@ -71,7 +73,6 @@ namespace Megamania
 	void MenuScreen::Show(void) 
 	{
 		SDL_Event event;
-		
 		SDL_BlitSurface(startBT->surface, NULL, background, &startBT->surface->clip_rect);
 		SDL_BlitSurface(scoreBT->surface, NULL, background, &scoreBT->surface->clip_rect);
 		SDL_BlitSurface(optionsBT->surface, NULL, background, &optionsBT->surface->clip_rect);
