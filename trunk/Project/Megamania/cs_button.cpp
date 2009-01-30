@@ -13,11 +13,10 @@
 
 namespace Megamania
 {
-	/*
-	 * Construtor padrão que define 
-	 * a imagem e estados iniciais 
-	 * e a carrega imagem padrão
-	 */
+	/*****************************************************
+	 * Construtor padrão que define a imagem e estados 
+	 * iniciais e a carrega imagem padrão
+	 *****************************************************/
 	CSButton::CSButton(char *defaultImagePath, int x, int y)
 	{	
 		this->defaultImagePath = defaultImagePath;
@@ -27,10 +26,9 @@ namespace Megamania
 		this->surface->clip_rect.y = y;
 	}
 
-	/*
-	 * Limpa todas as surfaces 
-	 * inicializadas
-	 */
+	/*****************************************************
+	 * Limpa todas as surfaces inicializadas
+	 *****************************************************/
 	CSButton::~CSButton()
 	{
 		defaultImagePath = NULL;
@@ -39,11 +37,10 @@ namespace Megamania
 		surface = NULL;
 	}
 
-	/*
-	 * Seta a imagem de acordo com a 
-	 * localizacao do mouse e tipo do
-	 * evento.
-	 */
+	/****************************************************
+	 * Seta a imagem de acordo com a localizacao do mouse 
+	 * e tipo do evento.
+	 ****************************************************/
 	SDL_Surface* CSButton::FireChangeImageEvent(SDL_Event* event)
 	{
 		int x = event->button.x;
@@ -72,12 +69,12 @@ namespace Megamania
 		return NULL;
 	}
 
-	/*
+	/****************************************************
 	 * Caso o estado passado seja diferente, é setado o 
 	 * novo estado e a nova imagem do botão de acordo 
 	 * com o evento disparado. Tambem limpa a surface 
 	 * antiga da memória.
-	 */
+	 ****************************************************/
 	void CSButton::ChangeState(char *imagePath, STATE_ENUM state) 
 	{
 		if(this->state != state) {
@@ -90,14 +87,31 @@ namespace Megamania
 			SDL_FreeSurface(surface); 
 			surface = LoadImage(imagePath);
 			surface->clip_rect.x = rect.x;			
-			surface->clip_rect.y = rect.y;			
+			surface->clip_rect.y = rect.y;
+
+			if(label != NULL && strlen(label)){
+			
+				WriteText(surface, font, color, label);
+			}
 		}
 	}
 
 	
+	/******************************************************
+	 * Label, font and color set methods
+	 ******************************************************/
 	void CSButton::SetLabel(char *label)
 	{
 		this->label = label;
 	}
-}
 
+	void CSButton::SetFont(TTF_Font *font)
+	{
+		this->font = font;
+	}
+
+	void CSButton::SetColor(SDL_Color color){
+	
+		this->color = color;
+	}
+}

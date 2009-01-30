@@ -10,6 +10,7 @@
 #define __CSBUTTON_H__
 
 #include "SDL.h"
+#include "SDL_ttf.h"
 #include "game_config.h"
 #include "video_exception.h"
 
@@ -23,6 +24,8 @@ namespace Megamania
 			void ChangeState(char *, STATE_ENUM);
 			int x, y;
 			char* label;
+			TTF_Font *font;
+			SDL_Color color;
 
 		public:			
 			CSButton(char *, int, int);
@@ -36,6 +39,8 @@ namespace Megamania
 			SDL_Surface *surface;
 			SDL_Surface *FireChangeImageEvent(SDL_Event*);
 			void SetLabel(char*);
+			void SetFont(TTF_Font *);
+			void SetColor(SDL_Color);
 	};
 }
 
