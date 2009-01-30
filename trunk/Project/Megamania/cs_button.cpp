@@ -80,13 +80,12 @@ namespace Megamania
 			SDL_Rect rect;
 			rect.x = surface->clip_rect.x;
 			rect.y = surface->clip_rect.y;
-
 			SDL_FreeSurface(surface); 
 			surface = LoadImage(imagePath);
 			surface->clip_rect.x = rect.x;			
 			surface->clip_rect.y = rect.y;
 
-			if(label != NULL && strlen(label) && TTF_Init() != -1){
+			if(label != NULL ){
 
 				WriteText(surface, font, color, label);
 			}
@@ -101,7 +100,7 @@ namespace Megamania
 	{
 		this->label = label;
 		this->font = font;
-		this->color = color;
+		this->color = color;		
 	}
 
 	void CSButton::SetLabel(char *label)
