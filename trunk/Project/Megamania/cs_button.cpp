@@ -47,7 +47,8 @@ namespace Megamania
 
 		//verifica se o ponto passado está contido dentro da área da surface
 		if((x >= surface->clip_rect.x) && (x <= surface->clip_rect.x + surface->w) && 
-		   (y >= surface->clip_rect.y) && (y <= surface->clip_rect.y + surface->h)) {
+		   (y >= surface->clip_rect.y) && (y <= surface->clip_rect.y + surface->h) &&
+		   event->button.button == SDL_BUTTON_LEFT) {
 			
 				switch(event->type){
 					case SDL_MOUSEBUTTONDOWN:
