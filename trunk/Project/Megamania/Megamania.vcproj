@@ -300,6 +300,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\INVADERS.TTF"
+				>
+			</File>
+			<File
 				RelativePath=".\logo.png"
 				>
 			</File>
