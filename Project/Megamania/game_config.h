@@ -37,6 +37,11 @@
 #define MENU_BUTTON_MOTION "menu_button_motion.png"
 #define MENU_BUTTON_DOWN "menu_button_on.png"
 #define MENU_BACKGROUND "menu_background.png"
+#define MENU_FONT "invaders.ttf"
+#define MENU_BUTTON_COLOR_R 190
+#define MENU_BUTTON_COLOR_G 58
+#define MENU_BUTTON_COLOR_B 40
+#define MENU_BUTTON_FONT_SIZE 20
 
 static SDL_Surface *screen = SDL_SetVideoMode(WIDTH_SCREEN, HEIGHT_SCREEN, BPP, SDL_SWSURFACE|SDL_DOUBLEBUF);
 

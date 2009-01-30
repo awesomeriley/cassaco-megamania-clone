@@ -41,6 +41,7 @@ namespace Megamania
 			void SetLabel(char*);
 			void SetFont(TTF_Font *);
 			void SetColor(SDL_Color);
+			void CSButton::SetLabel(char *label, TTF_Font *font, SDL_Color color);
 	};
 }
 

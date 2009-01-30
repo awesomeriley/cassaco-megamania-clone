@@ -4,8 +4,7 @@
  * Atualmente este menu apresenta as opções:
  * Start, Options, High Score, Credits
  *
- * Author Marcelo Collyer (marcelocollyer@gmail.com)
- * 
+ * Author Marcelo Collyer (marcelocollyer@gmail.com) * 
  **************************************************************/
 #include "menu_screen.h"
 #include "megamania_utils.h"
@@ -26,7 +25,12 @@ namespace Megamania
 		if(screen == NULL) {
 			throw SDLVideoException("SDL Video não inicializado");
 		}
-		
+
+		if(TTF_Init() == -1){
+			LOG_ERROR("Erro ao inicializar TTF [menu_screen]\n");
+			exit(EXIT_FAILURE);        
+		}
+
 		//TODO colocar esses valores em um XML
 		this->screen = screen;
 		int buttonsX = 500;
@@ -39,10 +43,13 @@ namespace Megamania
 		optionsBT = new CSButton(MENU_BUTTON, buttonsX, buttonsY + 2*verticalspace);
 		creditsBT = new CSButton(MENU_BUTTON, buttonsX, buttonsY + 3*verticalspace);
 
-		startBT->SetLabel(MENU_START_LABEL);
-		scoreBT->SetLabel(MENU_SCORE_LABEL);
-		optionsBT->SetLabel(MENU_OPTIONS_LABEL);
-		creditsBT->SetLabel(MENU_CREDITS_LABEL);
+		SDL_Color color = {MENU_BUTTON_COLOR_R, MENU_BUTTON_COLOR_G, MENU_BUTTON_COLOR_B};
+		TTF_Font *font = TTF_OpenFont(MENU_FONT, MENU_BUTTON_FONT_SIZE);
+		
+		startBT->SetLabel(MENU_START_LABEL, font, color);
+		scoreBT->SetLabel(MENU_SCORE_LABEL, font, color);
+		optionsBT->SetLabel(MENU_OPTIONS_LABEL, font, color);
+		creditsBT->SetLabel(MENU_CREDITS_LABEL, font, color);
 		
 		SDL_WM_SetCaption(MENU_SCREEN_TITLE, NULL);
 		//TODO set icon
