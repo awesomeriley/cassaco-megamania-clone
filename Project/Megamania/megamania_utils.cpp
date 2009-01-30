@@ -22,7 +22,7 @@ SDL_Surface * LoadImage(const char *file)
 {    
     SDL_Surface *image = NULL;
 	if((image = IMG_Load(file)) == NULL) {
-	    LOG_ERROR("Erro ao carregar imagen [LoadImage(void)]");
+	    LOG_ERROR("Erro ao carregar imagen [LoadImage(const char*)]");
 		exit(GAME_FATAL_ERROR);
 	}
 	return SDL_DisplayFormat(image);
@@ -35,7 +35,7 @@ SDL_Surface * LoadImage(const char *file)
 SDL_Surface * WriteText(SDL_Surface *surface, TTF_Font *font, SDL_Color color, const char* text) {
 	
 	if(surface == NULL || font == NULL || text == NULL) {
-		LOG_ERROR("Null Pointer. [WriteText(SDL_Surface *surface, TTF_Font *font, SDL_Color color, const char* text)]");
+		LOG_ERROR("Null Pointer. [WriteText(SDL_Surface *, TTF_Font *, SDL_Color, const char *)]");
 		exit(GAME_FATAL_ERROR);
 	}
 

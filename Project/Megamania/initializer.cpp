@@ -1,11 +1,11 @@
-/**
+/*******************************************************************
  * Classe responsavel por iniciar o sistema SDL, esta classe 
  * deve ser chamada antes de se utilizar qualquer objeto do 
  * SDL
  *
  * Author: Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
  *
- */
+ ******************************************************************/
 #include "initializer.h"
 #include "log.h"
 #include "SDL.h"
@@ -13,10 +13,10 @@
 
 namespace Megamania
 {
-	/** 
+	/*****************************************************************
 	 * Função responsavel por iniciar todos os SubSistema da Api SDL
 	 *
-	 */
+	 ****************************************************************/
 	void Initializer::Init(void) 
 	{
 		atexit(Initializer::Shutdow);
@@ -29,11 +29,11 @@ namespace Megamania
 		}	
 	}
 
-	/**
+	/*****************************************************************
 	 * Função responsavel por liberar todos os SubSistemas alocados
 	 * pela Api SDL
 	 *
-	 */
+	 ****************************************************************/
 	void Initializer::Shutdow(void) 
 	{    
 		SDL_Quit();

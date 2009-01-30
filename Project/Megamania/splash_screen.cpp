@@ -1,4 +1,4 @@
-/**
+/*****************************************************************
  * Arquivo que define a interface publica para a classe 
  * SplashScreen responsavel por somente exibir o logo da
  * empresa por alguns segundos e depois direcionar para a
@@ -6,7 +6,7 @@
  *
  * Author Adriano Braga Alencar (adrianobragaalencar@gmail.com)
  * 
- */
+ ****************************************************************/
 #include "splash_screen.h"
 #include "megamania_utils.h"
 #include "log.h"
@@ -16,13 +16,13 @@ static SDL_TimerID timerID = NULL;
 
 namespace Megamania
 {
-	/**
+	/***************************************************************
 	 * Construtor default que cria um novo objeto SplashScreen 
 	 * associando o mesmo com a Tela da aplicação
 	 *
 	 * SDL_Surface *screen -> indica a tela do jogo
 	 * 
-	 */
+	 **************************************************************/
 	SplashScreen::SplashScreen(SDL_Surface *screen)throw(SDLVideoException)
 	{   
 		if(screen == NULL) {
@@ -37,11 +37,11 @@ namespace Megamania
 		stfSound = new SDL_Sound();
 	}
 
-	/**
+	/***************************************************************
 	 * Destruidor responsavel por desalocar todas as imagens
 	 * utilizadas pela SplashScreen
 	 *
-	 */
+	 **************************************************************/
 	SplashScreen::~SplashScreen() 
 	{    
 		SDL_FreeSurface(this->icon);
@@ -50,25 +50,25 @@ namespace Megamania
 		delete stfSound;
 	}
 
-	/**
+	/***************************************************************
 	 * Função que retorna uma referencia para o logo
 	 * da tela Splash Screen
 	 *
 	 * SDL_Surface -> retorna a referencia para o logo
 	 *
-	 */
+	 **************************************************************/
 	SDL_Surface * SplashScreen::GetMsg(void)const 
 	{
 		return this->msg;
 	}
 
-	/**
+	/***************************************************************
 	 * Função que retorna uma referencia para o som
 	 * da tela Splash Screen
 	 *
 	 * SDL_Sound -> retorna a referencia para o som
 	 *
-	 */
+	 **************************************************************/
 	SDL_Sound * SplashScreen::GetSound(void)const 
 	{    
 		return this->stfSound;
@@ -124,7 +124,7 @@ namespace Megamania
 		rect.y = (screen->h >> 1) - (rect.h  >> 1);
 		SDL_BlitSurface(logo, NULL, screen, &rect);
 		SDL_Flip(screen);
-		/**
+		/*
 		 * Devemos iniciar o sistema Timer aqui, por que se a mesma
 		 * for iniciada em outra THREAD, a função de callback não é
 		 * chamada

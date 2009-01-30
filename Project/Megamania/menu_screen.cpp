@@ -1,4 +1,4 @@
-/**
+/***************************************************************
  * Implementação da classe MenuScreen responsavel por 
  * exibir o menu de opções do jogo.
  * Atualmente este menu apresenta as opções:
@@ -6,7 +6,7 @@
  *
  * Author Marcelo Collyer (marcelocollyer@gmail.com)
  * 
- */
+ **************************************************************/
 #include "menu_screen.h"
 #include "megamania_utils.h"
 #include "log.h"
@@ -14,13 +14,13 @@
 
 namespace Megamania
 {
-	/**
+	/***************************************************************
 	 * Construtor default que cria um novo objeto MenuScreen 
 	 * associando o mesmo com a Tela da aplicação
 	 *
 	 * SDL_Surface *screen -> indica a tela do jogo
 	 * 
-	 */
+	 **************************************************************/
 	MenuScreen::MenuScreen(SDL_Surface *screen)throw(SDLVideoException)
 	{   
 		if(screen == NULL) {
@@ -48,10 +48,10 @@ namespace Megamania
 		//TODO set icon
 	}
 
-	/**
+	/***************************************************************
 	 * Destruidor responsavel por desalocar todas as imagens
 	 * utilizadas pela MenuScreen
-	 */
+	 **************************************************************/
 	MenuScreen::~MenuScreen() 
 	{    
 		SDL_FreeSurface(this->background);

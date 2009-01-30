@@ -1,11 +1,11 @@
-/**
+/*******************************************************************
  * Classe responsavel por realizar operações de log,
  * para ativar as operações de log deve-se definir a 
  * macro LOG
  *  
  * Author: Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
  *
- */
+ ******************************************************************/
 #ifndef __LOG_H__
 #define __LOG_H__
 

@@ -1,11 +1,11 @@
-/**
+/***************************************************************
  * Arquivo que define a interface publica para a classe 
  * CSButton que é a representação de um botão baseado 
  * em interfaces GUI.
  *
  * Author Marcelo Costa Collyer (marcelocollyer@gmail.com) 
  *
- */
+ **************************************************************/
 #ifndef __CSBUTTON_H__
 #define __CSBUTTON_H__
 
