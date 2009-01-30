@@ -86,14 +86,8 @@ namespace Megamania
 			surface->clip_rect.x = rect.x;			
 			surface->clip_rect.y = rect.y;
 
-			if(label != NULL && strlen(label)){
-			
-				color.r = 190;
-				color.g = 58;
-				color.b = 40;
-				
-				TTF_Init() ;
-				font = TTF_OpenFont("invaders.ttf", 20);
+			if(label != NULL && strlen(label) && TTF_Init() != -1){
+
 				WriteText(surface, font, color, label);
 			}
 		}
@@ -103,6 +97,13 @@ namespace Megamania
 	/******************************************************
 	 * Label, font and color set methods
 	 ******************************************************/
+	void CSButton::SetLabel(char *label, TTF_Font *font, SDL_Color color)
+	{
+		this->label = label;
+		this->font = font;
+		this->color = color;
+	}
+
 	void CSButton::SetLabel(char *label)
 	{
 		this->label = label;
