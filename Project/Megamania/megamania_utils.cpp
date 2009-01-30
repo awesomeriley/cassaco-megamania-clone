@@ -34,6 +34,11 @@ SDL_Surface * LoadImage(const char *file)
  *************************************************************/
 SDL_Surface * WriteText(SDL_Surface *surface, TTF_Font *font, SDL_Color color, const char* text) {
 	
+	if(surface == NULL || font == NULL || text == NULL) {
+		LOG_ERROR("Null Pointer. [WriteText(SDL_Surface *surface, TTF_Font *font, SDL_Color color, const char* text)]");
+		exit(GAME_FATAL_ERROR);
+	}
+
 	SDL_Surface *txtSurface = TTF_RenderText_Solid(font, text, color);
 	SDL_BlitSurface(surface, NULL, txtSurface, NULL);
 	delete txtSurface;
