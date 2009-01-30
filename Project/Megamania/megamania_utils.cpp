@@ -1,18 +1,23 @@
-/**
+/*************************************************************
  * Arquivo que contém varias operações comuns utilizadas pelo
- * projeto MEGAMANIA, aqui são definidos todas as funções relacionadas
- * com carregamento de imagens, manipulação de Strings dentre outras
- * 
- * Author: Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
+ * projeto MEGAMANIA, aqui são definidos todas as funções	 
+ * relacionadas com carregamento de imagens, manipulação de  
+ * Strings dentre outras									 
+ *															 
+ * Author: Adriano Braga Alencar							
+ * Email : adrianobragaalencar@gmail.com 
  *
- */
+ * Author: Marcelo Collyer
+ * Email : marcelocollyer@gmail.com
+ *************************************************************/
 #include "megamania_utils.h"
+#include "SDL.h"
+#include "SDL_ttf.h"
 
-/**
- * Função responsavel por carregar o icone do Jogo, a imagem
- * de logo e a mensagem a ser exibida
- * 
- */
+/*************************************************************
+ * Função responsavel por carregar o icone do Jogo, a imagem 
+ * de logo e a mensagem a ser exibida						 
+ *************************************************************/
 SDL_Surface * LoadImage(const char *file) 
 {    
     SDL_Surface *image = NULL;
@@ -21,4 +26,16 @@ SDL_Surface * LoadImage(const char *file)
 		exit(GAME_FATAL_ERROR);
 	}
 	return SDL_DisplayFormat(image);
+}
+
+/*************************************************************
+ * Função para escrever um texto em uma superficie de acordo  
+ * com a fonte passada				
+ *************************************************************/
+SDL_Surface * WriteText(SDL_Surface *surface, TTF_Font *font, SDL_Color color, const char* text) {
+	
+	SDL_Surface *txtSurface = TTF_RenderText_Solid(font, text, color);
+	SDL_BlitSurface(surface, NULL, txtSurface, NULL);
+	delete txtSurface;
+	return surface;
 }
