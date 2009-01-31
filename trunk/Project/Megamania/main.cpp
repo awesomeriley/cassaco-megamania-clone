@@ -8,6 +8,7 @@
 #include "initializer.h"
 #include "log.h"
 #include "menu_screen.h"
+#include "splash_screen.h"
 #include "game_config.h"
 
 using namespace Megamania;
