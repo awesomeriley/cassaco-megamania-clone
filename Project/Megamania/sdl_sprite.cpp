@@ -42,6 +42,7 @@ namespace Megamania
 		this->frameWidth = frameWidth;
 		this->frameHeight = frameHeight;
 		this->nFrames = static_cast<Uint32>((w / frameWidth) * (h / frameHeight)); 
+		frames = static_cast<SDL_Rect*>(SDL_malloc(sizeof(SDL_Rect) * nFrames));
 		CreateFrames();
         x = y = 0;
 	}
@@ -53,18 +54,23 @@ namespace Megamania
 	 **************************************************************/
 	Sprite::~Sprite(void) 
 	{	
-		SDL_FreeSurface(image);		
+		SDL_FreeSurface(image);				
+		SDL_free(frames);
 	}
 
 	void Sprite::CreateFrames(void) 
 	{
+		int x = 0;
+		int y = 0;
 		int w = image->w;
 		int maxFrameWidth = (w / frameWidth);
 		for(Uint32 i = 0; i < nFrames; ++i) {
 			SDL_Rect rect;
 			rect.x = (i * frameWidth) % w;
 			rect.y = (i / maxFrameWidth) * frameHeight;
-		//	frames.push_back(rect);
+			rect.w = frameWidth;
+			rect.h = frameHeight;
+			frames[i] = rect;
 		}
 	}
     
@@ -77,10 +83,10 @@ namespace Megamania
 	 **************************************************************/
 	void Sprite::NextFrame(void) 
 	{
-		if(cursor >= nFrames) {
-		    cursor = 0;
+		if(cursor < nFrames - 1) {
+			++cursor;
 		} else {
-		    cursor++;
+		    cursor = 0;
 		}
 	}
 
@@ -93,10 +99,10 @@ namespace Megamania
 	 **************************************************************/
 	void Sprite::PrevFrame(void) 
 	{	
-		if(cursor <= 0) {
-		    cursor = nFrames - 1;
+		if(cursor > 0) {
+		    --cursor;
 		} else {
-		    cursor--;
+		    cursor = nFrames - 1;
 		}
 	}
 
@@ -162,6 +168,21 @@ namespace Megamania
 	}
 
 	/*****************************************************************
+	 * Função que retorna a posição atual do objeto Sprite
+	 * inserido os valores dos eixos X e Y nas referencias
+	 * informadas
+	 * 
+	 * xRef -> referencia para o eixo X
+	 * yRef -> referencia para o eixo Y
+	 *
+	 */
+	void Sprite::GetPosition(int &xRef, int &yRef) 
+	{
+		xRef = x;
+		yRef = y;
+	}
+
+	/****************************************************************
 	 * Função responsavel por realizar um deslocamento na posição 
 	 * do objeto Sprite pelo valor fornecido por exemplo:
 	 *
@@ -221,16 +242,27 @@ namespace Megamania
 		return this->nFrames;
 	}
 
-	bool Sprite::CollidesWith(Sprite&)
+	bool Sprite::CollidesWith(Sprite &another)
 	{
 		return false;
 	}
-    
+	
+
+	/***************************************************************
+	 * Função responsavel por realizar a pintura do Sprite na tela
+	 * esta função irá pintar o Frame corrente setado pelo usuário
+	 *
+	 * SDL_Surface -> indica a superficie que irá receber a pintura
+	 * do Frame do Sprite
+	 ***************************************************************/
 	void Sprite::Draw(SDL_Surface *surface)
 	{
 		if(surface != NULL) {
 		    
-//			SDL_BlitSurface(image, NULL, surface, frames[cursor]);
+			SDL_Rect rect;
+			rect.x = GetX(); 
+			rect.y = GetY();
+			SDL_BlitSurface(image, &frames[cursor], surface, &rect);
 		}
 	}
 }
