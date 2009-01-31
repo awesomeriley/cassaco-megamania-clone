@@ -27,6 +27,8 @@ namespace Megamania
 			CSButton *optionsBT;
 			CSButton *scoreBT;
 			CSButton *creditsBT;
+			void RefreshAll(void);
+			void EventTreatment(SDL_Event *);
 			
 		public:
 			MenuScreen(SDL_Surface *screen)throw(SDLVideoException);

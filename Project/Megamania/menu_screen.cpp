@@ -70,32 +70,36 @@ namespace Megamania
 		delete creditsBT;
 	}
 
-	void MenuScreen::Show(void) 
+	void MenuScreen::RefreshAll(void) 
 	{
-		SDL_Event event;
 		SDL_BlitSurface(startBT->surface, NULL, background, &startBT->surface->clip_rect);
 		SDL_BlitSurface(scoreBT->surface, NULL, background, &scoreBT->surface->clip_rect);
 		SDL_BlitSurface(optionsBT->surface, NULL, background, &optionsBT->surface->clip_rect);
 		SDL_BlitSurface(creditsBT->surface, NULL, background, &creditsBT->surface->clip_rect);
 		SDL_BlitSurface(background, NULL, screen, NULL);
 		SDL_Flip(screen);
+	}
 
+	void MenuScreen::EventTreatment(SDL_Event *event) 
+	{
+		startBT->FireChangeImageEvent(event);
+		scoreBT->FireChangeImageEvent(event);
+		optionsBT->FireChangeImageEvent(event);
+		creditsBT->FireChangeImageEvent(event);
+	}
+
+	void MenuScreen::Show(void) 
+	{
+		SDL_Event event;
+		RefreshAll();
+		
 		for(;;) {
 			if((SDL_PollEvent(&event)) != 0) {
 				if((event.type == SDL_QUIT)||(event.key.keysym.sym == SDLK_ESCAPE)) {
 					break;
 				}else{
-					//TODO Refactory!!!
-					startBT->FireChangeImageEvent(&event);
-					scoreBT->FireChangeImageEvent(&event);
-					optionsBT->FireChangeImageEvent(&event);
-					creditsBT->FireChangeImageEvent(&event);
-					SDL_BlitSurface(startBT->surface, NULL, background, &startBT->surface->clip_rect);
-					SDL_BlitSurface(scoreBT->surface, NULL, background, &scoreBT->surface->clip_rect);
-					SDL_BlitSurface(optionsBT->surface, NULL, background, &optionsBT->surface->clip_rect);
-					SDL_BlitSurface(creditsBT->surface, NULL, background, &creditsBT->surface->clip_rect);
-					SDL_BlitSurface(background, NULL, screen, NULL);
-					SDL_Flip(screen);
+					EventTreatment(&event);
+					RefreshAll();
 				}
 			}		
 		}    
