@@ -11,7 +11,6 @@
 
 #include "SDL.h"
 #include "sprite_exception.h"
-#include <vector>
 
 namespace Megamania
 {
@@ -33,7 +32,7 @@ namespace Megamania
 			/** ponteiro para a imagem do objeto Sprite*/
 			SDL_Surface *image;
 			/** vetor responsavel por gerenciar cada frame do objeto*/
-			std::vector<struct SDL_Rect> frames;			
+			SDL_Rect* frames;
 		private:
             void CreateFrames(void);
 		public:
@@ -41,17 +40,18 @@ namespace Megamania
 			~Sprite(void);
 			void NextFrame(void);
 			void PrevFrame(void);
-			void SetX(int x);
-			void SetY(int y);
+			void SetX(int);
+			void SetY(int);
 			const int GetX(void)const;
 			const int GetY(void)const;
-			void SetPosition(int x, int y);
-			void Move(int dx, int dy);
+			void SetPosition(int, int);
+			void GetPosition(int &, int &);
+			void Move(int, int);
 			const int GetWidthFrame(void)const;
 			const int GetHeightFrame(void)const;
 			const int GetFrameNumbers(void)const;
 			bool CollidesWith(Sprite&);
-			void Draw(SDL_Surface *surface);
+			void Draw(SDL_Surface *);
 	};
 }
 
