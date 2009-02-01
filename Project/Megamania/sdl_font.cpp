@@ -104,4 +104,23 @@ namespace Megamania
 		g = color.g;
 		b = color.b;
 	}
+
+	/******************************************************************
+	 * Função responsavel por retornar o tamando do text informado,
+	 * caso o texto informado seja NULL, o valor para a largura e
+	 * altura será zero
+	 *
+	 * text -> indica o texto que terá seu tamanho retornado
+	 * w -> variavel que será preenchida com a largura do text
+	 * h -> variavel que será preenchida com a altura do text
+	 *
+	 ******************************************************************/
+	void SDL_Font::GetSize(const char *text, int *w, int *h) 
+	{
+		if((text != NULL)&&(strlen(text))) {
+			TTF_SizeText(font, text, w, h);	
+		} else {
+			w = h = 0;
+		}
+	}
 }

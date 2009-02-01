@@ -20,7 +20,9 @@ namespace Megamania
 	class SDL_Font
 	{
 		private:
+			/** Objeto responsavel por manipular os dados da Fonte*/
 			TTF_Font *font;
+			/** Struct que indica a cor a ser aplicada sobre a fonte*/
 			SDL_Color color;
 		public:
 			SDL_Font(const char *, int)throw(SDLFontException);
@@ -29,6 +31,7 @@ namespace Megamania
 			void SetColor(Uint8, Uint8, Uint8);
 			void GetColor(Uint8&, Uint8&, Uint8&);
 			const int GetHeight(void)const;
+			void GetSize(const char *, int *, int *);
 	};
 }
 
