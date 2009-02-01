@@ -416,6 +416,10 @@
 					RelativePath=".\INVADERS.TTF"
 					>
 				</File>
+				<File
+					RelativePath=".\MATRIX.ttf"
+					>
+				</File>
 			</Filter>
 		</Filter>
 	</Files>
