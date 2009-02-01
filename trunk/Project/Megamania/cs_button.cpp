@@ -18,9 +18,7 @@ namespace Megamania
 	 *****************************************************/
 	CSButton::CSButton(char *defaultImagePath, int x, int y)
 	{	
-		this->defaultImagePath = defaultImagePath;
 		surface = LoadImage(defaultImagePath);
-		SDL_SetColorKey(surface, SDL_SRCCOLORKEY, SDL_MapRGB(surface->format, 0xff, 0, 0));
 		this->surface->clip_rect.x = x;
 		this->surface->clip_rect.y = y;
 	}
@@ -30,10 +28,8 @@ namespace Megamania
 	 *****************************************************/
 	CSButton::~CSButton()
 	{
-		defaultImagePath = NULL;
-		downImagePath = NULL;
-		lightImagePath = NULL;
-		surface = NULL;
+		SDL_FreeSurface(surface);
+		FreeMemory(text);
 	}
 
 	/****************************************************
@@ -80,40 +76,105 @@ namespace Megamania
 		if(this->state != state) {
 			this->state = state;
 
-			SDL_Rect rect;
-			rect.x = surface->clip_rect.x;
-			rect.y = surface->clip_rect.y;
+			int x = surface->clip_rect.x;
+			int y = surface->clip_rect.y;
 			SDL_FreeSurface(surface); 
 			surface = LoadImage(imagePath);
-			surface->clip_rect.x = rect.x;			
-			surface->clip_rect.y = rect.y;
-
-			if(text != NULL ){
-
-				//WriteText(surface, font, font->GetColor(), text);
-			}
+			surface->clip_rect.x = x;			
+			surface->clip_rect.y = y;
 		}
 	}
 
-	void CSButton::SetText(const char *text)
+	/************************************************************
+	 * Função que seta o texto a ser pintado sobre o botão, caso
+	 * seja fornecido um ponteiro NULL, nada será pintado
+	 * Por default o texto é pintado no centro do botão, para 
+	 * modificar a posição do texto, deve-se chamar a função
+	 * Megamania::CSButton::SetAlign(V_ALIGNMEMT, H_ALIGNMENT)
+	 *
+	 ************************************************************/
+	void CSButton::SetText(char *text)
 	{
-		//this->text = text;
+		this->text = StringCopy(this->text, text);
+		SetAlign(V_ALIGNMENT::VCENTER, H_ALIGNMENT::HCENTER);
 	}
 
+	/************************************************************
+	 * Função que seta uma nova fonte a ser aplicada sobre o
+	 * texto, caso seja fornecida um ponteiro NULL, o componente
+	 * não irá trabalhar corretamente, podendo quebrar o código
+	 ************************************************************/
 	void CSButton::SetFont(SDL_Font *font) 
 	{
 		this->font = font;
 	}
-
+	
+	/**********************************************************
+	 * Função que retorna a referencia para a superficie do 
+	 * botão
+	 **********************************************************/
 	SDL_Surface * CSButton::GetSurface(void) 
 	{
 		return this->surface;
 	}
 
+	/**********************************************************
+	 * Função responsavel por setar o alinhamento do texto em
+	 * relação ao botão, segue abaixo as constantes que pode
+	 * ser informadas:
+	 * * Alinhamento Vertical
+	 *	- TOP
+	 *	- VCENTER
+	 *	- BOTTOM
+	 * * Alinhamento Horizontal
+	 *  - LEFT
+	 *  - HCENTER
+	 *  - RIGHT
+	 *
+	 **********************************************************/
+	void CSButton::SetAlign(V_ALIGNMENT vAlign, H_ALIGNMENT hAlign) 
+	{
+		int w = 0;
+		int h = 0;
+		this->font->GetSize(this->text, &w, &h);
+		switch(vAlign) {
+			case V_ALIGNMENT::TOP:   
+				textY = surface->clip_rect.y;
+				break;
+			case V_ALIGNMENT::VCENTER:
+				textY = surface->clip_rect.y + ((surface->clip_rect.h >> 1) - (h >> 1));
+				break;
+			case V_ALIGNMENT::BOTTOM:
+				textY = surface->clip_rect.y + ((surface->clip_rect.h - h));
+				break;
+		}			
+		switch(hAlign) {
+			case H_ALIGNMENT::LEFT:
+				textX = surface->clip_rect.x;
+				break;
+			case H_ALIGNMENT::HCENTER:
+				textX = surface->clip_rect.x + ((surface->clip_rect.w >> 1) - (w >> 1));
+				break;
+			case H_ALIGNMENT::RIGHT:
+				textX = surface->clip_rect.x + ((surface->clip_rect.w - w));
+				break;
+		}			
+	}
+
+	/**************************************************************
+	 * Função responsavel por pintar o botão e texto na superficie
+	 * indicada
+	 *
+	 * background -> indica a superficie onde o botão sera 
+	 * pintado
+	 *************************************************************/
 	void CSButton::Draw(SDL_Surface *background) {
 	
-		SDL_Surface *t = font->RenderTextSolid("Adriano");		
-		SDL_BlitSurface(t, NULL, surface, &t->clip_rect);
+		SDL_Surface *textSurface = font->RenderTextSolid(text);		
 		SDL_BlitSurface(surface, NULL, background, &surface->clip_rect);				
+		textSurface->clip_rect.x = textX;
+		textSurface->clip_rect.y = textY;
+		SDL_BlitSurface(textSurface, NULL, background, &textSurface->clip_rect);				
+		SDL_FreeSurface(textSurface);
 	}
 }
