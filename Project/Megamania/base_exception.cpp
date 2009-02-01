@@ -5,8 +5,6 @@
  * Author: Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
  *****************************************************************/
 #include "base_exception.h"
-#include <string.h>
-#include <stdlib.h>
 
 namespace Megamania
 {
@@ -20,10 +18,7 @@ namespace Megamania
 	Exception::Exception(const char *d) 
 	{    
 		if(d != NULL) {
-			size_t len = strlen(d);
-			this->detail = static_cast<char *>(malloc((sizeof(char) * len) + 1));
-			memcpy(detail, d, len);
-			this->detail[len] = '\0';
+			detail = StringCopy(detail, d);
 		}
 	}
 
