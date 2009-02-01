@@ -22,6 +22,11 @@ namespace Megamania
 			Log(void);
 			~Log(void);
 		public:
+
+			/*
+			 * Constantes que indicam o nivel que um log pode assumir
+			 */
+
 			static const int DEBUG = 0x01; 
 			static const int WARN  = 0x02;
 			static const int INFO  = 0x03;
