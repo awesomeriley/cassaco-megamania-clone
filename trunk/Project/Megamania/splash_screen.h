@@ -15,20 +15,23 @@
 #include "sdl_sound.h"
 #include "video_exception.h"
 
-Uint32 TimerCallback(Uint32, void*);
-
 namespace Megamania
 {
 	class SplashScreen 
 	{
 		private:
+			/** referencia para a Surface principal do JOGO*/
 			SDL_Surface *screen;
+			/** surface que indica o icone da splash_screen*/
 			SDL_Surface *icon;
+			/** surface que indica o logo da CASSACO*/
 			SDL_Surface *logo;
+			/** surface que representa a mensagem do splash_screen*/
 			SDL_Surface *msg;
+			/** Efeito sonoro que será tocado quando a tela for iniciada*/
 			SDL_Sound   *stfSound; //abreviação para smell the fun Sound
 		public:
-			SplashScreen(SDL_Surface *screen)throw(SDLVideoException);
+			SplashScreen(SDL_Surface *)throw(SDLVideoException);
 			~SplashScreen(void);
 			void Show(void);
 			SDL_Surface *GetMsg(void)const;
