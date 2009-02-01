@@ -27,7 +27,7 @@ namespace Megamania
 			/** flag responsavel por indicar se o jogo iniciou ou não*/
 			bool running;
 			/** constante que indica a quantidade de frames por segundo*/
-			static const int CLOCKS_PER_TICK = 50;
+			static const int CLOCKS_PER_TICK = TIME_PER_TICKS;
 			/** indica a largura da tela do jogo*/
 			int width;
 			/** indica a altura da tela do jogo*/
