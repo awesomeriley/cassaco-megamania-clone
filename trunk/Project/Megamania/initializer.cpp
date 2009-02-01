@@ -31,13 +31,13 @@ namespace Megamania
 			}
 		}	
 		if(TTF_Init() == -1) {
-			LOG_DEBUG(SDL_GetError());
+			LOG_DEBUG(TTF_GetError());
 			LOG_ERROR("Erro ao iniciar sistema TTF");
 			exit(EXIT_FAILURE);
 		}
 		if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 
 						 MIX_DEFAULT_CHANNELS, MIX_DEFAULT_CHUNK_BUFFER_SIZE) == -1) {
-			LOG_DEBUG(SDL_GetError());
+			LOG_DEBUG(Mix_GetError());
 			LOG_ERROR("SDL Audio não inicializado");
 			exit(EXIT_FAILURE);
 		}
