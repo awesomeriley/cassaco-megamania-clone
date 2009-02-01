@@ -14,7 +14,6 @@
 #include "SDL_mixer.h"
 #include "audio_exception.h"
 
-#define MIX_DEFAULT_CHUNK 4096
 #define MIX_PLAY_FOREVER -1
 #define MIX_AVAILABLE_CHANNEL MIX_PLAY_FOREVER
 
@@ -23,9 +22,10 @@ namespace Megamania
 	class SDL_Sound 
 	{
 		private:
+			/** Objeto que representa a abstração para todo efeito sonoro*/
 			Mix_Chunk *chunk;
 		public:
-			SDL_Sound(void)throw(SDLAudioException);
+			SDL_Sound(void);
 			~SDL_Sound(void);		    
 			void Load(const char *file)throw(SDLAudioException);
 			void SetVolume(int volume = MIX_MAX_VOLUME);
