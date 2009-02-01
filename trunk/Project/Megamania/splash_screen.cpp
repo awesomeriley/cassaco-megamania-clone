@@ -9,10 +9,23 @@
  ****************************************************************/
 #include "splash_screen.h"
 #include "megamania_utils.h"
+#include "game_controller.h"
 #include "log.h"
 #include <string>
 
+/** objeto global para o tratamento de eventos*/
+SDL_Event event;
+/** referencia externa para o timerID gerado quando timer é iniciado*/
 static SDL_TimerID timerID = NULL;
+
+/*****************************************************************
+ * Função que representa a função de callback que será chamada
+ * após o tempo definido no timer expirar.
+ * Esta função somente exibe o logo da empresa e toca um efeito
+ * sonoro
+ *
+ *****************************************************************/
+Uint32 TimerCallback(Uint32, void*);
 
 namespace Megamania
 {
@@ -74,6 +87,13 @@ namespace Megamania
 		return this->stfSound;
 	}
 
+   /*****************************************************************
+	* Função que representa a função de callback que será chamada
+	* após o tempo definido no timer expirar.
+	* Esta função somente exibe o logo da empresa e toca um efeito
+	* sonoro
+	*
+	*****************************************************************/
 	Uint32 TimerCallback(Uint32 interval, void* param) 
 	{	
 		SDL_Rect rect;
@@ -107,6 +127,9 @@ namespace Megamania
 			timeSlice = initialTime;
 		}	    		
 		SDL_RemoveTimer(timerID);    //cancela o timer para que não entre um loop infinito
+		event.type = SDL_USEREVENT;
+		event.user.code = SPLASH_SCREEN_ID_EVENT; 
+		SDL_PushEvent(&event);
 		timerID = NULL;
 		return TIME_DELAY;
 	}
@@ -116,36 +139,24 @@ namespace Megamania
 		stfSound->Load(PATH_FILE_AUDIO);
 		Uint32 wColor = 0xff;
 		SDL_FillRect(screen, &screen->clip_rect, SDL_MapRGB(screen->format, wColor, wColor, wColor));
-		SDL_Rect rect;
-		SDL_Event event;
+		SDL_Rect rect;	
 		rect.w = logo->w;
 		rect.h = logo->h;
 		rect.x = (screen->w >> 1) - (rect.w  >> 1);
 		rect.y = (screen->h >> 1) - (rect.h  >> 1);
 		SDL_BlitSurface(logo, NULL, screen, &rect);
 		SDL_Flip(screen);
-		/*
-		 * Devemos iniciar o sistema Timer aqui, por que se a mesma
-		 * for iniciada em outra THREAD, a função de callback não é
-		 * chamada
-		 */
-		if(SDL_WasInit(SDL_INIT_TIMER) != 0) {
-			if(SDL_InitSubSystem(SDL_INIT_TIMER) == -1) {
-				LOG_DEBUG(SDL_GetError());  
-				LOG_ERROR("Erro ao iniciar Timer Subsystem\n");
-				exit(EXIT_FAILURE);        
-			}
-		}	
 		timerID = SDL_AddTimer(TIME_DELAY, TimerCallback, this);	
 		if(timerID == NULL) {
 			LOG_DEBUG("Erro ao criar TIMER");
-		}	
+		}			
 		for(;;) {
 			if((SDL_PollEvent(&event)) != 0) {
-				if((event.type == SDL_QUIT)||(event.key.keysym.sym == SDLK_ESCAPE)) {
-					SDL_QuitSubSystem(SDL_INIT_TIMER);
+				if(event.type == SDL_USEREVENT) {
+					//GameController *game = new GameController();
+					//game->OnGameEvent(&event);
 					break;
-				} 
+				}
 			}		
 		}    
 	}
