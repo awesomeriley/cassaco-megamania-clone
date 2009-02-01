@@ -10,7 +10,7 @@
 namespace Megamania
 {
 	/*****************************************************************
-	 * Construtor padrão que cria um novo objeto SDLVideoException
+	 * Construtor padrão que cria um novo objeto SDLAudioException
 	 * associando com uma mensagem de erro
 	 ****************************************************************/
 	SDLAudioException::SDLAudioException(const char *detail) : Exception(detail) {}
