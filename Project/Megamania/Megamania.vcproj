@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="Megamania"
 	ProjectGUID="{A8D7EB5D-27E6-4FD9-A114-94C1EA7893F8}"
 	RootNamespace="Megamania"
@@ -43,11 +43,13 @@
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
+				CallingConvention="0"
+				EnablePREfast="false"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -176,161 +178,245 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\audio_exception.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\base_exception.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\cs_button.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\initializer.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\log.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
-			<File
-				RelativePath=".\megamania_utils.cpp"
+			<Filter
+				Name="Exception"
 				>
-			</File>
-			<File
-				RelativePath=".\menu_screen.cpp"
+				<File
+					RelativePath=".\audio_exception.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\base_exception.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\font_exception.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\sprite_exception.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\video_exception.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Log"
 				>
-			</File>
-			<File
-				RelativePath=".\sdl_sound.cpp"
+				<File
+					RelativePath=".\log.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Util"
 				>
-			</File>
-			<File
-				RelativePath=".\sdl_sprite.cpp"
+				<File
+					RelativePath=".\megamania_utils.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Components"
 				>
-			</File>
-			<File
-				RelativePath=".\splash_screen.cpp"
+				<File
+					RelativePath=".\cs_button.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\game_controller.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\sdl_font.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\sdl_sound.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\sdl_sprite.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Config"
 				>
-			</File>
-			<File
-				RelativePath=".\sprite_exception.cpp"
+				<File
+					RelativePath=".\initializer.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Screen"
 				>
-			</File>
-			<File
-				RelativePath=".\video_exception.cpp"
-				>
-			</File>
+				<File
+					RelativePath=".\menu_screen.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\splash_screen.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
-			<File
-				RelativePath=".\audio_exception.h"
+			<Filter
+				Name="Exception"
 				>
-			</File>
-			<File
-				RelativePath=".\base_exception.h"
+				<File
+					RelativePath=".\audio_exception.h"
+					>
+				</File>
+				<File
+					RelativePath=".\base_exception.h"
+					>
+				</File>
+				<File
+					RelativePath=".\font_exception.h"
+					>
+				</File>
+				<File
+					RelativePath=".\sprite_exception.h"
+					>
+				</File>
+				<File
+					RelativePath=".\video_exception.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Screen"
 				>
-			</File>
-			<File
-				RelativePath=".\cs_button.h"
+				<File
+					RelativePath=".\menu_screen.h"
+					>
+				</File>
+				<File
+					RelativePath=".\splash_screen.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Config"
 				>
-			</File>
-			<File
-				RelativePath=".\game_config.h"
+				<File
+					RelativePath=".\game_config.h"
+					>
+				</File>
+				<File
+					RelativePath=".\initializer.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Log"
 				>
-			</File>
-			<File
-				RelativePath=".\initializer.h"
+				<File
+					RelativePath=".\log.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Util"
 				>
-			</File>
-			<File
-				RelativePath=".\log.h"
+				<File
+					RelativePath=".\megamania_utils.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Components"
 				>
-			</File>
-			<File
-				RelativePath=".\megamania_utils.h"
-				>
-			</File>
-			<File
-				RelativePath=".\menu_screen.h"
-				>
-			</File>
-			<File
-				RelativePath=".\sdl_sound.h"
-				>
-			</File>
-			<File
-				RelativePath=".\sdl_sprite.h"
-				>
-			</File>
-			<File
-				RelativePath=".\sdl_video.h"
-				>
-			</File>
-			<File
-				RelativePath=".\splash_screen.h"
-				>
-			</File>
-			<File
-				RelativePath=".\sprite_exception.h"
-				>
-			</File>
-			<File
-				RelativePath=".\video_exception.h"
-				>
-			</File>
+				<File
+					RelativePath=".\cs_button.h"
+					>
+				</File>
+				<File
+					RelativePath=".\game_controller.h"
+					>
+				</File>
+				<File
+					RelativePath=".\sdl_font.h"
+					>
+				</File>
+				<File
+					RelativePath=".\sdl_sound.h"
+					>
+				</File>
+				<File
+					RelativePath=".\sdl_sprite.h"
+					>
+				</File>
+				<File
+					RelativePath=".\sdl_video.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
-			<File
-				RelativePath=".\icon.png"
+			<Filter
+				Name="Images"
 				>
-			</File>
-			<File
-				RelativePath=".\INVADERS.TTF"
+				<File
+					RelativePath=".\icon.png"
+					>
+				</File>
+				<File
+					RelativePath=".\logo.png"
+					>
+				</File>
+				<File
+					RelativePath=".\menu_background.png"
+					>
+				</File>
+				<File
+					RelativePath=".\menu_button.png"
+					>
+				</File>
+				<File
+					RelativePath=".\menu_button_motion.png"
+					>
+				</File>
+				<File
+					RelativePath=".\menu_button_on.png"
+					>
+				</File>
+				<File
+					RelativePath=".\msg.png"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Audio"
 				>
-			</File>
-			<File
-				RelativePath=".\logo.png"
+				<File
+					RelativePath=".\smell.wav"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="TTF"
 				>
-			</File>
-			<File
-				RelativePath=".\menu_background.png"
-				>
-			</File>
-			<File
-				RelativePath=".\menu_button.png"
-				>
-			</File>
-			<File
-				RelativePath=".\menu_button_motion.png"
-				>
-			</File>
-			<File
-				RelativePath=".\menu_button_on.png"
-				>
-			</File>
-			<File
-				RelativePath=".\msg.png"
-				>
-			</File>
-			<File
-				RelativePath=".\smell.wav"
-				>
-			</File>
+				<File
+					RelativePath=".\INVADERS.TTF"
+					>
+				</File>
+			</Filter>
 		</Filter>
 	</Files>
 	<Globals>
