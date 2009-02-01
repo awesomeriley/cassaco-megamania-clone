@@ -8,8 +8,8 @@
  * Author: Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
  *
  *********************************************************************/
-#ifndef __SDL_TTF_H__
-#define __SDL_TTF_H__
+#ifndef __SDL_FONT_H__
+#define __SDL_FONT_H__
 
 #include "SDL.h"
 #include "SDL_ttf.h"
@@ -32,4 +32,4 @@ namespace Megamania
 	};
 }
 
-#endif //__SDL_TTF_H__
+#endif //__SDL_FONT_H__
