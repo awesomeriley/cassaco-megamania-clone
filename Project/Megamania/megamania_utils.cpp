@@ -13,6 +13,7 @@
 #include "megamania_utils.h"
 #include "SDL.h"
 #include "SDL_ttf.h"
+#include <string.h>
 
 /*************************************************************
  * Função responsavel por carregar o icone do Jogo, a imagem 
@@ -28,24 +29,51 @@ SDL_Surface * LoadImage(const char *file)
 	return SDL_DisplayFormat(image);
 }
 
-/*************************************************************
- * Função para escrever um texto em uma superficie de acordo  
- * com a fonte passada				
- *************************************************************/
-SDL_Surface * WriteText(SDL_Surface *surface, TTF_Font *font, SDL_Color color, const char* text) {
-	
-	if(surface == NULL || font == NULL || text == NULL) {
-		LOG_ERROR("Null Pointer. [WriteText(SDL_Surface *, TTF_Font *, SDL_Color, const char *)]");
-		exit(GAME_FATAL_ERROR);
+/*********************************************************************
+ * Função responsavel por copiar os dados do segundo ponteiro
+ * para o primeiro, caso o primeiro ponteiro seja NULL, será 
+ * alocado espaço do tamanho do segundo ponteiro, caso o primeiro 
+ * seja menor ou maior que o segundo será realocado espaço para o 
+ * tamanho do segundo ponteiro, evitando assim desperdicio de memoria
+ * caso o segundo ponteiro seja NULL, nada será copiado para o primeiro
+ * e o mesmo ponteiro será será retornado.
+ * Caso os ponteiros se sobreponham o comportamento desta função é
+ * indefinidas
+ *
+ * dst -> indica o ponteiro onde os dados serão copiados
+ * srd -> indica o ponteiro com os dados a copiars
+ *
+ ********************************************************************/
+char * StringCopy(char *dst, const char *src) 
+{
+	if((src == NULL)||(strlen(src) == 0)) {
+	    return dst;
 	}
+	int lenSrc = strlen(src);
+	if(dst == NULL) {
+	    dst = static_cast<char *>(malloc((sizeof(char) * lenSrc) + 1));
+	} else {
+	    int lenDst = strlen(dst);
+		if((lenDst > lenSrc)||(lenDst < lenSrc)) {
+		    dst = static_cast<char *>(realloc(dst, (sizeof(char) * lenSrc) + 1));
+		}
+	}
+	memcpy(dst, src, lenSrc);
+	dst[lenSrc] = '\0';
+	return dst;
+}
 
-	SDL_Surface *txtSurface = TTF_RenderText_Solid(font, text, color);
-	txtSurface->clip_rect.h = surface->clip_rect.h;
-	txtSurface->clip_rect.w = surface->clip_rect.w;
-	txtSurface->clip_rect.x = surface->clip_rect.x;
-	txtSurface->clip_rect.y = surface->clip_rect.y;
-	SDL_BlitSurface(txtSurface, NULL, surface, NULL);
-
-	//delete txtSurface;
-	return surface;
+/*********************************************************************
+ * Função responsavel por devolver ao sistema a memoria alocado, 
+ * esta função somente desaloca memoria alocada por calloc, malloc e
+ * realloc, não devendo ser chamada com um ponteiro alocado por new ou
+ * por algum objeto Allocator da biblioteca padrão, caso isso ocorra
+ * o comportamento da função é indeterminado
+ *
+ ********************************************************************/
+void FreeMemory(void *pointer) 
+{
+	if(pointer != NULL) {
+	    free(pointer);
+	}
 }
