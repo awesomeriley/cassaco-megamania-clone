@@ -13,6 +13,7 @@
 
 #include "SDL.h"
 #include "cs_button.h"
+#include "sdl_font.h"
 #include "game_config.h"
 #include "video_exception.h"
 
@@ -21,17 +22,22 @@ namespace Megamania
 	class MenuScreen 
 	{
 		private:
+			/** referencia para a Surface principal do JOGO*/
 			SDL_Surface *screen;
+			/** surface que indica o background do JOGO*/
 			SDL_Surface *background;
+			/** Botão responsavel por iniciar um novo JOGO*/
 			CSButton *startBT;
+			/** Botão responsavel por abrir a tela de opções*/
 			CSButton *optionsBT;
+			/** Botão responsavel por abrir a tela de Score*/
 			CSButton *scoreBT;
-			CSButton *creditsBT;
+			/** Botão responsavel por abrir a tela de creditos*/
+			CSButton *creditsBT;			
 			void RefreshAll(void);
 			void EventTreatment(SDL_Event *);
-			
 		public:
-			MenuScreen(SDL_Surface *screen)throw(SDLVideoException);
+			MenuScreen(SDL_Surface *)throw(SDLVideoException);
 			~MenuScreen(void);
 			void Show(void);
 	};

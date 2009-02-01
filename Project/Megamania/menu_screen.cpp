@@ -26,32 +26,30 @@ namespace Megamania
 		if(screen == NULL) {
 			throw SDLVideoException("SDL Video não inicializado");
 		}
-
-		if(TTF_Init() == -1){
-			LOG_ERROR("Erro ao inicializar TTF [menu_screen]\n");
-			exit(EXIT_FAILURE);        
-		}
-
 		//TODO colocar esses valores em um XML
 		this->screen = screen;
-		int buttonsX = MENU_BUTTON_X;
-		int buttonsY = MENU_BUTTON_Y;
-		int verticalspace = MENU_BUTTON_VERTICAL_SPACE;
+		int x = MENU_BUTTON_X;
+		int y = MENU_BUTTON_Y;
+		int vSpace = MENU_BUTTON_VERTICAL_SPACE;
 		
 		background = LoadImage(MENU_BACKGROUND);
-		startBT   = new CSButton(MENU_BUTTON, buttonsX, buttonsY);
-		scoreBT   = new CSButton(MENU_BUTTON, buttonsX, buttonsY + verticalspace);
-		optionsBT = new CSButton(MENU_BUTTON, buttonsX, buttonsY + 2*verticalspace);
-		creditsBT = new CSButton(MENU_BUTTON, buttonsX, buttonsY + 3*verticalspace);
-
-		SDL_Color color = {MENU_BUTTON_COLOR_R, MENU_BUTTON_COLOR_G, MENU_BUTTON_COLOR_B};
-		TTF_Font *font = TTF_OpenFont(MENU_FONT, MENU_BUTTON_FONT_SIZE);
-		
-		startBT->SetLabel(MENU_START_LABEL, font, color);
-		scoreBT->SetLabel(MENU_SCORE_LABEL, font, color);
-		optionsBT->SetLabel(MENU_OPTIONS_LABEL, font, color);
-		creditsBT->SetLabel(MENU_CREDITS_LABEL, font, color);
-		
+		startBT   = new CSButton(MENU_BUTTON, x, y);
+		scoreBT   = new CSButton(MENU_BUTTON, x, y + vSpace);
+		optionsBT = new CSButton(MENU_BUTTON, x, y + (vSpace << 1));               // vSpace * 2
+		creditsBT = new CSButton(MENU_BUTTON, x, y + ((vSpace << 1) + vSpace));    // vSpace * 3
+		SDL_Color color;
+		color.r = MENU_BUTTON_COLOR_R;
+		color.g = MENU_BUTTON_COLOR_G;
+		color.b = MENU_BUTTON_COLOR_B;
+		SDL_Font *font = new SDL_Font(MENU_FONT, MENU_BUTTON_FONT_SIZE);
+		startBT->SetFont(font);
+		scoreBT->SetFont(font);
+		optionsBT->SetFont(font);
+		creditsBT->SetFont(font);
+		startBT->SetText(MENU_START_LABEL);
+		scoreBT->SetText(MENU_SCORE_LABEL);
+		optionsBT->SetText(MENU_OPTIONS_LABEL);
+		creditsBT->SetText(MENU_CREDITS_LABEL);		
 		SDL_WM_SetCaption(MENU_SCREEN_TITLE, NULL);
 		//TODO set icon
 	}
@@ -72,10 +70,10 @@ namespace Megamania
 
 	void MenuScreen::RefreshAll(void) 
 	{
-		SDL_BlitSurface(startBT->surface, NULL, background, &startBT->surface->clip_rect);
-		SDL_BlitSurface(scoreBT->surface, NULL, background, &scoreBT->surface->clip_rect);
-		SDL_BlitSurface(optionsBT->surface, NULL, background, &optionsBT->surface->clip_rect);
-		SDL_BlitSurface(creditsBT->surface, NULL, background, &creditsBT->surface->clip_rect);
+		startBT->Draw(background);
+		scoreBT->Draw(background);		
+		optionsBT->Draw(background);		
+		creditsBT->Draw(background);		
 		SDL_BlitSurface(background, NULL, screen, NULL);
 		SDL_Flip(screen);
 	}
@@ -97,7 +95,7 @@ namespace Megamania
 			if((SDL_PollEvent(&event)) != 0) {
 				if((event.type == SDL_QUIT)||(event.key.keysym.sym == SDLK_ESCAPE)) {
 					break;
-				}else{
+				} else {
 					EventTreatment(&event);
 					RefreshAll();
 				}
