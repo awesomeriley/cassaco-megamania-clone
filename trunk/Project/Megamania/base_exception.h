@@ -8,7 +8,7 @@
 #ifndef __BASE_EXCEPTION_H__
 #define __BASE_EXCEPTION_H__
 
-#include <stdlib.h>
+#include "megamania_utils.h"
 
 namespace Megamania 
 {
@@ -18,7 +18,7 @@ namespace Megamania
 			char *detail;
 		public:
 			Exception(const char *);  
-			virtual ~Exception(void)throw() { free(detail); }
+			virtual ~Exception(void)throw() { FreeMemory(detail); }
 			virtual const char * GetDetailError(void)const;
 	};
 }
