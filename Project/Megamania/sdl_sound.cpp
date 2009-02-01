@@ -15,15 +15,10 @@ namespace Megamania
 	/***************************************************************
 	 * Construtor padrão responsavel por criar um novo objeto
 	 * SDL_Sound, o construtor também irá iniciar o sistema
-	 * SDL_mixer, caso não seja possivel iniciar uma exceção do
-	 * SDLAudioException será disparada
+	 * SDL_mixer
 	 **************************************************************/
-	SDL_Sound::SDL_Sound(void)throw(SDLAudioException)
+	SDL_Sound::SDL_Sound(void)
 	{
-		if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 
-						 MIX_DEFAULT_CHANNELS, MIX_DEFAULT_CHUNK) == -1) {
-			throw SDLAudioException("SDL Audio não inicializado"); 
-		}
 	}
 
 	/*******************************************************************
@@ -87,7 +82,6 @@ namespace Megamania
 		if(chunk != NULL) {
 			Mix_FreeChunk(chunk);
 			chunk = NULL;
-		}
-		Mix_CloseAudio();
+		}		
 	}
 }
