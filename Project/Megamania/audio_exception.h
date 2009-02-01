@@ -20,4 +20,4 @@ namespace Megamania
 	};
 }
 
-#endif //__VIDEO_EXCEPTION_H__
+#endif //__AUDIO_EXCEPTION_H__
