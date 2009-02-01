@@ -88,36 +88,32 @@ namespace Megamania
 			surface->clip_rect.x = rect.x;			
 			surface->clip_rect.y = rect.y;
 
-			if(label != NULL ){
+			if(text != NULL ){
 
-				WriteText(surface, font, color, label);
+				//WriteText(surface, font, font->GetColor(), text);
 			}
 		}
 	}
 
-	
-	/******************************************************
-	 * Label, font and color set methods
-	 ******************************************************/
-	void CSButton::SetLabel(char *label, TTF_Font *font, SDL_Color color)
+	void CSButton::SetText(const char *text)
 	{
-		this->label = label;
-		this->font = font;
-		this->color = color;		
+		//this->text = text;
 	}
 
-	void CSButton::SetLabel(char *label)
-	{
-		this->label = label;
-	}
-
-	void CSButton::SetFont(TTF_Font *font)
+	void CSButton::SetFont(SDL_Font *font) 
 	{
 		this->font = font;
 	}
 
-	void CSButton::SetColor(SDL_Color color){
+	SDL_Surface * CSButton::GetSurface(void) 
+	{
+		return this->surface;
+	}
+
+	void CSButton::Draw(SDL_Surface *background) {
 	
-		this->color = color;
+		SDL_Surface *t = font->RenderTextSolid("Adriano");		
+		SDL_BlitSurface(t, NULL, surface, &t->clip_rect);
+		SDL_BlitSurface(surface, NULL, background, &surface->clip_rect);				
 	}
 }

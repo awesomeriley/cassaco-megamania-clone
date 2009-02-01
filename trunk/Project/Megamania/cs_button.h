@@ -11,8 +11,7 @@
 
 #include "SDL.h"
 #include "SDL_ttf.h"
-#include "game_config.h"
-#include "video_exception.h"
+#include "sdl_font.h"
 
 namespace Megamania
 {
@@ -20,28 +19,25 @@ namespace Megamania
 	{
 		enum STATE_ENUM {DEFAULT, DOWN, HIGH_LIGHT};
 		
-		private:
+		private:			
+			int x; 
+			int y;
+			char *text;
+			SDL_Font *font;			
+			STATE_ENUM state;
+			char *downImagePath;
+			char *lightImagePath;
+			char *defaultImagePath;
+			SDL_Surface *surface;
 			void ChangeState(char *, STATE_ENUM);
-			int x, y;
-			char* label;
-			TTF_Font *font;
-			SDL_Color color;
-
 		public:			
 			CSButton(char *, int, int);
-			~CSButton(void);
-			
-			STATE_ENUM state;
-			char* downImagePath;
-			char* lightImagePath;
-			char* defaultImagePath;
-
-			SDL_Surface *surface;
+			~CSButton(void);									
 			void FireChangeImageEvent(SDL_Event*);
-			void SetLabel(char*);
-			void SetFont(TTF_Font *);
-			void SetColor(SDL_Color);
-			void CSButton::SetLabel(char *label, TTF_Font *font, SDL_Color color);
+			void SetText(const char *);
+			void SetFont(SDL_Font *);			
+			SDL_Surface * GetSurface(void);
+			void Draw(SDL_Surface *);
 	};
 }
 
