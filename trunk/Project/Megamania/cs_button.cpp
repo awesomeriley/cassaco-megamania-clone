@@ -18,9 +18,10 @@ namespace Megamania
 	 *****************************************************/
 	CSButton::CSButton(char *defaultImagePath, int x, int y)
 	{	
-		surface = LoadImage(defaultImagePath);
+		surface = LoadImage(defaultImagePath);		
 		this->surface->clip_rect.x = x;
 		this->surface->clip_rect.y = y;
+		text = NULL;
 	}
 
 	/*****************************************************
@@ -93,7 +94,7 @@ namespace Megamania
 	 * Megamania::CSButton::SetAlign(V_ALIGNMEMT, H_ALIGNMENT)
 	 *
 	 ************************************************************/
-	void CSButton::SetText(char *text)
+	void CSButton::SetText(const char *text)
 	{
 		this->text = StringCopy(this->text, text);
 		SetAlign(V_ALIGNMENT::VCENTER, H_ALIGNMENT::HCENTER);
@@ -169,12 +170,14 @@ namespace Megamania
 	 * pintado
 	 *************************************************************/
 	void CSButton::Draw(SDL_Surface *background) {
-	
-		SDL_Surface *textSurface = font->RenderTextSolid(text);		
-		SDL_BlitSurface(surface, NULL, background, &surface->clip_rect);				
-		textSurface->clip_rect.x = textX;
-		textSurface->clip_rect.y = textY;
-		SDL_BlitSurface(textSurface, NULL, background, &textSurface->clip_rect);				
-		SDL_FreeSurface(textSurface);
+		
+		SDL_BlitSurface(surface, NULL, background, &surface->clip_rect);
+		if(text != NULL) {
+			SDL_Surface *textSurface = font->RenderTextSolid(text);								
+			textSurface->clip_rect.x = textX;
+			textSurface->clip_rect.y = textY;
+			SDL_BlitSurface(textSurface, NULL, background, &textSurface->clip_rect);				
+			SDL_FreeSurface(textSurface);
+		}
 	}
 }
