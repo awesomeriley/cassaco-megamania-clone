@@ -60,6 +60,7 @@ namespace Megamania
 		SDL_FreeSurface(this->icon);
 		SDL_FreeSurface(this->msg);
 		SDL_FreeSurface(this->logo);
+		this->screen = NULL;
 		delete stfSound;
 	}
 

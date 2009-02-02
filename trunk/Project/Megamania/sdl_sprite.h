@@ -23,13 +23,13 @@ namespace Megamania
 			/** variavel que indica a posição do Sprite na coordenada Y*/
 			int y;
 			/** variavel que indica a largura de cada frame do objeto Sprite*/
-			Uint32 frameWidth;
+			Uint16 frameWidth;
 			/** variavel que indica a altura de cada frame do objeto Sprite*/
-			Uint32 frameHeight;
+			Uint16 frameHeight;
 			/** variavel que indica a quantidade de frames total do objeto Sprite*/
-			Uint32 nFrames;
+			Uint16 nFrames;
 			/** cursor que indica o frame corrente*/
-			Uint32 cursor;
+			Uint16 cursor;
 			/** ponteiro para a imagem do objeto Sprite*/
 			SDL_Surface *image;						
 			/** vetor responsavel por gerenciar cada frame do objeto*/
@@ -37,7 +37,7 @@ namespace Megamania
 		private:
             void CreateFrames(void);
 		public:
-			Sprite(const char *, Uint32, Uint32)throw(SpriteException);
+			Sprite(const char *, Uint16, Uint16)throw(SpriteException);
 			~Sprite(void);
 			void NextFrame(void);
 			void PrevFrame(void);

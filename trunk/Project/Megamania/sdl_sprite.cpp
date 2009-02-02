@@ -28,7 +28,7 @@ namespace Megamania
 	 * não gere um sprite com um numero exato de frames
 	 *
 	 **************************************************************/
-	Sprite::Sprite(const char *file, Uint32 frameWidth, Uint32 frameHeight)throw(SpriteException)
+	Sprite::Sprite(const char *file, Uint16 frameWidth, Uint16 frameHeight)throw(SpriteException)
 	{
 		if(file == NULL) {
             throw SpriteException("O objeto Sprite não pode ser criado, [PATH NULL]");
@@ -41,7 +41,7 @@ namespace Megamania
 		}		
 		this->frameWidth = frameWidth;
 		this->frameHeight = frameHeight;
-		this->nFrames = static_cast<Uint32>((w / frameWidth) * (h / frameHeight)); 
+		this->nFrames = static_cast<Uint16>((w / frameWidth) * (h / frameHeight)); 
 		CreateFrames();
         x = y = 0;
 	}

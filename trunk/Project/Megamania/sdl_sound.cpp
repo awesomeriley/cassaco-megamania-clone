@@ -52,14 +52,9 @@ namespace Megamania
 	 *
 	 **************************************************************/
 	void SDL_Sound::SetVolume(int volume) 
-	{    
-		if(volume < 0) {
-			Mix_VolumeChunk(chunk, 0);
-		} else if(volume > MIX_MAX_VOLUME) {
-			Mix_VolumeChunk(chunk, MIX_MAX_VOLUME);
-		} else {
-			Mix_VolumeChunk(chunk, volume);
-		}
+	{   
+		Mix_VolumeChunk(chunk, (volume < 0) ? 0 : (volume > MIX_MAX_VOLUME) ? MIX_MAX_VOLUME : volume);
+							   
 	}
 
 	/***************************************************************
