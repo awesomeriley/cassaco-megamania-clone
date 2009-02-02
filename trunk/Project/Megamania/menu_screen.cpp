@@ -31,16 +31,11 @@ namespace Megamania
 		int x = MENU_BUTTON_X;
 		int y = MENU_BUTTON_Y;
 		int vSpace = MENU_BUTTON_VERTICAL_SPACE;
-		
 		background = LoadImage(MENU_BACKGROUND);
 		startBT   = new CSButton(MENU_BUTTON, x, y);
 		scoreBT   = new CSButton(MENU_BUTTON, x, y + vSpace);
 		optionsBT = new CSButton(MENU_BUTTON, x, y + (vSpace << 1));               // vSpace * 2
 		creditsBT = new CSButton(MENU_BUTTON, x, y + ((vSpace << 1) + vSpace));    // vSpace * 3
-		SDL_Color color;
-		color.r = MENU_BUTTON_COLOR_R;
-		color.g = MENU_BUTTON_COLOR_G;
-		color.b = MENU_BUTTON_COLOR_B;
 		SDL_Font *font = new SDL_Font(MENU_FONT, MENU_BUTTON_FONT_SIZE);
 		startBT->SetFont(font);
 		scoreBT->SetFont(font);

@@ -49,13 +49,13 @@ char * StringCopy(char *dst, const char *src)
 	if((src == NULL)||(strlen(src) == 0)) {
 	    return dst;
 	}
-	int lenSrc = strlen(src);
+	size_t lenSrc = strlen(src);
 	if(dst == NULL) {
 	    dst = static_cast<char *>(malloc((sizeof(char) * lenSrc) + 1));
 	} else {
-	    int lenDst = strlen(dst);
+	    size_t lenDst = strlen(dst);
 		if((lenDst > lenSrc)||(lenDst < lenSrc)) {
-		    dst = static_cast<char *>(realloc(dst, (sizeof(char) * lenSrc) + 1));
+		    dst = static_cast<char *>(malloc((sizeof(char) * lenSrc) + 1));
 		}
 	}
 	memcpy(dst, src, lenSrc);
