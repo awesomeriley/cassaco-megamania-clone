@@ -11,6 +11,7 @@
 
 #include "SDL.h"
 #include "sprite_exception.h"
+#include <vector>
 
 namespace Megamania
 {
@@ -30,9 +31,9 @@ namespace Megamania
 			/** cursor que indica o frame corrente*/
 			Uint32 cursor;
 			/** ponteiro para a imagem do objeto Sprite*/
-			SDL_Surface *image;
+			SDL_Surface *image;						
 			/** vetor responsavel por gerenciar cada frame do objeto*/
-			SDL_Rect* frames;
+			std::vector<SDL_Rect *> frames;
 		private:
             void CreateFrames(void);
 		public:

@@ -42,7 +42,6 @@ namespace Megamania
 		this->frameWidth = frameWidth;
 		this->frameHeight = frameHeight;
 		this->nFrames = static_cast<Uint32>((w / frameWidth) * (h / frameHeight)); 
-		frames = static_cast<SDL_Rect*>(SDL_malloc(sizeof(SDL_Rect) * nFrames));
 		CreateFrames();
         x = y = 0;
 	}
@@ -54,8 +53,10 @@ namespace Megamania
 	 **************************************************************/
 	Sprite::~Sprite(void) 
 	{	
-		SDL_FreeSurface(image);				
-		SDL_free(frames);
+		SDL_FreeSurface(image);
+		for(int i = frames.size(); --i >= 0;) {
+			delete frames[i];
+		}
 	}
 
 	void Sprite::CreateFrames(void) 
@@ -70,7 +71,7 @@ namespace Megamania
 			rect.y = (i / maxFrameWidth) * frameHeight;
 			rect.w = frameWidth;
 			rect.h = frameHeight;
-			frames[i] = rect;
+			frames.push_back(&rect);
 		}
 	}
     
@@ -262,7 +263,7 @@ namespace Megamania
 			SDL_Rect rect;
 			rect.x = GetX(); 
 			rect.y = GetY();
-			SDL_BlitSurface(image, &frames[cursor], surface, &rect);
+			SDL_BlitSurface(image, frames[cursor], surface, &rect);
 		}
 	}
 }
