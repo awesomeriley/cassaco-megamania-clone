@@ -4,6 +4,8 @@
  * Author: Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
  ****************************************************************/
 #include "log.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 #ifndef __func__
 #define __func__ ""
@@ -24,9 +26,9 @@ namespace Megamania
 	* info -> indica a mensagem de erro do objeto
 	*
 	****************************************************************/
-	void Log::LogMSG(int level, std::string info) 
+	void Log::LogMSG(int level, std::string &info) 
 	{    
-		const char *levelDesc = NULL;
+		char *levelDesc = NULL;
 		switch(level) {
 			case Log::DEBUG:
 				levelDesc = "DEBUG";

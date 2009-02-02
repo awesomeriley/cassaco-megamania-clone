@@ -10,8 +10,6 @@
 #define __LOG_H__
 
 #include <string>
-#include <stdlib.h>
-#include <stdio.h>
 
 namespace Megamania
 {
@@ -55,7 +53,7 @@ namespace Megamania
 						return "INFO";		        
 				}
 			}
-			static void LogMSG(int, std::string);	         
+			static void LogMSG(int, std::string&);	         
 	};
 }
 

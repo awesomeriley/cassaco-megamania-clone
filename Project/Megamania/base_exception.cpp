@@ -17,9 +17,7 @@ namespace Megamania
 	 ***************************************************************/
 	Exception::Exception(const char *d) 
 	{    
-		if(d != NULL) {
-			detail = StringCopy(detail, d);
-		}
+		detail = (d != NULL) ? StringCopy(detail, d) : NULL;
 	}
 
 	/*****************************************************************

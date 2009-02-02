@@ -23,7 +23,7 @@
  * Função responsavel por carregar o icone do Jogo, a imagem 
  * de logo e a mensagem a ser exibida						 
  *************************************************************/
-SDL_Surface * LoadImage(const char *file);
+SDL_Surface * LoadImage(const char *);
 
 /*********************************************************************
  * Função responsavel por copiar os dados do segundo ponteiro

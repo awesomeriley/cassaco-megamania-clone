@@ -27,7 +27,7 @@ namespace Megamania
 		public:
 			SDL_Sound(void);
 			~SDL_Sound(void);		    
-			void Load(const char *file)throw(SDLAudioException);
+			void Load(const char *)throw(SDLAudioException);
 			void SetVolume(int volume = MIX_MAX_VOLUME);
 			void Play(void);
 			void Close(void);

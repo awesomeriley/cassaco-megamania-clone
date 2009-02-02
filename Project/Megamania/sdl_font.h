@@ -25,7 +25,7 @@ namespace Megamania
 			/** Struct que indica a cor a ser aplicada sobre a fonte*/
 			SDL_Color color;
 		public:
-			SDL_Font(const char *, int)throw(SDLFontException);
+			SDL_Font(const char *, Uint16)throw(SDLFontException);
 			~SDL_Font(void);
 			SDL_Surface * RenderTextSolid(const char *);
 			void SetColor(Uint8, Uint8, Uint8);

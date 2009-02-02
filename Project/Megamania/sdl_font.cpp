@@ -22,7 +22,7 @@ namespace Megamania
 	 * size -> indica o tamanho da fonte
 	 *
 	 ******************************************************************/
-	SDL_Font::SDL_Font(const char *file, int size)throw(SDLFontException)
+	SDL_Font::SDL_Font(const char *file, Uint16 size)throw(SDLFontException)
 	{
 		if(file == NULL) {
 			throw SDLFontException("O objeto Font não pode ser criado, [PATH NULL]");
@@ -56,7 +56,7 @@ namespace Megamania
 	SDL_Surface * SDL_Font::RenderTextSolid(const char *text) 
 	{
 		if((text != NULL)&&(strlen(text))) {
-			return TTF_RenderText_Solid(font, text, color);
+			return SDL_DisplayFormat(TTF_RenderText_Solid(font, text, color));
 		}
 		return NULL;
 	}
