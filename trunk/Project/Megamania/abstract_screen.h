@@ -31,6 +31,8 @@ namespace Megamania
 		public:
 			AbstractScreen(SDL_Surface *)throw(SDLVideoException);
 			virtual ~AbstractScreen(void);
+			void SetTitle(const char *);
+			void SetIcon(const char *);
 			virtual void Init(void) = 0;
 			virtual void Execute(void) = 0;
 			virtual void Event(SDL_Event *) = 0;
