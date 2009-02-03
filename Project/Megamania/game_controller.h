@@ -14,6 +14,7 @@
 #include "SDL.h"
 #include "splash_screen.h"
 #include "menu_screen.h"
+#include "abstract_screen.h"
 
 namespace Megamania
 {
@@ -21,9 +22,11 @@ namespace Megamania
 	{
 		private:
 			/** unica instancia da classe*/
-			static GameController *singleton;
+			static GameController *singleton;			
 			/** container utilizado para renderizar todos os graficos do jogo*/
 			SDL_Surface *mainScreen;
+			/** ponteiro responsavel por apontar para a tela corrente*/
+			AbstractScreen *currentScreen;
 			/** flag responsavel por indicar se o jogo iniciou ou não*/
 			bool running;
 			/** constante que indica a quantidade de frames por segundo*/
@@ -36,30 +39,21 @@ namespace Megamania
 			SplashScreen *splashScreen;
 			/** Objeto que repreenta o Menu do jogo*/
 			MenuScreen *menuScreen;
+			GameController(void);
 		public:
-			GameController(void) 
-			{
-				width = WIDTH_SCREEN;
-				height = HEIGHT_SCREEN;
-				running = false;
-				mainScreen = screen;
-				splashScreen = new SplashScreen(mainScreen);
-				menuScreen = new MenuScreen(mainScreen);
-			}			
-			static GameController * GetInstance(void) 
+			static GameController & GetInstance(void) 
 			{
 				if(singleton == NULL) {
 					singleton = new GameController();
 				}
-				return singleton;
+				return *singleton;
 			}
 			void InitSpashScreen(void);
 			void InitMenuScreen(void);
 			void OnGameInit(void);
-			void OnGameEvent(SDL_Event *event);
+			void OnGameLoop(void);
 			void OnGameStop(void);
 			void OnGameExit(void);
-			void OnGameDraw(void);
 	};
 }
 
