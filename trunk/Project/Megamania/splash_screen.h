@@ -21,8 +21,6 @@ namespace Megamania
 	class SplashScreen : public AbstractScreen
 	{
 		private:
-			/** surface que indica o icone da splash_screen*/
-			SDL_Surface *icon;
 			/** surface que indica o logo da CASSACO*/
 			SDL_Surface *logo;
 			/** surface que representa a mensagem do splash_screen*/

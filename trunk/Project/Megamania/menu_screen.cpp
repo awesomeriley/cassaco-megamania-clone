@@ -55,7 +55,8 @@ namespace Megamania
 		scoreBT->SetText(MENU_SCORE_LABEL);
 		optionsBT->SetText(MENU_OPTIONS_LABEL);
 		creditsBT->SetText(MENU_CREDITS_LABEL);		
-		SDL_WM_SetCaption(MENU_SCREEN_TITLE, NULL);
+		SetTitle(MENU_SCREEN_TITLE);
+		SetIcon(PATH_ICON_IMAGE);
 	}
 
 	void MenuScreen::Event(SDL_Event *event) 

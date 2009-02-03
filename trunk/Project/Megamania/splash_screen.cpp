@@ -14,7 +14,7 @@
 #include <string>
 
 /** objeto global para o tratamento de eventos*/
-SDL_Event event;
+extern SDL_Event event;
 /** referencia externa para o timerID gerado quando timer é iniciado*/
 static SDL_TimerID timerID = NULL;
 
@@ -125,12 +125,11 @@ namespace Megamania
 
 	void SplashScreen::Init() 
 	{
-		icon = LoadImage(PATH_ICON_IMAGE);
 		logo = LoadImage(PATH_LOGO_IMAGE);
 		msg = LoadImage(PATH_MSG_IMAGE);
 		stfSound = new SDL_Sound();
-		SDL_WM_SetCaption(SPLASH_SCREEN_TITLE, NULL);
-		SDL_WM_SetIcon(icon, NULL);		
+		SetTitle(SPLASH_SCREEN_TITLE);
+		SetIcon(PATH_ICON_IMAGE);
 	}
 
 	void SplashScreen::Event(SDL_Event *event) 
@@ -143,7 +142,6 @@ namespace Megamania
 
 	void SplashScreen::Clear(void) 
 	{
-		SDL_FreeSurface(this->icon);
 		SDL_FreeSurface(this->msg);
 		SDL_FreeSurface(this->logo);
 		this->screen = NULL;
