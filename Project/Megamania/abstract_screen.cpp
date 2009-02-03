@@ -17,6 +17,10 @@
  *******************************************************************/
 #include "abstract_screen.h"
 
+#include <string.h>
+#include "megamania_utils.h"
+#include "game_config.h"
+
 namespace Megamania
 {
 
@@ -34,7 +38,7 @@ namespace Megamania
 		if(screen == NULL) {
 			throw SDLVideoException("SDL Video não inicializado");
 		}
-		this->screen = screen;
+		this->screen = screen;		
 	}
 	
 	/***************************************************************
@@ -43,5 +47,36 @@ namespace Megamania
 	 **************************************************************/
 	AbstractScreen::~AbstractScreen(void)
 	{
+	}
+
+	/***************************************************************
+	 * Função responsavel por setar o titulo da tela, caso seja 
+	 * passado como parametro um ponteiro NULL, nada ocorrerá
+	 *
+	 * title -> indica o novo titulo da tela
+	 *
+	 **************************************************************/
+	void AbstractScreen::SetTitle(const char *title)
+	{
+		if((title != NULL)&&(strlen(title))) {
+			SDL_WM_SetCaption(title, NULL);
+		}	
+	}
+
+	/***************************************************************
+	 * Função responsavel por setar o novo ícone da tela, caso
+	 * seja passado como parametro um ponteiro NULL, nada ocorrerá
+	 * o ícone da tela deverá ser uma imagem 32x32
+     *
+	 * uri -> indica o path do ícone
+	 *
+	 **************************************************************/
+	void AbstractScreen::SetIcon(const char *uri)
+	{
+		if(uri != NULL) {
+			SDL_Surface *icon = LoadImage(uri);
+			SDL_WM_SetIcon(icon, NULL);
+			SDL_FreeSurface(icon);
+		}
 	}
 }
