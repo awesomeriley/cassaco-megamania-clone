@@ -13,6 +13,11 @@
 namespace Megamania 
 {
 
+	/*
+	 * Inicialização do Singleton da classe
+	 */
+	GameController * GameController::singleton = NULL;
+
 	/*******************************************************************************
 	 * 
 	 *******************************************************************************/
