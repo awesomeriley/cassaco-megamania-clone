@@ -21,13 +21,23 @@ namespace Megamania
 	 * SDL_Surface *screen -> indica a tela do jogo
 	 * 
 	 **************************************************************/
-	MenuScreen::MenuScreen(SDL_Surface *screen)throw(SDLVideoException)
+	MenuScreen::MenuScreen(SDL_Surface *screen)throw(SDLVideoException) : AbstractScreen(screen)
 	{   
-		if(screen == NULL) {
-			throw SDLVideoException("SDL Video não inicializado");
-		}
-		//TODO colocar esses valores em um XML
-		this->screen = screen;
+		Init();
+	}
+
+	/***************************************************************
+	 * Destruidor responsavel por desalocar todas as imagens
+	 * utilizadas pela MenuScreen
+	 *
+	 **************************************************************/
+	MenuScreen::~MenuScreen() 
+	{    
+		Clear();
+	}
+
+	void MenuScreen::Init() 
+	{
 		int x = MENU_BUTTON_X;
 		int y = MENU_BUTTON_Y;
 		int vSpace = MENU_BUTTON_VERTICAL_SPACE;
@@ -46,24 +56,17 @@ namespace Megamania
 		optionsBT->SetText(MENU_OPTIONS_LABEL);
 		creditsBT->SetText(MENU_CREDITS_LABEL);		
 		SDL_WM_SetCaption(MENU_SCREEN_TITLE, NULL);
-		//TODO set icon
 	}
 
-	/***************************************************************
-	 * Destruidor responsavel por desalocar todas as imagens
-	 * utilizadas pela MenuScreen
-	 *
-	 **************************************************************/
-	MenuScreen::~MenuScreen() 
-	{    
-		SDL_FreeSurface(this->background);
-		delete startBT;
-		delete scoreBT;
-		delete optionsBT;
-		delete creditsBT;
+	void MenuScreen::Event(SDL_Event *event) 
+	{
+		startBT->FireChangeImageEvent(event);
+		scoreBT->FireChangeImageEvent(event);
+		optionsBT->FireChangeImageEvent(event);
+		creditsBT->FireChangeImageEvent(event);
 	}
 
-	void MenuScreen::RefreshAll(void) 
+	void MenuScreen::Draw(void) 
 	{
 		startBT->Draw(background);
 		scoreBT->Draw(background);		
@@ -73,28 +76,17 @@ namespace Megamania
 		SDL_Flip(screen);
 	}
 
-	void MenuScreen::EventTreatment(SDL_Event *event) 
+	void MenuScreen::Clear(void) 
 	{
-		startBT->FireChangeImageEvent(event);
-		scoreBT->FireChangeImageEvent(event);
-		optionsBT->FireChangeImageEvent(event);
-		creditsBT->FireChangeImageEvent(event);
+		SDL_FreeSurface(this->background);
+		delete startBT;
+		delete scoreBT;
+		delete optionsBT;
+		delete creditsBT;
 	}
 
-	void MenuScreen::Show(void) 
+	void MenuScreen::Execute(void) 
 	{
-		SDL_Event event;
-		RefreshAll();
-		
-		for(;;) {
-			if((SDL_PollEvent(&event)) != 0) {
-				if((event.type == SDL_QUIT)||(event.key.keysym.sym == SDLK_ESCAPE)) {
-					break;
-				} else {
-					EventTreatment(&event);
-					RefreshAll();
-				}
-			}		
-		}    
+		Draw();		
 	}
 }

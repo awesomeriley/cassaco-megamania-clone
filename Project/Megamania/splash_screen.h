@@ -13,15 +13,14 @@
 #include "SDL.h"
 #include "game_config.h"
 #include "sdl_sound.h"
+#include "abstract_screen.h"
 #include "video_exception.h"
 
 namespace Megamania
 {
-	class SplashScreen 
+	class SplashScreen : public AbstractScreen
 	{
 		private:
-			/** referencia para a Surface principal do JOGO*/
-			SDL_Surface *screen;
 			/** surface que indica o icone da splash_screen*/
 			SDL_Surface *icon;
 			/** surface que indica o logo da CASSACO*/
@@ -33,9 +32,13 @@ namespace Megamania
 		public:
 			SplashScreen(SDL_Surface *)throw(SDLVideoException);
 			~SplashScreen(void);
-			void Show(void);
 			SDL_Surface *GetMsg(void)const;
 			SDL_Sound * GetSound(void)const;
+			void Init(void);
+			void Execute(void);
+			void Event(SDL_Event *);
+            void Draw(void);
+			void Clear(void);
 	};
 }
 

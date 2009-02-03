@@ -15,15 +15,14 @@
 #include "cs_button.h"
 #include "sdl_font.h"
 #include "game_config.h"
+#include "abstract_screen.h"
 #include "video_exception.h"
 
 namespace Megamania
 {
-	class MenuScreen 
+	class MenuScreen : AbstractScreen
 	{
 		private:
-			/** referencia para a Surface principal do JOGO*/
-			SDL_Surface *screen;
 			/** surface que indica o background do JOGO*/
 			SDL_Surface *background;
 			/** Botão responsavel por iniciar um novo JOGO*/
@@ -33,13 +32,15 @@ namespace Megamania
 			/** Botão responsavel por abrir a tela de Score*/
 			CSButton *scoreBT;
 			/** Botão responsavel por abrir a tela de creditos*/
-			CSButton *creditsBT;			
-			void RefreshAll(void);
-			void EventTreatment(SDL_Event *);
+			CSButton *creditsBT;									
 		public:
 			MenuScreen(SDL_Surface *)throw(SDLVideoException);
 			~MenuScreen(void);
-			void Show(void);
+			void Init(void);
+			void Execute(void);
+			void Event(SDL_Event *);
+            void Draw(void);
+			void Clear(void);
 	};
 }
 

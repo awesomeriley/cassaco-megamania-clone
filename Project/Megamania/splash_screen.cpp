@@ -29,64 +29,6 @@ Uint32 TimerCallback(Uint32, void*);
 
 namespace Megamania
 {
-	/***************************************************************
-	 * Construtor default que cria um novo objeto SplashScreen 
-	 * associando o mesmo com a Tela da aplicação
-	 *
-	 * SDL_Surface *screen -> indica a tela do jogo
-	 * 
-	 **************************************************************/
-	SplashScreen::SplashScreen(SDL_Surface *screen)throw(SDLVideoException)
-	{   
-		if(screen == NULL) {
-			throw SDLVideoException("SDL Video não inicializado");
-		}
-		this->screen = screen;
-		icon = LoadImage(PATH_ICON_IMAGE);
-		logo = LoadImage(PATH_LOGO_IMAGE);
-		msg = LoadImage(PATH_MSG_IMAGE);
-		SDL_WM_SetCaption(SPLASH_SCREEN_TITLE, NULL);
-		SDL_WM_SetIcon(icon, NULL);
-		stfSound = new SDL_Sound();
-	}
-
-	/***************************************************************
-	 * Destruidor responsavel por desalocar todas as imagens
-	 * utilizadas pela SplashScreen
-	 *
-	 **************************************************************/
-	SplashScreen::~SplashScreen() 
-	{    
-		SDL_FreeSurface(this->icon);
-		SDL_FreeSurface(this->msg);
-		SDL_FreeSurface(this->logo);
-		this->screen = NULL;
-		delete stfSound;
-	}
-
-	/***************************************************************
-	 * Função que retorna uma referencia para o logo
-	 * da tela Splash Screen
-	 *
-	 * SDL_Surface -> retorna a referencia para o logo
-	 *
-	 **************************************************************/
-	SDL_Surface * SplashScreen::GetMsg(void)const 
-	{
-		return this->msg;
-	}
-
-	/***************************************************************
-	 * Função que retorna uma referencia para o som
-	 * da tela Splash Screen
-	 *
-	 * SDL_Sound -> retorna a referencia para o som
-	 *
-	 **************************************************************/
-	SDL_Sound * SplashScreen::GetSound(void)const 
-	{    
-		return this->stfSound;
-	}
 
    /*****************************************************************
 	* Função que representa a função de callback que será chamada
@@ -135,7 +77,80 @@ namespace Megamania
 		return TIME_DELAY;
 	}
 
-	void SplashScreen::Show(void) 
+	/***************************************************************
+	 * Construtor default que cria um novo objeto SplashScreen 
+	 * associando o mesmo com a Tela da aplicação
+	 *
+	 * SDL_Surface *screen -> indica a tela do jogo
+	 * 
+	 **************************************************************/
+	SplashScreen::SplashScreen(SDL_Surface *screen)throw(SDLVideoException) : AbstractScreen(screen)
+	{   
+		Init();
+	}
+
+	/***************************************************************
+	 * Destruidor responsavel por desalocar todas as imagens
+	 * utilizadas pela SplashScreen
+	 *
+	 **************************************************************/
+	SplashScreen::~SplashScreen() 
+	{    
+		Clear();
+	}
+
+	/***************************************************************
+	 * Função que retorna uma referencia para o logo
+	 * da tela Splash Screen
+	 *
+	 * SDL_Surface -> retorna a referencia para o logo
+	 *
+	 **************************************************************/
+	SDL_Surface * SplashScreen::GetMsg(void)const 
+	{
+		return this->msg;
+	}
+
+	/***************************************************************
+	 * Função que retorna uma referencia para o som
+	 * da tela Splash Screen
+	 *
+	 * SDL_Sound -> retorna a referencia para o som
+	 *
+	 **************************************************************/
+	SDL_Sound * SplashScreen::GetSound(void)const 
+	{    
+		return this->stfSound;
+	}
+
+	void SplashScreen::Init() 
+	{
+		icon = LoadImage(PATH_ICON_IMAGE);
+		logo = LoadImage(PATH_LOGO_IMAGE);
+		msg = LoadImage(PATH_MSG_IMAGE);
+		stfSound = new SDL_Sound();
+		SDL_WM_SetCaption(SPLASH_SCREEN_TITLE, NULL);
+		SDL_WM_SetIcon(icon, NULL);		
+	}
+
+	void SplashScreen::Event(SDL_Event *event) 
+	{
+	}
+
+	void SplashScreen::Draw(void) 
+	{
+	}
+
+	void SplashScreen::Clear(void) 
+	{
+		SDL_FreeSurface(this->icon);
+		SDL_FreeSurface(this->msg);
+		SDL_FreeSurface(this->logo);
+		this->screen = NULL;
+		delete stfSound;
+	}
+
+	void SplashScreen::Execute(void) 
 	{
 		stfSound->Load(PATH_FILE_AUDIO);
 		Uint32 wColor = 0xff;
@@ -151,14 +166,5 @@ namespace Megamania
 		if(timerID == NULL) {
 			LOG_DEBUG("Erro ao criar TIMER");
 		}			
-		for(;;) {
-			if((SDL_PollEvent(&event)) != 0) {
-				if(event.type == SDL_USEREVENT) {
-					//GameController *game = new GameController();
-					//game->OnGameEvent(&event);
-					break;
-				}
-			}		
-		}    
 	}
 }
