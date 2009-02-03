@@ -123,6 +123,11 @@ namespace Megamania
 		return this->stfSound;
 	}
 
+	/***************************************************************
+	 * Função responsavel por inicializar a classe corretamente
+	 * carregando todas as surfaces e setando o titulo corretamente
+	 *
+	 **************************************************************/
 	void SplashScreen::Init() 
 	{
 		logo = LoadImage(PATH_LOGO_IMAGE);
@@ -132,14 +137,29 @@ namespace Megamania
 		SetIcon(PATH_ICON_IMAGE);
 	}
 
+	/***************************************************************
+	 * Função de callback chamada pelo gerenciador de eventos, esta
+	 * função representa o ponto de entrada para o tratamento da 
+	 * da lógica da classe	
+	 *
+	 **************************************************************/
 	void SplashScreen::Event(SDL_Event *event) 
 	{
 	}
 
+	/***************************************************************
+	 * Função responsavel por repintar toda a tela
+	 *
+	 **************************************************************/	
 	void SplashScreen::Draw(void) 
 	{
 	}
 
+	/***************************************************************
+	 * Função responsavel por desalocar todos os recursos alocados
+	 * pela tela, esta funçao deverá ser chamada por ultimo
+	 *
+	 **************************************************************/
 	void SplashScreen::Clear(void) 
 	{
 		SDL_FreeSurface(this->msg);
@@ -148,6 +168,10 @@ namespace Megamania
 		delete stfSound;
 	}
 
+	/***************************************************************
+	 * Função responsavel por exibir a tela 
+	 *
+	 **************************************************************/
 	void SplashScreen::Execute(void) 
 	{
 		stfSound->Load(PATH_FILE_AUDIO);
