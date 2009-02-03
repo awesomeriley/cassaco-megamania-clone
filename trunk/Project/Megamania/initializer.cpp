@@ -22,7 +22,7 @@ namespace Megamania
 	 ****************************************************************/
 	void Initializer::Init(void) 
 	{
-		atexit(Initializer::Shutdow);
+		atexit(Initializer::Shutdown);
 		if(SDL_WasInit(SDL_INIT_EVERYTHING) != 0) {
 			if((SDL_Init(SDL_INIT_EVERYTHING)) == -1) {
 				LOG_DEBUG(SDL_GetError());  
@@ -48,7 +48,7 @@ namespace Megamania
 	 * pela Api SDL
 	 *
 	 ****************************************************************/
-	void Initializer::Shutdow(void) 
+	void Initializer::Shutdown(void) 
 	{   
 		TTF_Quit();
 		Mix_CloseAudio();
