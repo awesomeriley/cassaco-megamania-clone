@@ -29,7 +29,7 @@ namespace Megamania
 		height = HEIGHT_SCREEN;
 		running = false;
 		splashScreen = new SplashScreen(screen);
-		currentScreen = splashScreen;
+		currentScreen = dynamic_cast<AbstractScreen *>(splashScreen);
 	}			
 
 	/*******************************************************************************
