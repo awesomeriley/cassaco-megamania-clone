@@ -28,8 +28,7 @@ namespace Megamania
 		width = WIDTH_SCREEN;
 		height = HEIGHT_SCREEN;
 		running = false;
-		mainScreen = screen;
-		splashScreen = new SplashScreen(mainScreen);
+		splashScreen = new SplashScreen(screen);
 		currentScreen = splashScreen;
 	}			
 
@@ -62,6 +61,10 @@ namespace Megamania
 	void GameController::OnGameLoop(void) 
 	{
 		while(running) {
+			if(SDL_PollEvent(&event) != 0) {
+				currentScreen->Event(&event);
+			} 
+			currentScreen->Draw();			
 		}
 	}
 
