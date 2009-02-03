@@ -133,7 +133,6 @@ namespace Megamania
 		logo = LoadImage(PATH_LOGO_IMAGE);
 		msg = LoadImage(PATH_MSG_IMAGE);
 		stfSound = new SDL_Sound();
-		SetTitle(SPLASH_SCREEN_TITLE);
 		SetIcon(PATH_ICON_IMAGE);
 	}
 
@@ -145,6 +144,11 @@ namespace Megamania
 	 **************************************************************/
 	void SplashScreen::Event(SDL_Event *event) 
 	{
+		if(event->key.keysym.sym == SDLK_ESCAPE) {
+			event->type = SDL_USEREVENT;
+			event->user.code = 1;
+			SDL_PushEvent(event);
+		}
 	}
 
 	/***************************************************************
