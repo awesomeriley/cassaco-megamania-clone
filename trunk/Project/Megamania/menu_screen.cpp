@@ -36,6 +36,11 @@ namespace Megamania
 		Clear();
 	}
 
+	/***************************************************************
+	 * Função responsavel por inicializar a classe corretamente
+	 * carregando todas as surfaces e setando o titulo corretamente
+	 *
+	 **************************************************************/
 	void MenuScreen::Init() 
 	{
 		int x = MENU_BUTTON_X;
@@ -59,6 +64,12 @@ namespace Megamania
 		SetIcon(PATH_ICON_IMAGE);
 	}
 
+	/***************************************************************
+	 * Função de callback chamada pelo gerenciador de eventos, esta
+	 * função representa o ponto de entrada para o tratamento da 
+	 * da lógica da classe	
+	 *
+	 **************************************************************/
 	void MenuScreen::Event(SDL_Event *event) 
 	{
 		startBT->FireChangeImageEvent(event);
@@ -67,6 +78,10 @@ namespace Megamania
 		creditsBT->FireChangeImageEvent(event);
 	}
 
+	/***************************************************************
+	 * Função responsavel por repintar toda a tela
+	 *
+	 **************************************************************/	
 	void MenuScreen::Draw(void) 
 	{
 		startBT->Draw(background);
@@ -77,6 +92,11 @@ namespace Megamania
 		SDL_Flip(screen);
 	}
 
+	/***************************************************************
+	 * Função responsavel por desalocar todos os recursos alocados
+	 * pela tela, esta funçao deverá ser chamada por ultimo
+	 *
+	 **************************************************************/
 	void MenuScreen::Clear(void) 
 	{
 		SDL_FreeSurface(this->background);
@@ -86,6 +106,10 @@ namespace Megamania
 		delete creditsBT;
 	}
 
+	/***************************************************************
+	 * Função responsavel por exibir a tela 
+	 *
+	 **************************************************************/
 	void MenuScreen::Execute(void) 
 	{
 		Draw();		
