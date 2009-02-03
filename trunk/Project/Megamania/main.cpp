@@ -16,8 +16,10 @@ using namespace Megamania;
 int main(int argc, char **argv) 
 {	
 	Initializer::Init();
-	MenuScreen *menu = new MenuScreen(screen);
-	menu->Show();	
+	//MenuScreen *menu = new MenuScreen(screen);
+	//menu->Show();	
+	SplashScreen *splash = new SplashScreen(screen);
+	splash->Execute();
 	return 0;
 }
 
