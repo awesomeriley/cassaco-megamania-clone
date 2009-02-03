@@ -39,6 +39,7 @@ namespace Megamania
 			throw SDLVideoException("SDL Video não inicializado");
 		}
 		this->screen = screen;		
+		SetTitle(GAME_TITLE);
 	}
 	
 	/***************************************************************

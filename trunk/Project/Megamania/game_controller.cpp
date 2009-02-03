@@ -59,9 +59,12 @@ namespace Megamania
 	 *
 	 *******************************************************************************/
 	void GameController::OnGameLoop(void) 
-	{
+	{		
 		while(running) {
 			if(SDL_PollEvent(&event) != 0) {
+				if(event.type == SDL_USEREVENT) {
+					break;
+				}
 				currentScreen->Event(&event);
 			} 
 			currentScreen->Draw();			

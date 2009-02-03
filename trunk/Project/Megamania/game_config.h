@@ -24,8 +24,7 @@
 #define GAME_FATAL_ERROR 1
 #define TIME_DELAY 2000
 #define TIME_PER_TICKS 50
-#define SPLASH_SCREEN_TITLE "Splash Screen"
-#define MENU_SCREEN_TITLE "Game Menu"
+#define GAME_TITLE "Megamania Clone"
 #define MENU_START_LABEL "Start"
 #define MENU_SCORE_LABEL "High Score"
 #define MENU_OPTIONS_LABEL "Options"
