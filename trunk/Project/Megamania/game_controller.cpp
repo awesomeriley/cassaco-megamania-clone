@@ -19,30 +19,34 @@ namespace Megamania
 	GameController * GameController::singleton = NULL;
 
 	/*******************************************************************************
-	 * 
+	 * Construtor padrão responsavel por inicializar todas as configurações
+	 * necessarias a execução do JOGO
+	 *
+	 *******************************************************************************/
+	GameController::GameController(void) 
+	{
+		width = WIDTH_SCREEN;
+		height = HEIGHT_SCREEN;
+		running = false;
+		mainScreen = screen;
+		splashScreen = new SplashScreen(mainScreen);
+		currentScreen = splashScreen;
+	}			
+
+	/*******************************************************************************
+	 * Função que inicializa todas os subsistemas da biblioteca SDL e set como 
+	 * tela inicial o SplashScreen
+	 *
 	 *******************************************************************************/
 	void GameController::OnGameInit(void) 
 	{
 		Initializer::Init();
+		InitSpashScreen();
+		running = true;
 	}
 
 	/*******************************************************************************
-	 * 
-	 *******************************************************************************/
-	void GameController::OnGameEvent(SDL_Event *event)
-	{			
-		switch(event->type) {
-			case SDL_USEREVENT:
-				switch(event->user.code) {
-					case SPLASH_SCREEN_ID_EVENT:
-						InitMenuScreen();
-						break;
-				}
-		}		
-	}
-
-	/*******************************************************************************
-	 * 
+	 * Função responsavel por parar a execução do gerenciador de eventos
 	 *******************************************************************************/
 	void GameController::OnGameStop(void)
 	{
@@ -50,26 +54,31 @@ namespace Megamania
 	}
 
 	/*******************************************************************************
-	 * 
+	 * Função que representa o loop principal para o tratamento de todos os eventos
+	 * disparados pelo SDL, esta função irá notificar o objeto interessado nos 
+	 * eventos atuais
+	 *
 	 *******************************************************************************/
-	void GameController::OnGameExit(void)
+	void GameController::OnGameLoop(void) 
 	{
-		Initializer::Shutdow();
+		while(running) {
+		}
 	}
 
 	/*******************************************************************************
 	 * 
 	 *******************************************************************************/
-	void GameController::OnGameDraw(void)
+	void GameController::OnGameExit(void)
 	{
+		Initializer::Shutdown();
 	}
-	
+
 	/*******************************************************************************
 	 * 
 	 *******************************************************************************/
 	void GameController::InitSpashScreen(void) 
 	{
-		splashScreen->Show();		
+		splashScreen->Execute();
 	}
 
 	/*******************************************************************************
@@ -77,6 +86,5 @@ namespace Megamania
 	 *******************************************************************************/
 	void GameController::InitMenuScreen(void) 
 	{
-		menuScreen->Show();
 	}
 }
