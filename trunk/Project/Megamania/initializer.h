@@ -17,7 +17,7 @@ namespace Megamania
 			Initializer(void);
 		public:
 			static void Init(void);
-			static void Shutdow(void);
+			static void Shutdown(void);
 	};
 }
 
