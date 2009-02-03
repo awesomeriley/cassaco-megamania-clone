@@ -16,6 +16,9 @@
 #include "menu_screen.h"
 #include "abstract_screen.h"
 
+/** Estrutura global responsavel por controlar todos os eventos do GAME*/
+static SDL_Event event;
+
 namespace Megamania
 {
 	class GameController
@@ -23,8 +26,6 @@ namespace Megamania
 		private:
 			/** unica instancia da classe*/
 			static GameController *singleton;			
-			/** container utilizado para renderizar todos os graficos do jogo*/
-			SDL_Surface *mainScreen;
 			/** ponteiro responsavel por apontar para a tela corrente*/
 			AbstractScreen *currentScreen;
 			/** flag responsavel por indicar se o jogo iniciou ou não*/
