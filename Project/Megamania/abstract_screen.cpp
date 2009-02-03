@@ -36,7 +36,11 @@ namespace Megamania
 		}
 		this->screen = screen;
 	}
-
+	
+	/***************************************************************
+	 * Destruidor padrão 
+	 *
+	 **************************************************************/
 	AbstractScreen::~AbstractScreen(void)
 	{
 	}
