@@ -9,6 +9,7 @@
  *******************************************************************************/
 #include "game_controller.h"
 #include "initializer.h"
+#include "user_event_type.h"
 
 namespace Megamania 
 {
@@ -62,10 +63,18 @@ namespace Megamania
 	{		
 		while(running) {
 			if(SDL_PollEvent(&event) != 0) {
-				if(event.type == SDL_USEREVENT) {
-					break;
-				}
-				currentScreen->Event(&event);
+				switch(event.type) {
+					case SDL_USEREVENT: 
+						switch(event.user.code) {
+							case SPLASH_SCREEN_FINISH_EVENT:
+								InitMenuScreen();
+								break;
+						}
+						break;
+					default:
+						currentScreen->Event(&event);
+						break;
+				}				
 			} 
 			currentScreen->Draw();			
 		}
@@ -92,5 +101,12 @@ namespace Megamania
 	 *******************************************************************************/
 	void GameController::InitMenuScreen(void) 
 	{
+		delete splashScreen;
+		screen->clip_rect.x = screen->clip_rect.y = 0;
+		screen->clip_rect.w = WIDTH_SCREEN;
+		screen->clip_rect.h = HEIGHT_SCREEN;
+		menuScreen = new MenuScreen(screen);
+		currentScreen = dynamic_cast<AbstractScreen *>(menuScreen);
+		menuScreen->Execute();
 	}
 }
