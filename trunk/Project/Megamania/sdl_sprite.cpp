@@ -243,9 +243,39 @@ namespace Megamania
 		return this->nFrames;
 	}
 
+	/******************************************************************
+	 * Função responsavel por testar a colisão entre dois objetos 
+	 * Sprites, o algoritmo aplicado para o teste de colisão é muito
+	 * simples é o algoritmo de colisão por retangulo que testa
+	 * somente se dois retangulos se sobrepoem, segue abaixo um 
+	 * exemplo do funcionamento do algoritmo:
+	 *    x1        w1
+	 * y1 +----------+
+	 *    |       x2 |      w2
+	 *    |    y2 +----------+
+	 *    |       |  |       |
+	 * h1 +-------|--+       |
+	 *		      |          |
+	 *		   h2 +----------+
+	 *
+	 * Se x1 + w1 > w2 && y1 + h1 > y2 && x1 < x2 + w2 && y1 < y2 + h2
+	 * indica que ocorreu uma colisão pois em algum ponto os retangulos
+	 * se sobrepoem
+	 *
+	 *******************************************************************/
 	bool Sprite::CollidesWith(Sprite &another)
 	{
-		return false;
+		int x1 = (*this).x;    
+		int y1 = (*this).y;    
+		int w1 = (*this).frameWidth;     
+		int h1 = (*this).frameWidth;     
+
+		int x2 = another.x;    
+		int y2 = another.y;    
+		int w2 = another.frameWidth;
+		int h2 = another.frameHeight;
+
+		return (x1 < x2 + w2)&&(y1 < y2 + h2)&&(x2 < x1 + w1)&&(y2 < y1 + h1);
 	}
 	
 
