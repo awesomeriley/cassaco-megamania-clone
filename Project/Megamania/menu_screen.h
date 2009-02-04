@@ -20,7 +20,7 @@
 
 namespace Megamania
 {
-	class MenuScreen : AbstractScreen
+	class MenuScreen : public AbstractScreen
 	{
 		private:
 			/** surface que indica o background do JOGO*/
