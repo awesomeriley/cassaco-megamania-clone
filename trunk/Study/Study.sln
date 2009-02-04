@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDL", "SDL\SDL.vcproj", "{C98A4D22-6DEA-485E-A818-2379B0E6A03B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "joystick_test", "joystick_test\joystick_test.vcproj", "{C58D7D22-4AB6-4598-A5B6-DAD6A1394EFC}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -17,6 +19,10 @@ Global
 		{C98A4D22-6DEA-485E-A818-2379B0E6A03B}.Debug|Win32.Build.0 = Debug|Win32
 		{C98A4D22-6DEA-485E-A818-2379B0E6A03B}.Release|Win32.ActiveCfg = Release|Win32
 		{C98A4D22-6DEA-485E-A818-2379B0E6A03B}.Release|Win32.Build.0 = Release|Win32
+		{C58D7D22-4AB6-4598-A5B6-DAD6A1394EFC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C58D7D22-4AB6-4598-A5B6-DAD6A1394EFC}.Debug|Win32.Build.0 = Debug|Win32
+		{C58D7D22-4AB6-4598-A5B6-DAD6A1394EFC}.Release|Win32.ActiveCfg = Release|Win32
+		{C58D7D22-4AB6-4598-A5B6-DAD6A1394EFC}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
