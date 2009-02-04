@@ -84,11 +84,7 @@ namespace Megamania
 	 **************************************************************/
 	void Sprite::NextFrame(void) 
 	{
-		if(cursor < nFrames - 1) {
-			++cursor;
-		} else {
-		    cursor = 0;
-		}
+		cursor = cursor < nFrames - 1 ? ++cursor : 0;
 	}
 
 	/***************************************************************
@@ -100,11 +96,7 @@ namespace Megamania
 	 **************************************************************/
 	void Sprite::PrevFrame(void) 
 	{	
-		if(cursor > 0) {
-		    --cursor;
-		} else {
-		    cursor = nFrames - 1;
-		}
+		cursor = cursor > 0 ? --cursor : nFrames - 1;
 	}
 
 	/***************************************************************
