@@ -64,6 +64,9 @@ namespace Megamania
 		while(running) {
 			if(SDL_PollEvent(&event) != 0) {
 				switch(event.type) {
+					case SDL_QUIT:
+						running = false;
+						break;
 					case SDL_USEREVENT: 
 						switch(event.user.code) {
 							case SPLASH_SCREEN_FINISH_EVENT:
