@@ -42,7 +42,6 @@
 #define MENU_BUTTON_X 500
 #define MENU_BUTTON_Y 250
 #define MENU_BUTTON_VERTICAL_SPACE 80
-#define SPLASH_SCREEN_ID_EVENT -1    //evita conflitos com os Eventos do SDL
 
 static SDL_Surface *screen = SDL_SetVideoMode(WIDTH_SCREEN, HEIGHT_SCREEN, BPP, SDL_SWSURFACE|SDL_DOUBLEBUF);
 
