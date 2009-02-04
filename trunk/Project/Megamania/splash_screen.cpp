@@ -11,12 +11,20 @@
 #include "megamania_utils.h"
 #include "game_controller.h"
 #include "log.h"
-#include <string>
+#include "user_event_type.h"
 
 /** objeto global para o tratamento de eventos*/
 extern SDL_Event event;
 /** referencia externa para o timerID gerado quando timer é iniciado*/
 static SDL_TimerID timerID = NULL;
+
+/** 
+ * flag responsavel por indicar se a animação já iniciou ou
+ * não, caso já tenha iniciado então não podemos para-la no
+ * meio, teremos que esperar terminar a execução
+ */
+static bool hasInit = false;
+
 
 /*****************************************************************
  * Função que representa a função de callback que será chamada
@@ -38,8 +46,9 @@ namespace Megamania
 	*
 	*****************************************************************/
 	Uint32 TimerCallback(Uint32 interval, void* param) 
-	{	
-		SDL_Rect rect;
+	{		
+		hasInit = true;
+		SDL_Rect rect;		
 		SplashScreen *splash = (SplashScreen *)param;
 		SDL_Surface *msg = splash->GetMsg();
 		rect.x = (screen->w >> 1) - (msg->w >> 1);
@@ -69,11 +78,11 @@ namespace Megamania
 					   TIME_PER_TICKS);
 			timeSlice = initialTime;
 		}	    		
-		SDL_RemoveTimer(timerID);    //cancela o timer para que não entre um loop infinito
 		event.type = SDL_USEREVENT;
-		event.user.code = SPLASH_SCREEN_ID_EVENT; 
+		event.user.code = SPLASH_SCREEN_FINISH_EVENT; 
 		SDL_PushEvent(&event);
 		timerID = NULL;
+		SDL_QuitSubSystem(SDL_INIT_TIMER);    
 		return TIME_DELAY;
 	}
 
@@ -144,9 +153,10 @@ namespace Megamania
 	 **************************************************************/
 	void SplashScreen::Event(SDL_Event *event) 
 	{
-		if(event->key.keysym.sym == SDLK_ESCAPE) {
+		if((event->key.keysym.sym == SDLK_ESCAPE)&&(!hasInit)) {
+			SDL_QuitSubSystem(SDL_INIT_TIMER);
 			event->type = SDL_USEREVENT;
-			event->user.code = 1;
+			event->user.code = SPLASH_SCREEN_FINISH_EVENT;
 			SDL_PushEvent(event);
 		}
 	}
