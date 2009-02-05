@@ -31,16 +31,16 @@
 #  endif
 #endif
 
-#define DEBUG 0x01; 
-#define WARN  0x02;
-#define INFO  0x03;
-#define ERROR 0x04;
+#define DEBUG "DEBUG" 
+#define WARN  "WARN"
+#define INFO  "INFO"
+#define ERROR "ERROR"
 
 #ifdef LOG
-#  define LOG_DEBUG(msg)    fprintf(log, "\n[LEVEL] %s [FILE] %s [DATE] %s [FUNC] %s [LINE] %d %s", "DEBUG", __FILE__, __DATE__, __func__, __LINE__, msg)
-#  define LOG_WARN(msg)     fprintf(log, "\n[LEVEL] %s [FILE] %s [DATE] %s [FUNC] %s [LINE] %d %s", "WARN", __FILE__, __DATE__, __func__, __LINE__, msg)
-#  define LOG_INFO(msg)     fprintf(log, "\n[LEVEL] %s [FILE] %s [DATE] %s [FUNC] %s [LINE] %d %s", "INFO", __FILE__, __DATE__, __func__, __LINE__, msg)
-#  define LOG_ERROR(msg)    fprintf(log, "\n[LEVEL] %s [FILE] %s [DATE] %s [FUNC] %s [LINE] %d %s", "ERROR",  __FILE__, __DATE__, __func__, __LINE__, msg)
+#  define LOG_DEBUG(msg)    fprintf(log, "\n[LEVEL] %s [FILE] %s [DATE] %s [FUNC] %s [LINE] %d %s", DEBUG, __FILE__, __DATE__, __func__, __LINE__, msg)
+#  define LOG_WARN(msg)     fprintf(log, "\n[LEVEL] %s [FILE] %s [DATE] %s [FUNC] %s [LINE] %d %s", WARN, __FILE__, __DATE__, __func__, __LINE__, msg)
+#  define LOG_INFO(msg)     fprintf(log, "\n[LEVEL] %s [FILE] %s [DATE] %s [FUNC] %s [LINE] %d %s", INFO, __FILE__, __DATE__, __func__, __LINE__, msg)
+#  define LOG_ERROR(msg)    fprintf(log, "\n[LEVEL] %s [FILE] %s [DATE] %s [FUNC] %s [LINE] %d %s", ERROR,  __FILE__, __DATE__, __func__, __LINE__, msg)
 #else
 #  define LOG_DEBUG(msg)    ((void)0)
 #  define LOG_WARN(msg)     ((void)0)
