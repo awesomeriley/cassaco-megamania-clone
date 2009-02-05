@@ -9,59 +9,38 @@
 #ifndef __LOG_H__
 #define __LOG_H__
 
-#include <string>
-
-namespace Megamania
-{
-	class Log 
-	{    
-		private:
-			static int level;
-			Log(void);
-			~Log(void);
-		public:
-
-			/*
-			 * Constantes que indicam o nivel que um log pode assumir
-			 */
-
-			static const int DEBUG = 0x01; 
-			static const int WARN  = 0x02;
-			static const int INFO  = 0x03;
-			static const int ERROR = 0x04;
-		public:
-			static void SetLogLevel(int) 
-			{	
-				if((level >= Log::DEBUG)&&(level <= Log::ERROR)) {
-					Log::level = level;
-				} else {
-					Log::level = Log::INFO;    
-				}   
-			}
-			static std::string GetLogLevel(void) 
-			{
-				switch(Log::level) {
-					case Log::DEBUG:
-						return "DEBUG";
-					case Log::WARN:
-						return "WARN";
-					case Log::INFO:
-						return "INFO";
-					case Log::ERROR:
-						return "ERROR";
-					default:
-						return "INFO";		        
-				}
-			}
-			static void LogMSG(int, std::string&);	         
-	};
-}
+#define LOG
+#include <stdio.h>
 
 #ifdef LOG
-#  define LOG_DEBUG(msg)    Log::LogMSG(Log::DEBUG, msg)
-#  define LOG_WARN(msg)     Log::LogMSG(Log::WARN, msg)
-#  define LOG_INFO(msg)     Log::LogMSG(Log::INFO, msg)
-#  define LOG_ERROR(msg)    Log::LogMSG(Log::ERROR, msg)
+#  ifndef FILE_LOG_CREATED
+#    define FILE_LOG_CREATED
+     static FILE *log = fopen("log.log", "a");
+#   endif
+#endif
+
+#ifndef __func__
+#  ifdef _MSC_VER
+#    ifdef __FUNCTION__
+#      define __func__ __FUNCTION__
+#    else
+#      define __func__ ""  
+#    endif
+#  else 
+#    define __func__ ""
+#  endif
+#endif
+
+#define DEBUG 0x01; 
+#define WARN  0x02;
+#define INFO  0x03;
+#define ERROR 0x04;
+
+#ifdef LOG
+#  define LOG_DEBUG(msg)    fprintf(log, "\n[LEVEL] %s [FILE] %s [DATE] %s [FUNC] %s [LINE] %d %s", "DEBUG", __FILE__, __DATE__, __func__, __LINE__, msg)
+#  define LOG_WARN(msg)     fprintf(log, "\n[LEVEL] %s [FILE] %s [DATE] %s [FUNC] %s [LINE] %d %s", __FILE__, __DATE__, __func__, __LINE__, msg)
+#  define LOG_INFO(msg)     fprintf(log, "\n[LEVEL] %s [FILE] %s [DATE] %s [FUNC] %s [LINE] %d %s", __FILE__, __DATE__, __func__, __LINE__, msg)
+#  define LOG_ERROR(msg)    fprintf(log, "\n[LEVEL] %s [FILE] %s [DATE] %s [FUNC] %s [LINE] %d %s", __FILE__, __DATE__, __func__, __LINE__, msg)
 #else
 #  define LOG_DEBUG(msg)    ((void)0)
 #  define LOG_WARN(msg)     ((void)0)
