@@ -13,10 +13,6 @@
 #ifndef __MEGAMANIA_UTILS_H__
 #define __MEGAMANIA_UTILS_H__
 
-#include "SDL.h"
-#include "SDL_image.h"
-#include "SDL_ttf.h"
-#include "log.h"
 #include "game_config.h"
 
 /*************************************************************
