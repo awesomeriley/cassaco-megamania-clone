@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="8,00"
 	Name="Megamania"
 	ProjectGUID="{A8D7EB5D-27E6-4FD9-A114-94C1EA7893F8}"
 	RootNamespace="Megamania"
@@ -392,6 +392,10 @@
 				Name="Images"
 				>
 				<File
+					RelativePath=".\enimy1.png"
+					>
+				</File>
+				<File
 					RelativePath=".\icon.png"
 					>
 				</File>
@@ -417,6 +421,10 @@
 				</File>
 				<File
 					RelativePath=".\msg.png"
+					>
+				</File>
+				<File
+					RelativePath=".\spaceship.png"
 					>
 				</File>
 			</Filter>
