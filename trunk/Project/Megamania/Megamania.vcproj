@@ -264,6 +264,14 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Game"
+				>
+				<File
+					RelativePath=".\enemy.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -371,6 +379,14 @@
 				</File>
 				<File
 					RelativePath=".\sdl_video.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Game"
+				>
+				<File
+					RelativePath=".\enemy.h"
 					>
 				</File>
 			</Filter>
