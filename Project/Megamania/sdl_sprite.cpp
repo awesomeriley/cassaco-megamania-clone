@@ -43,7 +43,7 @@ namespace Megamania
 		this->frameHeight = frameHeight;
 		this->nFrames = static_cast<Uint16>((w / frameWidth) * (h / frameHeight)); 
 		CreateFrames();
-        x = y = 0;
+        cursor = x = y = 0;
 	}
 
 	/***************************************************************
@@ -55,7 +55,7 @@ namespace Megamania
 	{	
 		SDL_FreeSurface(image);
 		for(int i = frames.size(); --i >= 0;) {
-			delete frames[i];
+			SDL_free(frames[i]);
 		}
 	}
 
@@ -66,12 +66,12 @@ namespace Megamania
 		int w = image->w;
 		int maxFrameWidth = (w / frameWidth);
 		for(Uint32 i = 0; i < nFrames; ++i) {
-			SDL_Rect rect;
-			rect.x = (i * frameWidth) % w;
-			rect.y = (i / maxFrameWidth) * frameHeight;
-			rect.w = frameWidth;
-			rect.h = frameHeight;
-			frames.push_back(&rect);
+			SDL_Rect *rect = static_cast<SDL_Rect *>(SDL_malloc(sizeof(SDL_Rect)));
+			rect->x = (i * frameWidth) % w;
+			rect->y = (i / maxFrameWidth) * frameHeight;
+			rect->w = frameWidth;
+			rect->h = frameHeight;
+			frames.push_back(rect);
 		}
 	}
     
