@@ -260,6 +260,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\game_screen.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\menu_screen.cpp"
 					>
 				</File>
@@ -303,6 +307,10 @@
 				>
 				<File
 					RelativePath=".\abstract_screen.h"
+					>
+				</File>
+				<File
+					RelativePath=".\game_screen.h"
 					>
 				</File>
 				<File

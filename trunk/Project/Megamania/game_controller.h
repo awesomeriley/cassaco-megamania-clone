@@ -14,6 +14,7 @@
 #include "SDL.h"
 #include "splash_screen.h"
 #include "menu_screen.h"
+#include "game_screen.h"
 #include "abstract_screen.h"
 
 /** Estrutura global responsavel por controlar todos os eventos do GAME*/
@@ -40,6 +41,9 @@ namespace Megamania
 			SplashScreen *splashScreen;
 			/** Objeto que repreenta o Menu do jogo*/
 			MenuScreen *menuScreen;
+			/** Objeto que repreenta o jogo em si*/
+			GameScreen *gameScreen;
+
 			GameController(void);
 		public:
 			static GameController & GetInstance(void) 
@@ -49,8 +53,12 @@ namespace Megamania
 				}
 				return *singleton;
 			}
+
+			//TODO those method should be only one
 			void InitSpashScreen(void);
 			void InitMenuScreen(void);
+			void InitGameScreen(void);
+			
 			void OnGameInit(void);
 			void OnGameLoop(void);
 			void OnGameStop(void);

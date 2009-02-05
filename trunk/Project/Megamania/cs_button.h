@@ -48,7 +48,7 @@ namespace Megamania
 		public:			
 			CSButton(char *, int, int);
 			~CSButton(void);									
-			void FireChangeImageEvent(SDL_Event *);
+			int FireChangeImageEvent(SDL_Event *);
 			void SetText(const char *);
 			void SetFont(SDL_Font *);			
 			SDL_Surface * GetSurface(void);

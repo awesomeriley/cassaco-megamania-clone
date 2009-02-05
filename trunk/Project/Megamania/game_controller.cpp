@@ -72,6 +72,9 @@ namespace Megamania
 							case SPLASH_SCREEN_FINISH_EVENT:
 								InitMenuScreen();
 								break;
+							case MENU_SCREEN_FINISH_EVENT:
+								InitGameScreen();
+								break;
 						}
 						break;
 					default:
@@ -111,5 +114,18 @@ namespace Megamania
 		menuScreen = new MenuScreen(screen);
 		currentScreen = dynamic_cast<AbstractScreen *>(menuScreen);
 		menuScreen->Execute();
+	}
+	/*******************************************************************************
+	 * 
+	 *******************************************************************************/
+	void GameController::InitGameScreen(void) 
+	{
+		delete menuScreen;
+		screen->clip_rect.x = screen->clip_rect.y = 0;
+		screen->clip_rect.w = WIDTH_SCREEN;
+		screen->clip_rect.h = HEIGHT_SCREEN;
+		gameScreen = new GameScreen(screen);
+		currentScreen = dynamic_cast<AbstractScreen *>(gameScreen);
+		gameScreen->Execute();
 	}
 }
