@@ -205,14 +205,6 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="Log"
-				>
-				<File
-					RelativePath=".\log.cpp"
-					>
-				</File>
-			</Filter>
-			<Filter
 				Name="Util"
 				>
 				<File
