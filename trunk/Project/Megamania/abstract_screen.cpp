@@ -40,6 +40,7 @@ namespace Megamania
 		}
 		this->screen = screen;		
 		SetTitle(GAME_TITLE);
+		SetIcon(PATH_ICON_IMAGE);
 	}
 	
 	/***************************************************************
