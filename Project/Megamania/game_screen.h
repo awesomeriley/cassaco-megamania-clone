@@ -12,8 +12,6 @@
 #define __GAME_SCREEN_H__
 
 #include "SDL.h"
-#include "cs_button.h"
-#include "sdl_font.h"
 #include "game_config.h"
 #include "abstract_screen.h"
 #include "video_exception.h"

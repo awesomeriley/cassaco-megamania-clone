@@ -43,8 +43,7 @@ namespace Megamania
 	 **************************************************************/
 	void GameScreen::Init() 
 	{
-		SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
-		SetIcon(PATH_ICON_IMAGE);
+		SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));		
 	}
 
 	/***************************************************************

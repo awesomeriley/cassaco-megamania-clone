@@ -141,8 +141,7 @@ namespace Megamania
 	{
 		logo = LoadImage(PATH_LOGO_IMAGE);
 		msg = LoadImage(PATH_MSG_IMAGE);
-		stfSound = new SDL_Sound();
-		SetIcon(PATH_ICON_IMAGE);
+		stfSound = new SDL_Sound();		
 	}
 
 	/***************************************************************

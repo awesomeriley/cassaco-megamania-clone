@@ -60,8 +60,7 @@ namespace Megamania
 		startBT->SetText(MENU_START_LABEL);
 		scoreBT->SetText(MENU_SCORE_LABEL);
 		optionsBT->SetText(MENU_OPTIONS_LABEL);
-		creditsBT->SetText(MENU_CREDITS_LABEL);		
-		SetIcon(PATH_ICON_IMAGE);
+		creditsBT->SetText(MENU_CREDITS_LABEL);				
 	}
 
 	/***************************************************************
