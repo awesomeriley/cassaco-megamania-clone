@@ -12,5 +12,6 @@
 #include "SDL.h"
 
 const static Uint8 SPLASH_SCREEN_FINISH_EVENT = 0x00000001;
+const static Uint8 MENU_SCREEN_FINISH_EVENT   = 0x00000002;
 
 #endif //__USER_EVENT_TYPE_H__

@@ -35,9 +35,11 @@ namespace Megamania
 
 	/****************************************************
 	 * Seta a imagem de acordo com a localizacao do mouse 
-	 * e tipo do evento.
+	 * e tipo do evento. 
+	 * Retorna 1 caso o botao tenha sido clicado com o 
+	 * botao direito do mouse, 0 nos demais casos.
 	 ****************************************************/
-	void CSButton::FireChangeImageEvent(SDL_Event* event)
+	int CSButton::FireChangeImageEvent(SDL_Event* event)
 	{
 		int x = event->button.x;
 		int y = event->button.y;
@@ -57,12 +59,14 @@ namespace Megamania
 				case SDL_MOUSEBUTTONUP:
 					if(event->button.button == SDL_BUTTON_LEFT) {
 						ChangeState(MENU_BUTTON_MOTION, HIGH_LIGHT);
+						return 1;
 					}
 					break;					
 			}
 		} else { 
 			ChangeState(MENU_BUTTON, DEFAULT);		
 		}	
+		return 0;
 	}
 
 	/****************************************************
