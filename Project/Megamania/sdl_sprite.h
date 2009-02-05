@@ -52,7 +52,7 @@ namespace Megamania
 			const int GetHeightFrame(void)const;
 			const int GetFrameNumbers(void)const;
 			bool CollidesWith(Sprite&);
-			void Draw(SDL_Surface *);
+			virtual void Draw(SDL_Surface *);
 	};
 }
 
