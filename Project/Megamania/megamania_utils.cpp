@@ -11,6 +11,8 @@
  * Email : marcelocollyer@gmail.com
  *************************************************************/
 #include "megamania_utils.h"
+
+#include "log.h"
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include <string.h>
@@ -23,7 +25,7 @@ SDL_Surface * LoadImage(const char *file)
 {    
     SDL_Surface *image = NULL;
 	if((image = IMG_Load(file)) == NULL) {
-	    LOG_ERROR("Erro ao carregar imagen [LoadImage(const char*)]");
+		LOG_ERROR("Erro ao carregar imagen [LoadImage(const char*)]");
 		exit(GAME_FATAL_ERROR);
 	}
 	return SDL_DisplayFormat(image);
