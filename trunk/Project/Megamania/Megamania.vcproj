@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="Megamania"
 	ProjectGUID="{A8D7EB5D-27E6-4FD9-A114-94C1EA7893F8}"
 	RootNamespace="Megamania"
@@ -268,7 +268,11 @@
 				Name="Game"
 				>
 				<File
-					RelativePath=".\enemy.cpp"
+					RelativePath=".\game_object.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ship.cpp"
 					>
 				</File>
 			</Filter>
@@ -386,7 +390,15 @@
 				Name="Game"
 				>
 				<File
-					RelativePath=".\enemy.h"
+					RelativePath=".\bullet.h"
+					>
+				</File>
+				<File
+					RelativePath=".\game_object.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ship.h"
 					>
 				</File>
 			</Filter>
