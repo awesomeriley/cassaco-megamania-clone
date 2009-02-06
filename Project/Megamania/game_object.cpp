@@ -9,38 +9,38 @@
  *
  *
  *************************************************************/
-#include "enemy.h"
+#include "game_object.h"
 
 namespace Megamania
 {
 
 	/*************************************************************
-	 * Construtor ~padrão que cria um novo inimigo, informando 
+	 * Construtor ~padrão que cria um novo ator, informando 
 	 * a animação do mesmo, a largura e altura de cada frame
 	 *
 	 *************************************************************/
-	Enemy::Enemy(const char *file, Uint16 frameWidth, Uint16 frameHeight)
+	GameObject::GameObject(const char *file, Uint16 frameWidth, Uint16 frameHeight)
 	throw(SpriteException) : Sprite(file, frameWidth, frameHeight)
 	{
-		state = EnemyState::STOPPED;
+		state = GameObjectState::STOPPED;
 	}
 
 	/*************************************************************
 	 * Destruidor responsavel por desalocar todos os recursos
-	 * alocados pelo inimigo
+	 * alocados pelo ator
 	 *
 	 *************************************************************/
-	Enemy::~Enemy(void)
+	GameObject::~GameObject(void)
 	{
-		delete dieing;
+		delete dying;
 	}
 
 	/*************************************************************
 	 * Função responsavel por realizar a animação da morte do
-	 * inimigo
+	 * ator
 	 *
 	 *************************************************************/
-	void Enemy::Die(SDL_Surface *screen)
+	void GameObject::Die(SDL_Surface *screen)
 	{
 	}
 
@@ -48,32 +48,32 @@ namespace Megamania
 	 * Função responsavel por realizar a ação de atirar
 	 *
 	 *************************************************************/
-	void Enemy::Shoot(void)
+	void GameObject::Shoot(void)
 	{
 	}
 
 	/*************************************************************
 	 * Função responsavel por setar a animação de morte do
-	 * inimigo
+	 * ator
 	 *
 	 *************************************************************/
-	void Enemy::SetDieAnimation(const char *file, Uint16 frameWidth, Uint16 frameHeight)
+	void GameObject::SetDieAnimation(const char *file, Uint16 frameWidth, Uint16 frameHeight)
 	{
 	}
 
 	/*************************************************************
-	 * Função que seta o estado atual do inimigo
+	 * Função que seta o estado atual do ator
 	 *
 	 *************************************************************/
-	void Enemy::SetState(EnemyState state)
+	void GameObject::SetState(GameObjectState state)
 	{
 	}
 
 	/*************************************************************
-	 * Função responsavel por retornar o estado atual do inimigo
+	 * Função responsavel por retornar o estado atual do ator
 	 *
 	 *************************************************************/
-	void Enemy::GetState(EnemyState &state)
+	void GameObject::GetState(GameObjectState &state)
 	{		
 	}
 }
