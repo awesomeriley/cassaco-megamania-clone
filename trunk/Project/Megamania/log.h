@@ -16,18 +16,14 @@
 #  ifndef FILE_LOG_CREATED
 #    define FILE_LOG_CREATED
      static FILE *log = fopen("log.log", "a");
-#   endif
+#  endif
 #endif
 
 #ifndef __func__
-#  ifdef _MSC_VER
-#    ifdef __FUNCTION__
-#      define __func__ __FUNCTION__
-#    else
-#      define __func__ ""  
-#    endif
-#  else 
-#    define __func__ ""
+#  if defined(_MSC_VER) && defined(__FUNCTION__)
+#    define __func__ __FUNCTION__
+#  else
+#    define __func__ ""  
 #  endif
 #endif
 

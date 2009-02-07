@@ -20,29 +20,17 @@ namespace Megamania
 {
 	class GameObject : public Sprite
 	{   
-		/**
-		 * Enumeration utilizado para indicar o estado atual do ator
-		 */
-		enum GameObjectState { STOPPED, RUNNING, DYING, DIE };
-
 		protected:
-			/** 
-			 * flag responsavel por indicar um dos estados que
-			 * um ator pode assumir
-			 */
-			GameObjectState state;
+			/** indica a quantidade de deslocamento em pixels a cada quadro*/
+			int offset;
 			/** indica a direção do ator*/
 			int direction;
 			/** Sprite responsavel por realizar a animação de morte*/
-			Sprite *dying;
+			Sprite *animation;
 		public:
 			GameObject(const char *, Uint16, Uint16)throw(SpriteException);
-			~GameObject(void);
-			void Die(SDL_Surface *);
-			void Shoot(void);
-			void SetDieAnimation(const char *, Uint16, Uint16);
-			void SetState(GameObjectState);
-			void GetState(GameObjectState &);
+			virtual ~GameObject(void);
+			void SetAnimation(const char *, Uint16, Uint16)throw(SpriteException);
 	};
 }
 

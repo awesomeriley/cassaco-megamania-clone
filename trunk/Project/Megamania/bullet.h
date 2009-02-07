@@ -21,8 +21,8 @@ namespace Megamania
 	class Bullet : public GameObject
 	{   
 		public:
-			GameObject(const char *, Uint16, Uint16)throw(SpriteException);
-			~GameObject(void);
+			Bullet(const char *, Uint16, Uint16)throw(SpriteException);
+			~Bullet(void);
 	};
 }
 
