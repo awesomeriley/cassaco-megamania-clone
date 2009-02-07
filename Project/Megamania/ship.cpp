@@ -20,9 +20,8 @@ namespace Megamania
 	 *
 	 *************************************************************/
 	Ship::Ship(const char *file, Uint16 frameWidth, Uint16 frameHeight)
-		throw(SpriteException) : GameObject(file, frameWidth, frameHeight)
+	throw(SpriteException) : GameObject(file, frameWidth, frameHeight)
 	{
-		//state = GameObjectState[0];
 	}
 
 	/*************************************************************
@@ -32,6 +31,40 @@ namespace Megamania
 	 *************************************************************/
 	Ship::~Ship(void)
 	{
-		delete dying;
+	}
+
+	/*************************************************************
+	 * Função responsavel por realizar a animação da morte do
+	 * ator
+	 *
+	 *************************************************************/
+	void Ship::Die(SDL_Surface *screen)
+	{
+	}
+
+	/*************************************************************
+	 * Função responsavel por realizar a ação de atirar
+	 *
+	 *************************************************************/
+	void Ship::Shoot(void)
+	{
+	}
+
+	/*************************************************************
+	 * Função que seta o estado atual do ator
+	 *
+	 *************************************************************/
+	void Ship::SetState(ShipState state)
+	{
+		this->state =  state;
+	}
+
+	/*************************************************************
+	 * Função responsavel por retornar o estado atual do ator
+	 *
+	 *************************************************************/
+	void Ship::GetState(ShipState &state)
+	{
+		state = this->state;
 	}
 }

@@ -41,7 +41,7 @@ namespace Megamania
 	void GameController::OnGameInit(void) 
 	{
 		Initializer::Init();
-		InitSpashScreen();
+		//InitSpashScreen();
 		running = true;
 	}
 
