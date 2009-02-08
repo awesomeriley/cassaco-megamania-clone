@@ -13,11 +13,23 @@
 
 #include "sprite_exception.h"
 #include "ship.h"
+#include "game_config.h"
 
 namespace Megamania
 {
 	class Enemy : public Ship
 	{   
+		protected:
+			/**
+			 * variavel que indica a largura total da tela, utilizada para o
+			 * movimento da nave
+			 */
+			Uint16 width;
+			/** 
+			 * variavel que indica a altura total da tela, utilizada para o 
+			 * movimento da nave
+			 */
+			Uint16 height;
 		public:
 			Enemy(const char *, Uint16, Uint16)throw(SpriteException);
 			~Enemy(void);

@@ -268,11 +268,19 @@
 				Name="Game"
 				>
 				<File
+					RelativePath=".\enemy.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\game_object.cpp"
 					>
 				</File>
 				<File
 					RelativePath=".\ship.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\space_ship_1.cpp"
 					>
 				</File>
 			</Filter>
@@ -394,11 +402,19 @@
 					>
 				</File>
 				<File
+					RelativePath=".\enemy.h"
+					>
+				</File>
+				<File
 					RelativePath=".\game_object.h"
 					>
 				</File>
 				<File
 					RelativePath=".\ship.h"
+					>
+				</File>
+				<File
+					RelativePath=".\space_ship_1.h"
 					>
 				</File>
 			</Filter>
@@ -412,7 +428,7 @@
 				Name="Images"
 				>
 				<File
-					RelativePath=".\enimy1.png"
+					RelativePath=".\enemy_1.png"
 					>
 				</File>
 				<File
