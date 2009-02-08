@@ -12,13 +12,12 @@
 #ifndef __BULLET_H__
 #define __BULLET_H__
 
-#include "SDL.h"
 #include "sprite_exception.h"
-#include "sdl_sprite.h"
+#include "game_object.h"
 
 namespace Megamania
 {
-	class Bullet : public GameObject
+	class Bullet : public GameObject	
 	{   
 		public:
 			Bullet(const char *, Uint16, Uint16)throw(SpriteException);
