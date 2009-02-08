@@ -21,6 +21,8 @@ namespace Megamania
 	Enemy::Enemy(const char *file, Uint16 frameWidth, Uint16 frameHeight)
 	throw(SpriteException) : Ship(file, frameWidth, frameHeight)
 	{
+		width = WIDTH_SCREEN;
+		height = HEIGHT_SCREEN;
 	}
 
 	/*************************************************************
