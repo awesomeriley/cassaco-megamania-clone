@@ -1,13 +1,13 @@
 /*************************************************************
+ * Classe base para todas os objetos que representam uma nave
+ * no jogo, todas as classes que são naves devem ter esta
+ * classe como super-classe
  *
+ * Author: Adriano Braga Alencar							
+ * Email : adrianobragaalencar@gmail.com 
  *
- *
- *
- *
- *
- *
- *
- *
+ * Author : Marcelo Collyer
+ * Email     : marcelocollyer@gmail.com
  *************************************************************/
 #ifndef __SHIP_H__
 #define __SHIP_H__
@@ -33,8 +33,8 @@ namespace Megamania
 		public:
 			Ship(const char *, Uint16, Uint16)throw(SpriteException);
 			~Ship(void);
-			void Die(SDL_Surface *);
-			void Shoot(void);
+			virtual void Die(SDL_Surface *);
+			virtual void Shoot(void);
 			void SetState(ShipState);
 			void GetState(ShipState &);
 	};
