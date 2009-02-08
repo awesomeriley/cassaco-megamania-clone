@@ -252,7 +252,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\game_screen.cpp"
+					RelativePath=".\level_screen_1.cpp"
 					>
 				</File>
 				<File
@@ -322,7 +322,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\game_screen.h"
+					RelativePath=".\level_screen_1.h"
 					>
 				</File>
 				<File

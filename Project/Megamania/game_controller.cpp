@@ -41,7 +41,7 @@ namespace Megamania
 	void GameController::OnGameInit(void) 
 	{
 		Initializer::Init();
-		//InitSpashScreen();
+		InitSpashScreen();
 		running = true;
 	}
 
@@ -83,6 +83,7 @@ namespace Megamania
 				}				
 			} 
 			currentScreen->Draw();			
+			SDL_Delay(30);
 		}
 	}
 
@@ -124,8 +125,8 @@ namespace Megamania
 		screen->clip_rect.x = screen->clip_rect.y = 0;
 		screen->clip_rect.w = WIDTH_SCREEN;
 		screen->clip_rect.h = HEIGHT_SCREEN;
-		gameScreen = new GameScreen(screen);
-		currentScreen = dynamic_cast<AbstractScreen *>(gameScreen);
-		gameScreen->Execute();
+		levelScreen = new LevelScreen(screen);
+		currentScreen = dynamic_cast<AbstractScreen *>(levelScreen);
+		levelScreen->Execute();
 	}
 }

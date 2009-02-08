@@ -17,10 +17,6 @@
  *******************************************************************/
 #include "abstract_screen.h"
 
-#include <string.h>
-#include "megamania_utils.h"
-#include "game_config.h"
-
 namespace Megamania
 {
 
