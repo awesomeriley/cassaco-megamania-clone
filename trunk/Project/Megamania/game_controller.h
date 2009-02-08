@@ -13,8 +13,8 @@
 #include "game_config.h"
 #include "SDL.h"
 #include "splash_screen.h"
+#include "level_screen_1.h"
 #include "menu_screen.h"
-#include "game_screen.h"
 #include "abstract_screen.h"
 
 /** Estrutura global responsavel por controlar todos os eventos do GAME*/
@@ -42,7 +42,7 @@ namespace Megamania
 			/** Objeto que repreenta o Menu do jogo*/
 			MenuScreen *menuScreen;
 			/** Objeto que repreenta o jogo em si*/
-			GameScreen *gameScreen;
+			LevelScreen *levelScreen;
 
 			GameController(void);
 		public:
