@@ -60,16 +60,7 @@ namespace Megamania
 	 **************************************************************/
 	void LevelScreen::Execute(void) 
 	{
-		SpaceShip1 *space= NULL;
-		SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
-		for(Uint32 i = 0; i < LEVEL_1_NUMBER_SHIPS; ++i) {
-			space = dynamic_cast<SpaceShip1 *>(enemies[i]);
-			space->Draw(screen);
-			space->NextFrame();
-			space->Update();
-		}		
-		SDL_Flip(screen);
-		//Draw();
+		Draw();
 	}
 
 	/***************************************************************
@@ -88,7 +79,6 @@ namespace Megamania
 	 **************************************************************/	
 	void LevelScreen::Draw(void) 
 	{
-		return;
 		SpaceShip1 *space= NULL;
 		SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
 		for(Uint32 i = 0; i < LEVEL_1_NUMBER_SHIPS; ++i) {
