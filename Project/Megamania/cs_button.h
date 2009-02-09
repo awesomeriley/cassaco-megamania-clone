@@ -12,12 +12,12 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include "sdl_font.h"
+#include "menu_listener.h"
 
 namespace Megamania
 {
-	class CSButton 
+	class CSButton : public MenuScreenListener
 	{
-
 		/*
 		 * Enumerations que contém constantes utilizadas pelo pintura do 
 		 * botão
@@ -54,6 +54,7 @@ namespace Megamania
 			SDL_Surface * GetSurface(void);
 			void Draw(SDL_Surface *);
 			void SetAlign(V_ALIGNMENT, H_ALIGNMENT);
+			void Action(SDL_Surface *);
 	};
 }
 

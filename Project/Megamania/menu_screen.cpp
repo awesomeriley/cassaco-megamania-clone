@@ -11,6 +11,7 @@
 #include "megamania_utils.h"
 #include "log.h"
 #include <string>
+#include <algorithm>
 #include "user_event_type.h"
 
 namespace Megamania
@@ -60,7 +61,43 @@ namespace Megamania
 		startBT->SetText(MENU_START_LABEL);
 		scoreBT->SetText(MENU_SCORE_LABEL);
 		optionsBT->SetText(MENU_OPTIONS_LABEL);
-		creditsBT->SetText(MENU_CREDITS_LABEL);				
+		creditsBT->SetText(MENU_CREDITS_LABEL);
+		AddListener(startBT);
+		AddListener(scoreBT);
+		AddListener(optionsBT);
+		AddListener(creditsBT);
+	}
+
+	/***************************************************************
+	 * Função que adiciona um listener interessado em ouvir os 
+	 * eventos da classe, caso seja passado como parametro um
+	 * ponteiro NULL, nada ocorrerá
+	 *
+	 **************************************************************/
+	void MenuScreen::AddListener(MenuScreenListener *listener) 
+	{
+		if(listener != NULL) {
+			std::vector<MenuScreenListener *>::iterator end = listeners.end();
+			for(std::vector<MenuScreenListener *>::iterator iter = listeners.begin(); iter != end; ++iter) {
+				if(*iter == listener) {
+					return;
+				}
+			}
+			listeners.push_back(listener);
+		}
+	}
+	
+	/***************************************************************
+	 * Função responsavel por remover um listener da classe, caso 
+	 * seja informado como parametro um ponteiro NULL ou um listener
+	 * não registrado nada ocorrerá
+	 *
+	 **************************************************************/
+	void MenuScreen::RemoveListener(MenuScreenListener *listener) 
+	{
+		if(listener != NULL) {
+			listeners.erase(std::find(listeners.begin(), listeners.end(), listener));
+		}
 	}
 
 	/***************************************************************
@@ -88,10 +125,9 @@ namespace Megamania
 	 **************************************************************/	
 	void MenuScreen::Draw(void) 
 	{
-		startBT->Draw(background);
-		scoreBT->Draw(background);		
-		optionsBT->Draw(background);		
-		creditsBT->Draw(background);		
+		for(int i = listeners.size(); --i >= 0;) {
+			listeners[i]->Action(background);		
+		}
 		SDL_BlitSurface(background, NULL, screen, NULL);
 		SDL_Flip(screen);
 	}
@@ -104,6 +140,7 @@ namespace Megamania
 	void MenuScreen::Clear(void) 
 	{
 		SDL_FreeSurface(this->background);
+		listeners.clear();
 		delete startBT;
 		delete scoreBT;
 		delete optionsBT;

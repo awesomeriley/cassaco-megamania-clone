@@ -4,7 +4,7 @@
  * os eventos e controlar a logica do jogo, como atualização de tela,
  * atualização de NPC etc.
  *
- *  Author Adriano Braga Alencar (adrianobragaalencar@gmail.com)
+ * Author Adriano Braga Alencar (adrianobragaalencar@gmail.com)
  *
  *******************************************************************************/
 #ifndef __GAME_CONTROLLER_H__

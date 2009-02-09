@@ -183,4 +183,14 @@ namespace Megamania
 			SDL_FreeSurface(textSurface);
 		}
 	}
+
+    /********************************************************************
+     * Função chamada quando ocorrer algum evento na classe  
+	 * MenuScreen
+	 *
+	 ********************************************************************/
+	void CSButton::Action(SDL_Surface *surface) 
+	{
+		Draw(surface);
+	}
 }
