@@ -23,7 +23,7 @@
 #  if defined(_MSC_VER) && defined(__FUNCTION__)
 #    define __func__ __FUNCTION__
 #  else
-#    define __func__ ""  
+#    define __func__ "???"  
 #  endif
 #endif
 
