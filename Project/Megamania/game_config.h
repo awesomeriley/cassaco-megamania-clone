@@ -42,6 +42,12 @@
 #define MENU_BUTTON_X 500
 #define MENU_BUTTON_Y 250
 #define MENU_BUTTON_VERTICAL_SPACE 80
+
+#define MEGAMANIA "spaceship.png"
+#define MEGAMANIA_WIDTH 50
+#define MEGAMANIA_HEIGHT 85
+#define MEGAMANIA_OFFSET 10
+
 #define PATH_SPACE_SHIP_1 "enemy_1.png"
 #define SPACE_SHIP_1_WIDTH 50
 #define SPACE_SHIP_1_HEIGHT 27

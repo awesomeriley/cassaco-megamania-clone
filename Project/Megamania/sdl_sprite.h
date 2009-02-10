@@ -41,6 +41,8 @@ namespace Megamania
 			~Sprite(void);
 			void NextFrame(void);
 			void PrevFrame(void);
+			int GetCurrentFrame(void);
+			void SetFrame(int);
 			void SetX(int);
 			void SetY(int);
 			const int GetX(void)const;

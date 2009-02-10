@@ -5,6 +5,7 @@
  * Author Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
  *
  ***************************************************************/
+#include "ship.h"
 #include "level_screen_1.h"
 
 namespace Megamania
@@ -51,6 +52,11 @@ namespace Megamania
 				enemies.push_back(space);
 			}
 		}
+
+		megamania = new Ship(MEGAMANIA, MEGAMANIA_WIDTH, MEGAMANIA_HEIGHT);
+		megamania->SetPosition(WIDTH_SCREEN >> 1, HEIGHT_SCREEN / 1.4);
+		megamania->SetFrame(2);
+		
 	}
 
 	/***************************************************************
@@ -71,6 +77,31 @@ namespace Megamania
 	 **************************************************************/
 	void LevelScreen::Event(SDL_Event *event) 
 	{
+		int x = megamania->GetCurrentFrame();
+		switch(event->key.keysym.sym){
+		
+			case SDLK_LEFT:
+				megamania->Move(-MEGAMANIA_OFFSET, 0);
+				if(x == 1 || x == 2) {
+					megamania->PrevFrame();
+				}else{
+					megamania->SetFrame(1);
+				}
+				break;
+
+			case SDLK_RIGHT:
+				megamania->Move(MEGAMANIA_OFFSET, 0);
+				if(x == 2 || x == 3){
+					megamania->NextFrame();
+				}else{
+					megamania->SetFrame(3);
+				}
+				break;
+
+			default:
+				megamania->SetFrame(2);
+				break;
+		}
 	}
 
 	/***************************************************************
@@ -87,6 +118,8 @@ namespace Megamania
 			space->NextFrame();
 			space->Update();
 		}		
+		
+		megamania->Draw(screen);
 		SDL_Flip(screen);
 	}
 
