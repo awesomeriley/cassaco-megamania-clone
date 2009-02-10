@@ -99,6 +99,18 @@ namespace Megamania
 		cursor = cursor > 0 ? --cursor : nFrames - 1;
 	}
 
+	int Sprite::GetCurrentFrame(void)
+	{
+		return cursor;
+	}
+	
+	void Sprite::SetFrame(int frameIndex){
+	
+		if(frameIndex >= 0 && frameIndex <= nFrames){
+			cursor = frameIndex;
+		}
+	}
+
 	/***************************************************************
 	 * Função que seta a posição do objeto Sprite
 	 * na coordenada X

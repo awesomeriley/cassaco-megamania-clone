@@ -126,6 +126,7 @@ namespace Megamania
 		screen->clip_rect.w = WIDTH_SCREEN;
 		screen->clip_rect.h = HEIGHT_SCREEN;
 		levelScreen = new LevelScreen(screen);
+		SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 		currentScreen = dynamic_cast<AbstractScreen *>(levelScreen);
 		levelScreen->Execute();
 	}
