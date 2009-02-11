@@ -33,6 +33,8 @@ namespace Megamania
 	}
 
 	/***************************************************************
+	 * Função responsavel por iniciar a posição de todas as naves
+	 * inimigas e tambem a posição da nave Megamania
 	 *
 	 **************************************************************/
 	void LevelScreen::Init() 
@@ -45,16 +47,16 @@ namespace Megamania
 			for(Uint32 j = 0; j < lCol; ++j) {
 				SpaceShip1 *space = new SpaceShip1();
 				if((i & 1) == 0) {
-					space->SetPosition(j * offset_x, i * offset_y);
+					space->SetPosition(j * offset_x - WIDTH_SCREEN, (i + 1) * offset_y);
 				} else {
-					space->SetPosition(j * offset_x + (offset_x >> 1), i * offset_y);
+					space->SetPosition(j * offset_x + (offset_x >> 1) - WIDTH_SCREEN, (i + 1) * offset_y);
 				}				
 				enemies.push_back(space);
 			}
 		}
 
 		megamania = new Ship(MEGAMANIA, MEGAMANIA_WIDTH, MEGAMANIA_HEIGHT);
-		megamania->SetPosition(WIDTH_SCREEN >> 1, HEIGHT_SCREEN / 1.4);
+		megamania->SetPosition(WIDTH_SCREEN >> 1, static_cast<int>(static_cast<float>(HEIGHT_SCREEN) / 1.4));
 		megamania->SetFrame(2);
 		
 	}
@@ -77,31 +79,7 @@ namespace Megamania
 	 **************************************************************/
 	void LevelScreen::Event(SDL_Event *event) 
 	{
-		int x = megamania->GetCurrentFrame();
-		switch(event->key.keysym.sym){
-		
-			case SDLK_LEFT:
-				megamania->Move(-MEGAMANIA_OFFSET, 0);
-				if(x == 1 || x == 2) {
-					megamania->PrevFrame();
-				}else{
-					megamania->SetFrame(1);
-				}
-				break;
-
-			case SDLK_RIGHT:
-				megamania->Move(MEGAMANIA_OFFSET, 0);
-				if(x == 2 || x == 3){
-					megamania->NextFrame();
-				}else{
-					megamania->SetFrame(3);
-				}
-				break;
-
-			default:
-				megamania->SetFrame(2);
-				break;
-		}
+		megamania->Event(event);
 	}
 
 	/***************************************************************
@@ -112,11 +90,18 @@ namespace Megamania
 	{
 		SpaceShip1 *space= NULL;
 		SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
+		Bullet &bullet = megamania->GetBullet();
 		for(Uint32 i = 0; i < LEVEL_1_NUMBER_SHIPS; ++i) {
 			space = dynamic_cast<SpaceShip1 *>(enemies[i]);
-			space->Draw(screen);
-			space->NextFrame();
-			space->Update();
+			if(space->IsVisible()) {
+				space->Draw(screen);
+				space->NextFrame();
+				space->Update();
+				if((bullet.IsVisible())&&(space->CollidesWith(bullet))) {
+					space->SetVisible(false);
+					bullet.SetVisible(false);
+				}
+			}
 		}		
 		
 		megamania->Draw(screen);

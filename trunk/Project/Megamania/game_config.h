@@ -23,7 +23,7 @@
 #define BPP 0    //exibe no formato atual do video
 #define GAME_FATAL_ERROR 1
 #define TIME_DELAY 2000
-#define TIME_PER_TICKS 50
+#define TIME_PER_TICKS 30
 #define GAME_TITLE "Megamania Clone"
 #define MENU_START_LABEL "Start"
 #define MENU_SCORE_LABEL "High Score"
@@ -42,12 +42,10 @@
 #define MENU_BUTTON_X 500
 #define MENU_BUTTON_Y 250
 #define MENU_BUTTON_VERTICAL_SPACE 80
-
 #define MEGAMANIA "spaceship.png"
 #define MEGAMANIA_WIDTH 50
 #define MEGAMANIA_HEIGHT 85
 #define MEGAMANIA_OFFSET 10
-
 #define PATH_SPACE_SHIP_1 "enemy_1.png"
 #define SPACE_SHIP_1_WIDTH 50
 #define SPACE_SHIP_1_HEIGHT 27
@@ -55,6 +53,13 @@
 #define LEVEL_1_NUMBER_SHIPS 15
 #define LEVEL_1_SHIPS_ROW 3
 #define LEVEL_1_SHIPS_COL 5
+#define PATH_BULLET "bullet.png"
+#define BULLET_WIDTH 8
+#define BULLET_HEIGHT 48
+#define BULLET_OFFSET 10
+#define REPEAT_DELAY 1
+#define REPEAT_INTERVAL 1
+#define PATH_BULLET_ENEMY "bullet_2.png"
 
 static SDL_Surface *screen = SDL_SetVideoMode(WIDTH_SCREEN, HEIGHT_SCREEN, BPP, SDL_SWSURFACE|SDL_DOUBLEBUF);
 

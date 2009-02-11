@@ -61,8 +61,9 @@ namespace Megamania
 	 *******************************************************************************/
 	void GameController::OnGameLoop(void) 
 	{		
+		lastTimer = SDL_GetTicks();
 		while(running) {
-			if(SDL_PollEvent(&event) != 0) {
+			if(SDL_PollEvent(&event)) {
 				switch(event.type) {
 					case SDL_QUIT:
 						running = false;
@@ -82,8 +83,17 @@ namespace Megamania
 						break;
 				}				
 			} 
-			currentScreen->Draw();			
-			SDL_Delay(30);
+			currentScreen->Draw();
+			currentTimer = SDL_GetTicks() - lastTimer;
+			if(currentTimer < TIME_PER_TICKS) {
+				if(currentTimer < 0) {
+					currentTimer = 0;
+				}
+				SDL_Delay(TIME_PER_TICKS - currentTimer);
+			} else {
+				SDL_Delay(TIME_PER_TICKS);
+			}
+			lastTimer = currentTimer;			
 		}
 	}
 
@@ -126,7 +136,7 @@ namespace Megamania
 		screen->clip_rect.w = WIDTH_SCREEN;
 		screen->clip_rect.h = HEIGHT_SCREEN;
 		levelScreen = new LevelScreen(screen);
-		SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
+		SDL_EnableKeyRepeat(REPEAT_DELAY, REPEAT_INTERVAL);
 		currentScreen = dynamic_cast<AbstractScreen *>(levelScreen);
 		levelScreen->Execute();
 	}
