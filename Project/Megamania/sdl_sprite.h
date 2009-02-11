@@ -39,6 +39,7 @@ namespace Megamania
 		private:
             void CreateFrames(void);
 		public:
+			enum Mirror { MIRROR_NONE, MIRROR_LEFT_RIGTH, MIRROR_UP_DOWN };
 			Sprite(const char *, Uint16, Uint16)throw(SpriteException);
 			~Sprite(void);
 			void NextFrame(void);
