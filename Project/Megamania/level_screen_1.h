@@ -22,7 +22,7 @@ namespace Megamania
 			/** vetor que contém os inimigos a serem exibidos*/
 			std::vector<Enemy *> enemies;
 			/** objeto que representa a nave principal do jogo*/
-			Ship* megamania;
+			Ship *megamania;
 		public:
 			LevelScreen(SDL_Surface *)throw(SDLVideoException);
 			~LevelScreen(void);

@@ -31,6 +31,10 @@ namespace Megamania
 			AbstractScreen *currentScreen;
 			/** flag responsavel por indicar se o jogo iniciou ou não*/
 			bool running;
+			/** variavel responsavel por armazenar o valor do tempo da ultima execução*/
+			int lastTimer;
+			/** variavel responsavel por armazenar o valor do tempo corrente*/
+			int currentTimer;
 			/** constante que indica a quantidade de frames por segundo*/
 			static const int CLOCKS_PER_TICK = TIME_PER_TICKS;
 			/** indica a largura da tela do jogo*/
@@ -53,12 +57,9 @@ namespace Megamania
 				}
 				return *singleton;
 			}
-
-			//TODO those method should be only one
 			void InitSpashScreen(void);
 			void InitMenuScreen(void);
-			void InitGameScreen(void);
-			
+			void InitGameScreen(void);			
 			void OnGameInit(void);
 			void OnGameLoop(void);
 			void OnGameStop(void);

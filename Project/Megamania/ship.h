@@ -14,6 +14,7 @@
 
 #include "SDL.h"
 #include "sprite_exception.h"
+#include "bullet.h"
 #include "game_object.h"
 
 namespace Megamania
@@ -30,6 +31,9 @@ namespace Megamania
 			 * um ator pode assumir
 			 */
 			ShipState state;
+			/** Objeto que representa a bala da nave*/
+			Bullet *bullet;		
+			void ResetBulletPosition(void);
 		public:
 			Ship(const char *, Uint16, Uint16)throw(SpriteException);
 			~Ship(void);
@@ -37,6 +41,9 @@ namespace Megamania
 			virtual void Shoot(void);
 			void SetState(ShipState);
 			void GetState(ShipState &);
+			void Draw(SDL_Surface *);
+			void Event(SDL_Event *);			
+			Bullet & GetBullet(void);
 	};
 }
 

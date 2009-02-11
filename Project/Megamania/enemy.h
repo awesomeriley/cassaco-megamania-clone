@@ -14,6 +14,7 @@
 #include "sprite_exception.h"
 #include "ship.h"
 #include "game_config.h"
+#include "bullet.h"
 
 namespace Megamania
 {
@@ -33,6 +34,7 @@ namespace Megamania
 		public:
 			Enemy(const char *, Uint16, Uint16)throw(SpriteException);
 			~Enemy(void);
+			void Draw(SDL_Surface *surface);
 			virtual void Update(void) = 0;
 	};
 }

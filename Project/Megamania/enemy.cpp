@@ -33,4 +33,17 @@ namespace Megamania
 	Enemy::~Enemy(void)
 	{
 	}
+
+	/*************************************************************
+	 * Função responsavel por desenhar na tela todos os objetos
+	 *
+	 *************************************************************/
+	void Enemy::Draw(SDL_Surface *surface)
+	{
+		if(bullet->IsVisible()) {			
+			bullet->Update(Megamania::Bullet::Direction::DOWN);
+			bullet->Draw(surface);
+		}
+		GameObject::Draw(surface);
+	}
 }

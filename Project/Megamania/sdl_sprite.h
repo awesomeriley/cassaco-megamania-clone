@@ -34,6 +34,8 @@ namespace Megamania
 			SDL_Surface *image;						
 			/** vetor responsavel por gerenciar cada frame do objeto*/
 			std::vector<SDL_Rect *> frames;
+			/** flag responsavel por indicar se o Sprite esta ou não visivel*/
+			bool visible;
 		private:
             void CreateFrames(void);
 		public:
@@ -54,6 +56,8 @@ namespace Megamania
 			const int GetHeightFrame(void)const;
 			const int GetFrameNumbers(void)const;
 			bool CollidesWith(Sprite&);
+			bool IsVisible(void);
+			void SetVisible(bool visible);
 			virtual void Draw(SDL_Surface *);
 	};
 }

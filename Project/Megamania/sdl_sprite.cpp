@@ -44,6 +44,7 @@ namespace Megamania
 		this->nFrames = static_cast<Uint16>((w / frameWidth) * (h / frameHeight)); 
 		CreateFrames();
         cursor = x = y = 0;
+		SetVisible(true);
 	}
 
 	/***************************************************************
@@ -59,6 +60,11 @@ namespace Megamania
 		}
 	}
 
+	/*************************************************************
+	 * Função responsavel por criar os frames do objeto Sprite
+	 * baseado na largura e altura informadas
+	 *
+	 *************************************************************/
 	void Sprite::CreateFrames(void) 
 	{
 		int x = 0;
@@ -99,14 +105,27 @@ namespace Megamania
 		cursor = cursor > 0 ? --cursor : nFrames - 1;
 	}
 
+	/*************************************************************
+	 * Função que retorna o índice do frame corrente, o índice 
+	 * retornado deverá esta entre a faixa de [0,  (n - 1)] onde
+	 * n indica a quantidade de frames do Sprite
+	 * 
+	 *************************************************************/
 	int Sprite::GetCurrentFrame(void)
 	{
 		return cursor;
 	}
 	
+	/*************************************************************
+	 * Função que seta como frame corrente o referente ao índice
+	 * informado, caso seja informado um índice que não esteja 
+	 * na seguinte faixa [0, (n - 1)] ocorrerá um erro de acesso
+	 * além dos limites do std::vector<SDL_Rect*>
+	 *
+	 *************************************************************/
 	void Sprite::SetFrame(int frameIndex){
 	
-		if(frameIndex >= 0 && frameIndex <= nFrames){
+		if(frameIndex >= 0 && frameIndex < nFrames){
 			cursor = frameIndex;
 		}
 	}
@@ -282,6 +301,24 @@ namespace Megamania
 		return (x1 < x2 + w2)&&(y1 < y2 + h2)&&(x2 < x1 + w1)&&(y2 < y1 + h1);
 	}
 	
+	/***************************************************************
+	 * Função que retorna o valor indicando se o Sprite atual esta
+	 * ou não visivel
+	 *
+	 ***************************************************************/
+	bool Sprite::IsVisible(void) 
+	{
+		return visible;
+	}
+
+	/***************************************************************
+	 * Função que seta a visibilidade do Sprite atual 
+	 *
+	 ***************************************************************/
+	void Sprite::SetVisible(bool visible)
+	{
+		this->visible = visible;
+	}
 
 	/***************************************************************
 	 * Função responsavel por realizar a pintura do Sprite na tela
