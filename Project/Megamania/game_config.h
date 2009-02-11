@@ -56,7 +56,7 @@
 #define PATH_BULLET "bullet.png"
 #define BULLET_WIDTH 8
 #define BULLET_HEIGHT 48
-#define BULLET_OFFSET 10
+#define BULLET_OFFSET 8
 #define REPEAT_DELAY 1
 #define REPEAT_INTERVAL 1
 #define PATH_BULLET_ENEMY "bullet_2.png"
