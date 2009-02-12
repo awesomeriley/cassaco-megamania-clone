@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="8,00"
 	Name="Megamania"
 	ProjectGUID="{A8D7EB5D-27E6-4FD9-A114-94C1EA7893F8}"
 	RootNamespace="Megamania"
@@ -492,27 +492,19 @@
 				Name="Audio"
 				>
 				<File
-					RelativePath=".\loop_menu.ogg"
+					RelativePath=".\loop_menu.wav"
 					>
 				</File>
 				<File
-					RelativePath=".\menu_back.ogg"
+					RelativePath=".\menu_back.wav"
 					>
 				</File>
 				<File
-					RelativePath=".\menu_select.ogg"
+					RelativePath=".\menu_select.wav"
 					>
 				</File>
 				<File
-					RelativePath=".\menu_validate.ogg"
-					>
-				</File>
-				<File
-					RelativePath=".\smell.ogg"
-					>
-				</File>
-				<File
-					RelativePath=".\smell.wav"
+					RelativePath=".\menu_validate.wav"
 					>
 				</File>
 			</Filter>
