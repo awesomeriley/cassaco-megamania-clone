@@ -105,16 +105,15 @@ namespace Megamania
 				space->Update();
 				spaceBullet = &space->GetBullet();
 
-			}
-			
-			if(spaceBullet->IsVisible() && megamania->CollidesWith(*spaceBullet)){
-				megamania->SetVisible(false);
-				spaceBullet->SetVisible(false);
-			}
+				if(spaceBullet->IsVisible() && megamania->IsVisible() && megamania->CollidesWith(*spaceBullet)){
+					megamania->SetVisible(false);
+					spaceBullet->SetVisible(false);
+				}
 
-			if((bullet.IsVisible())&&(space->CollidesWith(bullet))) {
-				space->SetVisible(false);
-				bullet.SetVisible(false);
+				if((bullet.IsVisible())&&(space->CollidesWith(bullet))) {
+					space->SetVisible(false);
+					bullet.SetVisible(false);
+				}
 			}
 		}	
 		
