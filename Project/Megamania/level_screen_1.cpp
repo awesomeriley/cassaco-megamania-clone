@@ -89,20 +89,35 @@ namespace Megamania
 	void LevelScreen::Draw(void) 
 	{
 		SpaceShip1 *space= NULL;
+		int randomShootShipNumber = 1 + rand() % 10;
+
 		SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
 		Bullet &bullet = megamania->GetBullet();
+		Bullet *spaceBullet = NULL;
 		for(Uint32 i = 0; i < LEVEL_1_NUMBER_SHIPS; ++i) {
 			space = dynamic_cast<SpaceShip1 *>(enemies[i]);
 			if(space->IsVisible()) {
+				if(i == randomShootShipNumber){
+					space->Shoot();
+				}		
 				space->Draw(screen);
 				space->NextFrame();
 				space->Update();
-				if((bullet.IsVisible())&&(space->CollidesWith(bullet))) {
-					space->SetVisible(false);
-					bullet.SetVisible(false);
-				}
+				spaceBullet = &space->GetBullet();
+
 			}
-		}		
+
+		}	
+		if(spaceBullet->IsVisible() && megamania->CollidesWith(*spaceBullet)){
+			megamania->SetVisible(false);
+			spaceBullet->SetVisible(false);
+		}
+
+		if((bullet.IsVisible())&&(space->CollidesWith(bullet))) {
+			space->SetVisible(false);
+			bullet.SetVisible(false);
+		}
+
 		
 		megamania->Draw(screen);
 		SDL_Flip(screen);
