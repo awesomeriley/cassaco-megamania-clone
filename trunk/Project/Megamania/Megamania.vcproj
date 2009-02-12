@@ -203,6 +203,18 @@
 					RelativePath=".\video_exception.cpp"
 					>
 				</File>
+				<Filter
+					Name="TTF"
+					>
+					<File
+						RelativePath=".\INVADERS.TTF"
+						>
+					</File>
+					<File
+						RelativePath=".\MATRIX.ttf"
+						>
+					</File>
+				</Filter>
 			</Filter>
 			<Filter
 				Name="Util"
@@ -492,7 +504,7 @@
 				Name="Audio"
 				>
 				<File
-					RelativePath=".\loop_menu.wav"
+					RelativePath=".\loop_menu.ogg"
 					>
 				</File>
 				<File
@@ -507,16 +519,8 @@
 					RelativePath=".\menu_validate.wav"
 					>
 				</File>
-			</Filter>
-			<Filter
-				Name="TTF"
-				>
 				<File
-					RelativePath=".\INVADERS.TTF"
-					>
-				</File>
-				<File
-					RelativePath=".\MATRIX.ttf"
+					RelativePath=".\smell.wav"
 					>
 				</File>
 			</Filter>
