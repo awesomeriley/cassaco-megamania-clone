@@ -54,7 +54,7 @@ namespace Megamania
 				case SDL_MOUSEBUTTONDOWN:
 					if(event->button.button == SDL_BUTTON_LEFT) {
 						ChangeState(MENU_BUTTON_DOWN, DOWN);
-						validate->Play();
+						//validate->Play();
 					}
 					break;
 				case SDL_MOUSEMOTION:
