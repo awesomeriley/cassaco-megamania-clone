@@ -145,6 +145,6 @@ namespace Megamania
 	 *************************************************************/
 	void Ship::ResetBulletPosition(void)
 	{
-		bullet->SetPosition(GetX() + (GetWidthFrame() >> 1), GetY() - bullet->GetHeightFrame());
+		bullet->SetPosition(GetX() + (GetWidthFrame() >> 1), GetY() + GetHeightFrame());
 	}
 }
