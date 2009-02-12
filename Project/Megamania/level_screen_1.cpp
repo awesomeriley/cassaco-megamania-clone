@@ -39,6 +39,7 @@ namespace Megamania
 	 **************************************************************/
 	void LevelScreen::Init() 
 	{
+		levelComplete = false;
 		int w = WIDTH_SCREEN;
 		int lCol = LEVEL_1_SHIPS_COL;
 		int offset_x = w / lCol + SPACE_SHIP_1_WIDTH / lCol;		
@@ -87,41 +88,42 @@ namespace Megamania
 	 *
 	 **************************************************************/	
 	void LevelScreen::Draw(void) 
-	{
-		
-		SpaceShip1 *space= NULL;
-		int randomShootShipNumber = 1 + rand() % 10;
+	{	
+		if(!levelComplete){
+			SpaceShip1 *space= NULL;
+			int randomShootShipNumber = 1 + rand() % 10;
 
-		SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
-		Bullet &bullet = megamania->GetBullet();
-		Bullet *spaceBullet = NULL;
-		for(Uint32 i = 0; i < LEVEL_1_NUMBER_SHIPS; ++i) {
-			space = dynamic_cast<SpaceShip1 *>(enemies[i]);
-			spaceBullet = &space->GetBullet();
-			if(space->IsVisible()) {
-				if(i == randomShootShipNumber && !space->GetBullet().IsVisible()){
-					space->Shoot();
-				}		
-				space->Draw(screen);
-				space->NextFrame();
-				space->Update();
-				
-				if(spaceBullet->IsVisible() && megamania->IsVisible() && megamania->CollidesWith(*spaceBullet)){
-					megamania->SetVisible(false);
-					spaceBullet->SetVisible(false);
-					levelComplete = true;
-					return;
-				}
+			SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
+			Bullet &bullet = megamania->GetBullet();
+			Bullet *spaceBullet = NULL;
+			for(Uint32 i = 0; i < LEVEL_1_NUMBER_SHIPS; ++i) {
+				space = dynamic_cast<SpaceShip1 *>(enemies[i]);
+				spaceBullet = &space->GetBullet();
+				if(space->IsVisible()) {
+					if(i == randomShootShipNumber && !space->GetBullet().IsVisible()){
+						space->Shoot();
+					}		
+					space->Draw(screen);
+					space->NextFrame();
+					space->Update();
+					
+					if(spaceBullet->IsVisible() && megamania->IsVisible() && megamania->CollidesWith(*spaceBullet)){
+						megamania->SetVisible(false);
+						spaceBullet->SetVisible(false);
+						levelComplete = true;
+						return;
+					}
 
-				if((bullet.IsVisible())&&(space->CollidesWith(bullet))) {
-					space->SetVisible(false);
-					bullet.SetVisible(false);
+					if((bullet.IsVisible())&&(space->CollidesWith(bullet))) {
+						space->SetVisible(false);
+						bullet.SetVisible(false);
+					}
+				}else if(spaceBullet->IsVisible()){
+					spaceBullet->Draw(screen);
+					spaceBullet->Update(Megamania::Bullet::Direction::DOWN);
 				}
-			}else if(spaceBullet->IsVisible()){
-				spaceBullet->Draw(screen);
-				spaceBullet->Update(Megamania::Bullet::Direction::DOWN);
-			}
-		}	
+			}	
+		}
 		
 		megamania->Draw(screen);
 		SDL_Flip(screen);
