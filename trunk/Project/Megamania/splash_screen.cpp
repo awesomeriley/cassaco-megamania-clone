@@ -127,7 +127,7 @@ namespace Megamania
 	 * SDL_Sound -> retorna a referencia para o som
 	 *
 	 **************************************************************/
-	SDL_Sound * SplashScreen::GetSound(void)const 
+	Effect * SplashScreen::GetSound(void)const 
 	{    
 		return this->stfSound;
 	}
@@ -141,7 +141,7 @@ namespace Megamania
 	{
 		logo = LoadImage(PATH_LOGO_IMAGE);
 		msg = LoadImage(PATH_MSG_IMAGE);
-		stfSound = new SDL_Sound();		
+		stfSound = new Effect();		
 	}
 
 	/***************************************************************

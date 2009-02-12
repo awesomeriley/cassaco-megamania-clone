@@ -17,6 +17,7 @@
 #include "abstract_screen.h"
 #include "video_exception.h"
 #include "menu_listener.h"
+#include "sdl_music.h"
 #include <vector>
 
 namespace Megamania
@@ -36,6 +37,8 @@ namespace Megamania
 			CSButton *scoreBT;
 			/** Botão responsavel por abrir a tela de creditos*/
 			CSButton *creditsBT;									
+			/** Objeto que representa a musica de fundo que será tocada*/
+			Music *music;
 		public:
 			MenuScreen(SDL_Surface *)throw(SDLVideoException);
 			~MenuScreen(void);
