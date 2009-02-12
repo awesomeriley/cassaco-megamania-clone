@@ -24,12 +24,14 @@ namespace Megamania
 		private:
 			/** Objeto que representa a abstração para todo efeito sonoro*/
 			Mix_Chunk *chunk;
+			/** variavel que indica o canal alocado para tocar o efeito sonoro*/
+			int idChannel;
 		public:
 			Effect(void);
 			~Effect(void);		    
 			void Load(const char *)throw(SDLAudioException);
 			void SetVolume(int volume = MIX_MAX_VOLUME);
-			void Play(void);
+			int Play(void);
 			void Close(void);
 	};
 }

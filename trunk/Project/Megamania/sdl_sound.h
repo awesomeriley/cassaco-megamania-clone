@@ -19,7 +19,7 @@ namespace Megamania
 			virtual ~Sound(void) {};
 			virtual void Load(const char *)throw(SDLAudioException) = 0;
 			virtual void SetVolume(int volume = MIX_MAX_VOLUME) = 0;
-			virtual void Play(void) = 0;
+			virtual int Play(void) = 0;
 			virtual void Close(void) = 0;
 	};
 }

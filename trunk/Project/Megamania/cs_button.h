@@ -47,8 +47,6 @@ namespace Megamania
 			SDL_Surface *surface;
 			/** som ques será tocado quando o botao for clicado*/
 			Effect *validate;
-			/** som que será tocado quando o botao for selecionado*/
-			Effect *select;
 			void ChangeState(char *, STATE_ENUM);
 		public:			
 			CSButton(char *, int, int);
