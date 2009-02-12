@@ -60,6 +60,7 @@
 #define REPEAT_DELAY 1
 #define REPEAT_INTERVAL 1
 #define PATH_BULLET_ENEMY "bullet_2.png"
+#define PATH_MENU_MUSIC "loop_menu.ogg"
 
 static SDL_Surface *screen = SDL_SetVideoMode(WIDTH_SCREEN, HEIGHT_SCREEN, BPP, SDL_SWSURFACE|SDL_DOUBLEBUF);
 
