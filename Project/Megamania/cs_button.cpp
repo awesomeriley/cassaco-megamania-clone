@@ -21,6 +21,10 @@ namespace Megamania
 		surface = LoadImage(defaultImagePath);		
 		this->surface->clip_rect.x = x;
 		this->surface->clip_rect.y = y;
+		select = new Effect();
+		select->Load(PATH_MENU_SELECT);
+		validate = new Effect();
+		validate->Load(PATH_MENU_VALIDATE);
 		text = NULL;
 	}
 
@@ -31,15 +35,17 @@ namespace Megamania
 	{
 		SDL_FreeSurface(surface);
 		FreeMemory(text);
+		delete validate; 
+		delete select;
 	}
 
 	/****************************************************
 	 * Seta a imagem de acordo com a localizacao do mouse 
 	 * e tipo do evento. 
-	 * Retorna 1 caso o botao tenha sido clicado com o 
-	 * botao direito do mouse, 0 nos demais casos.
+	 * Retorna true caso o botao tenha sido clicado com o 
+	 * botao direito do mouse, false nos demais casos.
 	 ****************************************************/
-	int CSButton::FireChangeImageEvent(SDL_Event* event)
+	bool CSButton::FireChangeImageEvent(SDL_Event* event)
 	{
 		int x = event->button.x;
 		int y = event->button.y;
@@ -51,22 +57,24 @@ namespace Megamania
 				case SDL_MOUSEBUTTONDOWN:
 					if(event->button.button == SDL_BUTTON_LEFT) {
 						ChangeState(MENU_BUTTON_DOWN, DOWN);
+						validate->Play();
 					}
 					break;
 				case SDL_MOUSEMOTION:
-					ChangeState(MENU_BUTTON_MOTION, HIGH_LIGHT);
+					ChangeState(MENU_BUTTON_MOTION, HIGH_LIGHT);	
+					select->Play();
 					break;
 				case SDL_MOUSEBUTTONUP:
 					if(event->button.button == SDL_BUTTON_LEFT) {
-						ChangeState(MENU_BUTTON_MOTION, HIGH_LIGHT);
-						return 1;
+						ChangeState(MENU_BUTTON_MOTION, HIGH_LIGHT);						
+						return true;
 					}
 					break;					
 			}
 		} else { 
 			ChangeState(MENU_BUTTON, DEFAULT);		
 		}	
-		return 0;
+		return false;
 	}
 
 	/****************************************************

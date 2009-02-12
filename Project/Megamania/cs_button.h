@@ -12,6 +12,7 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include "sdl_font.h"
+#include "sdl_effect.h"
 #include "menu_listener.h"
 
 namespace Megamania
@@ -44,11 +45,15 @@ namespace Megamania
 			STATE_ENUM state;
 			/** surface responsavel por pintar o botão*/
 			SDL_Surface *surface;
+			/** som ques será tocado quando o botao for clicado*/
+			Effect *validate;
+			/** som que será tocado quando o botao for selecionado*/
+			Effect *select;
 			void ChangeState(char *, STATE_ENUM);
 		public:			
 			CSButton(char *, int, int);
 			~CSButton(void);									
-			int FireChangeImageEvent(SDL_Event *);
+			bool FireChangeImageEvent(SDL_Event *);
 			void SetText(const char *);
 			void SetFont(SDL_Font *);			
 			SDL_Surface * GetSurface(void);
