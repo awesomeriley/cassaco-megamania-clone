@@ -329,7 +329,7 @@ namespace Megamania
 	 ***************************************************************/
 	void Sprite::Draw(SDL_Surface *surface)
 	{
-		if(surface != NULL) {
+		if((surface != NULL)&&(IsVisible())) {
 		    
 			SDL_Rect rect;
 			rect.x = GetX(); 
