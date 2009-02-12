@@ -203,18 +203,6 @@
 					RelativePath=".\video_exception.cpp"
 					>
 				</File>
-				<Filter
-					Name="TTF"
-					>
-					<File
-						RelativePath=".\INVADERS.TTF"
-						>
-					</File>
-					<File
-						RelativePath=".\MATRIX.ttf"
-						>
-					</File>
-				</Filter>
 			</Filter>
 			<Filter
 				Name="Util"
@@ -533,6 +521,18 @@
 				</File>
 				<File
 					RelativePath=".\smell.wav"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="TTF"
+				>
+				<File
+					RelativePath=".\INVADERS.TTF"
+					>
+				</File>
+				<File
+					RelativePath=".\MATRIX.ttf"
 					>
 				</File>
 			</Filter>
