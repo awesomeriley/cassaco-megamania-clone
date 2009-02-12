@@ -252,6 +252,10 @@
 				Name="Screen"
 				>
 				<File
+					RelativePath=".\abstract_level.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\abstract_screen.cpp"
 					>
 				</File>
@@ -329,6 +333,10 @@
 			<Filter
 				Name="Screen"
 				>
+				<File
+					RelativePath=".\abstract_level.h"
+					>
+				</File>
 				<File
 					RelativePath=".\abstract_screen.h"
 					>
