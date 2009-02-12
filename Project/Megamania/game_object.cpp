@@ -47,4 +47,13 @@ namespace Megamania
 	{
 		animation = new Sprite(file, frameWidth, frameHeight);
 	}
+
+	/***************************************************************
+	 * Função que retorna a direcao do objeto
+	 *
+	 **************************************************************/
+	const int GameObject::GetDirection(void)const 
+	{	
+		return this->direction;
+	}
 }

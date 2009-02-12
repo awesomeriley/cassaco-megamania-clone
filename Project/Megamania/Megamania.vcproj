@@ -346,10 +346,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\level_screen_1.h"
-					>
-				</File>
-				<File
 					RelativePath=".\menu_screen.h"
 					>
 				</File>
@@ -451,6 +447,14 @@
 				</File>
 				<File
 					RelativePath=".\space_ship_1.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Level"
+				>
+				<File
+					RelativePath=".\level_screen_1.h"
 					>
 				</File>
 			</Filter>

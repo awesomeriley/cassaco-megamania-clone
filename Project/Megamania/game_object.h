@@ -30,6 +30,7 @@ namespace Megamania
 		public:
 			GameObject(const char *, Uint16, Uint16)throw(SpriteException);
 			virtual ~GameObject(void);
+			const int GetDirection(void)const;
 			void SetAnimation(const char *, Uint16, Uint16)throw(SpriteException);
 	};
 }
