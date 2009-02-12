@@ -97,7 +97,7 @@ namespace Megamania
 		for(Uint32 i = 0; i < LEVEL_1_NUMBER_SHIPS; ++i) {
 			space = dynamic_cast<SpaceShip1 *>(enemies[i]);
 			if(space->IsVisible()) {
-				if(i == randomShootShipNumber){
+				if(i == randomShootShipNumber && !space->GetBullet().IsVisible()){
 					space->Shoot();
 				}		
 				space->Draw(screen);
@@ -106,6 +106,7 @@ namespace Megamania
 				spaceBullet = &space->GetBullet();
 
 			}
+			
 			if(spaceBullet->IsVisible() && megamania->CollidesWith(*spaceBullet)){
 				megamania->SetVisible(false);
 				spaceBullet->SetVisible(false);
@@ -116,8 +117,6 @@ namespace Megamania
 				bullet.SetVisible(false);
 			}
 		}	
-
-
 		
 		megamania->Draw(screen);
 		SDL_Flip(screen);
