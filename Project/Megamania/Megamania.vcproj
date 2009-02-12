@@ -464,6 +464,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\enerybar.png"
+					>
+				</File>
+				<File
 					RelativePath=".\icon.png"
 					>
 				</File>
@@ -493,6 +497,14 @@
 				</File>
 				<File
 					RelativePath=".\msg.png"
+					>
+				</File>
+				<File
+					RelativePath=".\panel.png"
+					>
+				</File>
+				<File
+					RelativePath=".\panelPrototype.png"
 					>
 				</File>
 				<File
