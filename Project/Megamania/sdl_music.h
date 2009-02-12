@@ -35,7 +35,7 @@ namespace Megamania
 			void FadeOut(int);
 			bool Seek(double);
 			void Rewind(void);
-			void Play(void);
+			int Play(void);
 			void Stop(void);
 			void Close(void);
 			const char * GetType(void)const;

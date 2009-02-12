@@ -21,8 +21,6 @@ namespace Megamania
 		surface = LoadImage(defaultImagePath);		
 		this->surface->clip_rect.x = x;
 		this->surface->clip_rect.y = y;
-		select = new Effect();
-		select->Load(PATH_MENU_SELECT);
 		validate = new Effect();
 		validate->Load(PATH_MENU_VALIDATE);
 		text = NULL;
@@ -36,7 +34,6 @@ namespace Megamania
 		SDL_FreeSurface(surface);
 		FreeMemory(text);
 		delete validate; 
-		delete select;
 	}
 
 	/****************************************************
@@ -62,7 +59,6 @@ namespace Megamania
 					break;
 				case SDL_MOUSEMOTION:
 					ChangeState(MENU_BUTTON_MOTION, HIGH_LIGHT);	
-					select->Play();
 					break;
 				case SDL_MOUSEBUTTONUP:
 					if(event->button.button == SDL_BUTTON_LEFT) {

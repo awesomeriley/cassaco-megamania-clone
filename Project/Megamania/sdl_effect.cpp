@@ -61,9 +61,9 @@ namespace Megamania
 	 * tocado somente uma unica vez
 	 *
 	 **************************************************************/
-	void Effect::Play(void) 
+	int Effect::Play(void) 
 	{
-		Mix_PlayChannel(MIX_AVAILABLE_CHANNEL, chunk, 0);
+		return Mix_PlayChannel(MIX_AVAILABLE_CHANNEL, chunk, 0);
 	}
 
 	/***************************************************************

@@ -96,9 +96,9 @@ namespace Megamania
 	 * tocado uma unica vez
 	 *
 	 **************************************************************/
-	void Music::Play(void) 
+	int Music::Play(void) 
 	{
-		Mix_PlayMusic(music, 0); 
+		return Mix_PlayMusic(music, 0); 
 	}
 
 	/***************************************************************
