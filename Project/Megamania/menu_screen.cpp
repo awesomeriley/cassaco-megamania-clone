@@ -49,7 +49,9 @@ namespace Megamania
 		int y = MENU_BUTTON_Y;
 		int vSpace = MENU_BUTTON_VERTICAL_SPACE;
 		background = LoadImage(MENU_BACKGROUND);
-		startBT   = new CSButton(MENU_BUTTON, x, y);
+		music = new Music();
+		music->Load(PATH_MENU_MUSIC);
+ 		startBT   = new CSButton(MENU_BUTTON, x, y);
 		scoreBT   = new CSButton(MENU_BUTTON, x, y + vSpace);
 		optionsBT = new CSButton(MENU_BUTTON, x, y + (vSpace << 1));               // vSpace * 2
 		creditsBT = new CSButton(MENU_BUTTON, x, y + ((vSpace << 1) + vSpace));    // vSpace * 3
@@ -66,6 +68,7 @@ namespace Megamania
 		AddListener(scoreBT);
 		AddListener(optionsBT);
 		AddListener(creditsBT);
+		music->Play();
 	}
 
 	/***************************************************************
@@ -141,6 +144,7 @@ namespace Megamania
 	{
 		SDL_FreeSurface(this->background);
 		listeners.clear();
+		delete music;
 		delete startBT;
 		delete scoreBT;
 		delete optionsBT;

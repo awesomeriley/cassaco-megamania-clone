@@ -1,23 +1,22 @@
-/*********************************************************************
+/**********************************************************************
  * Classe responsavel por manipular os dados relacionados com 
- * os sons do jogo , bem como a musica.
- * Esta classe possui operações básicas com tocar um som, uma musica
- * realizar operações de FADE, aumentar e diminuir o volume do som
- * ou música e pausar.
+ * os sons do jogo 
+ * Esta classe possui operações básicas com tocar um som
+ * aumentar e diminuir o volume do som e pausar.
  *
  * Author: Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
  *
- ********************************************************************/
-#include "sdl_sound.h"
+ *********************************************************************/
+#include "sdl_effect.h"
 
 namespace Megamania
 {
 	/***************************************************************
 	 * Construtor padrão responsavel por criar um novo objeto
-	 * SDL_Sound, o construtor também irá iniciar o sistema
+	 * Effect, o construtor também irá iniciar o sistema
 	 * SDL_mixer
 	 **************************************************************/
-	SDL_Sound::SDL_Sound(void)
+	Effect::Effect(void)
 	{
 	}
 
@@ -26,7 +25,7 @@ namespace Megamania
 	 * pela SDL_mixer
 	 *
 	 ******************************************************************/
-	SDL_Sound::~SDL_Sound(void) 
+	Effect::~Effect(void) 
 	{
 		Close();
 	}
@@ -37,7 +36,7 @@ namespace Megamania
 	 * por ser um som qualquer
 	 *
 	 **************************************************************/
-	void SDL_Sound::Load(const char *file)throw(SDLAudioException)
+	void Effect::Load(const char *file)throw(SDLAudioException)
 	{
 		if((chunk = Mix_LoadWAV(file)) == NULL) {
 			throw SDLAudioException("Erro ao carregar arquivo de audio");
@@ -51,7 +50,7 @@ namespace Megamania
 	 * é 128 definido pela constante MIX_MAX_VOLUME
 	 *
 	 **************************************************************/
-	void SDL_Sound::SetVolume(int volume) 
+	void Effect::SetVolume(int volume) 
 	{   
 		Mix_VolumeChunk(chunk, (volume < 0) ? 0 : (volume > MIX_MAX_VOLUME) ? MIX_MAX_VOLUME : volume);
 							   
@@ -62,7 +61,7 @@ namespace Megamania
 	 * tocado somente uma unica vez
 	 *
 	 **************************************************************/
-	void SDL_Sound::Play(void) 
+	void Effect::Play(void) 
 	{
 		Mix_PlayChannel(MIX_AVAILABLE_CHANNEL, chunk, 0);
 	}
@@ -72,7 +71,7 @@ namespace Megamania
 	 * alocados pela SDL_mixer
 	 *
 	 **************************************************************/
-	void SDL_Sound::Close(void) 
+	void Effect::Close(void) 
 	{
 		if(chunk != NULL) {
 			Mix_FreeChunk(chunk);

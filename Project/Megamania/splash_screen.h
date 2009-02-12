@@ -12,7 +12,7 @@
 
 #include "SDL.h"
 #include "game_config.h"
-#include "sdl_sound.h"
+#include "sdl_effect.h"
 #include "abstract_screen.h"
 #include "video_exception.h"
 
@@ -26,12 +26,12 @@ namespace Megamania
 			/** surface que representa a mensagem do splash_screen*/
 			SDL_Surface *msg;
 			/** Efeito sonoro que será tocado quando a tela for iniciada*/
-			SDL_Sound   *stfSound; //abreviação para smell the fun Sound
+			Effect   *stfSound; //abreviação para smell the fun Sound
 		public:
 			SplashScreen(SDL_Surface *)throw(SDLVideoException);
 			~SplashScreen(void);
 			SDL_Surface *GetMsg(void)const;
-			SDL_Sound * GetSound(void)const;
+			Effect * GetSound(void)const;
 			void Init(void);
 			void Execute(void);
 			void Event(SDL_Event *);
