@@ -7,10 +7,10 @@
  ***************************************************************/
 #include "abstract_level.h"
 #include "user_event_type.h"
+#include "game_controller.h"
 
 /** objeto global para o tratamento de eventos*/
 extern SDL_Event event;
-
 
 namespace Megamania
 {
@@ -125,9 +125,9 @@ namespace Megamania
 				}
 			}	
 		}		
-		hud->Draw();
+		//hud->Draw();
 		//hud->Empty();
-		//hud->Full();
+		hud->Empty();
 		megamania->Draw(screen);
 		SDL_Flip(screen);
 	}
