@@ -145,7 +145,7 @@ namespace Megamania
 			case LEVEL1_FINISH_EVENT:
 				//TODO should be level2
 				levelScreen = new LevelScreen1(screen);		
-				levelScreen->SetShipCount(LEVEL_2_NUMBER_SHIPS);
+				levelScreen->SetShipCount(LEVEL_1_NUMBER_SHIPS);
 			default:
 				levelScreen = new LevelScreen1(screen);		
 				levelScreen->SetShipCount(LEVEL_1_NUMBER_SHIPS);
