@@ -9,6 +9,7 @@
 
 namespace Megamania
 {
+
 	/***************************************************************
 	 * Construtor default que cria um novo objeto AbstractLevel
 	 * associando o mesmo com a Tela da aplicação
@@ -18,6 +19,7 @@ namespace Megamania
 	 **************************************************************/
 	AbstractLevel::AbstractLevel(SDL_Surface *screen)throw(SDLVideoException) : AbstractScreen(screen)
 	{   
+		hud = HUD::GetInstance();
 	}
 
 	/***************************************************************
@@ -116,6 +118,9 @@ namespace Megamania
 				}
 			}	
 		}		
+		hud->Draw();
+		//hud->Empty();
+		//hud->Full();
 		megamania->Draw(screen);
 		SDL_Flip(screen);
 	}

@@ -10,6 +10,7 @@
 
 #include "ship.h"
 #include "enemy.h"
+#include "hud.h"
 #include "video_exception.h"
 #include "abstract_screen.h"
 #include <vector>
@@ -27,6 +28,8 @@ namespace Megamania
 			bool levelComplete;
 			/** variavel que indica a quantidade de naves por level*/
 			Uint16 shipCount;
+			/** referencia para o Objeto HUD*/
+			HUD *hud;
 		public:
 			AbstractLevel(SDL_Surface *)throw(SDLVideoException);
 			~AbstractLevel(void);
