@@ -13,6 +13,7 @@
 #include "game_config.h"
 #include "SDL.h"
 #include "splash_screen.h"
+#include "ship.h"
 #include "level_screen_1.h"
 #include "menu_screen.h"
 #include "abstract_screen.h"
@@ -47,7 +48,8 @@ namespace Megamania
 			MenuScreen *menuScreen;
 			/** Objeto que repreenta o jogo em si*/
 			LevelScreen *levelScreen;
-
+			/** objeto que representa a nave principal do jogo*/
+			Ship *megamania;
 			GameController(void);
 		public:
 			static GameController & GetInstance(void) 
