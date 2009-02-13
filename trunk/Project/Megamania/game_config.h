@@ -63,6 +63,15 @@
 #define PATH_MENU_MUSIC "loop_menu.ogg"
 #define PATH_MENU_SELECT "menu_select.wav"
 #define PATH_MENU_VALIDATE "menu_validate.wav"
+#define PATH_PANEL_HUD "panel.png"
+#define PATH_ENERGY_BAR_HUD "enerybar.png"
+#define PATH_ENERGY_BAR2_HUD "energybar_2.png"
+#define PATH_SHIP_ICON "life_icon.png"
+#define PATH_BAR_HUD "bar.png"
+#define POINT_BY_DECREMENT_HUD 100
+#define HUD_FONT MENU_FONT
+#define SCORE_FONT_SIZE 40
+#define HUD_DELAY 15
 
 static SDL_Surface *screen = SDL_SetVideoMode(WIDTH_SCREEN, HEIGHT_SCREEN, BPP, SDL_SWSURFACE|SDL_DOUBLEBUF);
 
