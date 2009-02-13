@@ -6,10 +6,14 @@
  *
  ***************************************************************/
 #include "abstract_level.h"
+#include "user_event_type.h"
+
+/** objeto global para o tratamento de eventos*/
+extern SDL_Event event;
+
 
 namespace Megamania
 {
-
 	/***************************************************************
 	 * Construtor default que cria um novo objeto AbstractLevel
 	 * associando o mesmo com a Tela da aplicação
@@ -106,6 +110,9 @@ namespace Megamania
 						megamania->SetVisible(false);
 						enemyBullet->SetVisible(false);
 						levelComplete = true;
+						event.type = SDL_USEREVENT;
+						event.user.code = LEVEL1_FINISH_EVENT;
+						SDL_PushEvent(&event);
 						return;
 					}
 					if((bullet.IsVisible())&&(enemy->CollidesWith(bullet))) {
