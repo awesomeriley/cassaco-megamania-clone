@@ -31,6 +31,7 @@ namespace Megamania
 		running = false;
 		splashScreen = new SplashScreen(screen);
 		currentScreen = dynamic_cast<AbstractScreen *>(splashScreen);
+		megamania = new Ship(MEGAMANIA, MEGAMANIA_WIDTH, MEGAMANIA_HEIGHT);
 	}			
 
 	/*******************************************************************************
@@ -136,8 +137,11 @@ namespace Megamania
 		screen->clip_rect.w = WIDTH_SCREEN;
 		screen->clip_rect.h = HEIGHT_SCREEN;
 		levelScreen = new LevelScreen(screen);
+		levelScreen->SetMegamania(megamania);
+		levelScreen->SetShipCount(LEVEL_1_NUMBER_SHIPS);
 		SDL_EnableKeyRepeat(REPEAT_DELAY, REPEAT_INTERVAL);
-		currentScreen = dynamic_cast<AbstractScreen *>(levelScreen);
+		currentScreen = dynamic_cast<AbstractLevel *>(levelScreen);
+		levelScreen->Init();
 		levelScreen->Execute();
 	}
 }

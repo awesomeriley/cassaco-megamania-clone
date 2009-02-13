@@ -252,10 +252,6 @@
 				Name="Screen"
 				>
 				<File
-					RelativePath=".\abstract_level.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\abstract_screen.cpp"
 					>
 				</File>
@@ -296,6 +292,10 @@
 				Name="Level"
 				>
 				<File
+					RelativePath=".\abstract_level.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\level_screen_1.cpp"
 					>
 				</File>
@@ -333,10 +333,6 @@
 			<Filter
 				Name="Screen"
 				>
-				<File
-					RelativePath=".\abstract_level.h"
-					>
-				</File>
 				<File
 					RelativePath=".\abstract_screen.h"
 					>
@@ -449,6 +445,10 @@
 			<Filter
 				Name="Level"
 				>
+				<File
+					RelativePath=".\abstract_level.h"
+					>
+				</File>
 				<File
 					RelativePath=".\level_screen_1.h"
 					>

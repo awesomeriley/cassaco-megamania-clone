@@ -5,7 +5,6 @@
  * Author Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
  *
  ***************************************************************/
-#include "ship.h"
 #include "level_screen_1.h"
 
 namespace Megamania
@@ -17,19 +16,8 @@ namespace Megamania
 	 * SDL_Surface *screen -> indica a tela do jogo
 	 * 
 	 **************************************************************/
-	LevelScreen::LevelScreen(SDL_Surface *screen)throw(SDLVideoException) : AbstractScreen(screen)
-	{   
-		Init();
-	}
-
-	/***************************************************************
-	 * Destruidor responsavel por desalocar todas as imagens
-	 * utilizadas pela SplashScreen
-	 *
-	 **************************************************************/
-	LevelScreen::~LevelScreen() 
-	{    
-		Clear();
+	LevelScreen::LevelScreen(SDL_Surface *screen)throw(SDLVideoException) : AbstractLevel(screen)
+	{		
 	}
 
 	/***************************************************************
@@ -55,89 +43,7 @@ namespace Megamania
 				enemies.push_back(space);
 			}
 		}
-
-		megamania = new Ship(MEGAMANIA, MEGAMANIA_WIDTH, MEGAMANIA_HEIGHT);
 		megamania->SetPosition(WIDTH_SCREEN >> 1, static_cast<int>(static_cast<float>(HEIGHT_SCREEN) / 1.4));
-		megamania->SetFrame(2);
-		
-	}
-
-	/***************************************************************
-	 * Função que representa o ponto de entrada para a execução da 
-	 * fase
-	 *
-	 **************************************************************/
-	void LevelScreen::Execute(void) 
-	{
-		Draw();
-	}
-
-	/***************************************************************
-	 * Função de callback chamada pelo gerenciador de eventos, esta
-	 * função representa o ponto de entrada para o tratamento da 
-	 * da lógica da classe	
-	 *
-	 **************************************************************/
-	void LevelScreen::Event(SDL_Event *event) 
-	{
-		megamania->Event(event);
-	}
-
-	/***************************************************************
-	 * Função responsavel por repintar toda a tela
-	 *
-	 **************************************************************/	
-	void LevelScreen::Draw(void) 
-	{	
-		if(!levelComplete){
-			SpaceShip1 *space= NULL;
-			int randomShootShipNumber = 1 + rand() % 10;
-
-			SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
-			Bullet &bullet = megamania->GetBullet();
-			Bullet *spaceBullet = NULL;
-			for(Uint32 i = 0; i < LEVEL_1_NUMBER_SHIPS; ++i) {
-				space = dynamic_cast<SpaceShip1 *>(enemies[i]);
-				spaceBullet = &space->GetBullet();
-				if(space->IsVisible()) {
-					if(i == randomShootShipNumber && !space->GetBullet().IsVisible()){
-						space->Shoot();
-					}		
-					space->Draw(screen);
-					space->NextFrame();
-					space->Update();
-					
-					if(spaceBullet->IsVisible() && megamania->IsVisible() && megamania->CollidesWith(*spaceBullet)){
-						megamania->SetVisible(false);
-						spaceBullet->SetVisible(false);
-						levelComplete = true;
-						return;
-					}
-
-					if((bullet.IsVisible())&&(space->CollidesWith(bullet))) {
-						space->SetVisible(false);
-						bullet.SetVisible(false);
-					}
-				}else if(spaceBullet->IsVisible()){
-					spaceBullet->Draw(screen);
-					spaceBullet->Update(Megamania::Bullet::Direction::DOWN);
-				}
-			}	
-		}
-		
-		megamania->Draw(screen);
-		SDL_Flip(screen);
-	}
-
-	/***************************************************************
-	 * Função responsavel por desalocar todos os recursos alocados
-	 * pela tela, esta funçao deverá ser chamada por ultimo
-	 *
-	 **************************************************************/
-	void LevelScreen::Clear(void) 
-	{
-		for(Uint32 i = 0; i < LEVEL_1_NUMBER_SHIPS; ++i) {
-			delete enemies[i];
-		}
+		megamania->SetFrame(2);		
 	}
 }
