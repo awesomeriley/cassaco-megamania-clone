@@ -16,7 +16,7 @@ namespace Megamania
 	 * SDL_Surface *screen -> indica a tela do jogo
 	 * 
 	 **************************************************************/
-	LevelScreen::LevelScreen(SDL_Surface *screen)throw(SDLVideoException) : AbstractLevel(screen)
+	LevelScreen1::LevelScreen1(SDL_Surface *screen)throw(SDLVideoException) : AbstractLevel(screen)
 	{		
 	}
 
@@ -25,7 +25,7 @@ namespace Megamania
 	 * inimigas e tambem a posição da nave Megamania
 	 *
 	 **************************************************************/
-	void LevelScreen::Init() 
+	void LevelScreen1::Init() 
 	{
 		levelComplete = false;
 		int w = WIDTH_SCREEN;

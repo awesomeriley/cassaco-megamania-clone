@@ -47,7 +47,7 @@ namespace Megamania
 			/** Objeto que repreenta o Menu do jogo*/
 			MenuScreen *menuScreen;
 			/** Objeto que repreenta o jogo em si*/
-			LevelScreen *levelScreen;
+			AbstractLevel *levelScreen;
 			/** objeto que representa a nave principal do jogo*/
 			Ship *megamania;
 			GameController(void);
@@ -61,7 +61,7 @@ namespace Megamania
 			}
 			void InitSpashScreen(void);
 			void InitMenuScreen(void);
-			void InitGameScreen(void);			
+			void InitGameScreen(int);			
 			void OnGameInit(void);
 			void OnGameLoop(void);
 			void OnGameStop(void);

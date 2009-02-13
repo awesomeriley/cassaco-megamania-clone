@@ -53,6 +53,9 @@
 #define LEVEL_1_NUMBER_SHIPS 15
 #define LEVEL_1_SHIPS_ROW 3
 #define LEVEL_1_SHIPS_COL 5
+#define LEVEL_2_NUMBER_SHIPS 20
+#define LEVEL_2_SHIPS_ROW 4
+#define LEVEL_2_SHIPS_COL 4
 #define PATH_BULLET "bullet.png"
 #define BULLET_WIDTH 8
 #define BULLET_HEIGHT 24

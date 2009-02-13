@@ -13,10 +13,10 @@
 
 namespace Megamania
 {
-	class LevelScreen : public AbstractLevel
+	class LevelScreen1 : public AbstractLevel
 	{
 		public:
-			LevelScreen(SDL_Surface *)throw(SDLVideoException);
+			LevelScreen1(SDL_Surface *)throw(SDLVideoException);
 			void Init(void);
 	};
 }
