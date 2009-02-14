@@ -43,8 +43,8 @@ namespace Megamania
 		rect.h = panel->clip_rect.h;
 		rect.x = 0;
 		rect.y = surface->clip_rect.h - rect.h;
-		bar->clip_rect.x = rect.w >> 3;
-		bar->clip_rect.y = rect.y + (rect.h >> 2); 		
+		bar->clip_rect.x = BAR_POSITION_X;
+		bar->clip_rect.y = BAR_POSITION_Y; 		
 		energyBar->clip_rect.y = bar->clip_rect.y;
 		energyBar2->clip_rect.x = bar->clip_rect.w - energyBar2->clip_rect.w;
 		energyBar2->clip_rect.y = bar->clip_rect.y;

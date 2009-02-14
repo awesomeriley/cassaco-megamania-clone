@@ -33,6 +33,8 @@ namespace Megamania
 	void AbstractLevel::SetMegamania(Ship *megamania)
 	{
 		this->megamania = megamania;
+		//TODO TAKE IT OFF!!!
+		megamania->SetVisible(true);
 	}
 
 	/***************************************************************
@@ -91,6 +93,7 @@ namespace Megamania
 	void AbstractLevel::Draw(void) 
 	{	
 		if(!levelComplete){
+			bool hasEnemyAlive = false;
 			Enemy *enemy= NULL;
 			int randomShootShipNumber = 1 + rand() % shipCount;
 			SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
@@ -100,6 +103,7 @@ namespace Megamania
 				enemy = dynamic_cast<Enemy *>(enemies[i]);
 				enemyBullet = &enemy->GetBullet();
 				if(enemy->IsVisible()) {
+					hasEnemyAlive = true;
 					if(i == randomShootShipNumber && !enemy->GetBullet().IsVisible()){
 						enemy->Shoot();
 					}		
@@ -109,11 +113,7 @@ namespace Megamania
 					if(enemyBullet->IsVisible() && megamania->IsVisible() && megamania->CollidesWith(*enemyBullet)){
 						megamania->SetVisible(false);
 						enemyBullet->SetVisible(false);
-						levelComplete = true;
-						event.type = SDL_USEREVENT;
-						event.user.code = LEVEL1_FINISH_EVENT;
-						SDL_PushEvent(&event);
-						return;
+						FinishLevel();
 					}
 					if((bullet.IsVisible())&&(enemy->CollidesWith(bullet))) {
 						enemy->SetVisible(false);
@@ -124,12 +124,24 @@ namespace Megamania
 					enemyBullet->Update(Megamania::Bullet::Direction::DOWN);
 				}
 			}	
+			
+			if(!hasEnemyAlive){
+					FinishLevel();
+			}
 		}		
-		//hud->Draw();
-		//hud->Empty();
+		
 		hud->Empty();
 		megamania->Draw(screen);
 		SDL_Flip(screen);
+	}
+
+	/** Finaliza o level */
+	void AbstractLevel::FinishLevel(void){
+		
+		levelComplete = true;
+		event.type = SDL_USEREVENT;
+		event.user.code = LEVEL1_FINISH_EVENT;
+		SDL_PushEvent(&event);
 	}
 
 	/***************************************************************
