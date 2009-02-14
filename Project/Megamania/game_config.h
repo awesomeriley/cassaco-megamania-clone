@@ -46,6 +46,8 @@
 #define MEGAMANIA_WIDTH 50
 #define MEGAMANIA_HEIGHT 85
 #define MEGAMANIA_OFFSET 10
+
+/** level 1*/
 #define PATH_SPACE_SHIP_1 "enemy_1.png"
 #define SPACE_SHIP_1_WIDTH 50
 #define SPACE_SHIP_1_HEIGHT 25
@@ -53,9 +55,17 @@
 #define LEVEL_1_NUMBER_SHIPS 15
 #define LEVEL_1_SHIPS_ROW 3
 #define LEVEL_1_SHIPS_COL 5
-#define LEVEL_2_NUMBER_SHIPS 20
-#define LEVEL_2_SHIPS_ROW 4
-#define LEVEL_2_SHIPS_COL 4
+
+/** level 2*/
+#define PATH_SPACE_SHIP_2 "enemy_2.png"
+#define SPACE_SHIP_2_WIDTH 50
+#define SPACE_SHIP_2_HEIGHT 25
+#define SPACE_SHIP_2_OFFSET 8
+#define LEVEL_2_NUMBER_SHIPS 15
+#define LEVEL_2_SHIPS_ROW 3
+#define LEVEL_2_SHIPS_COL 5
+
+
 #define PATH_BULLET "bullet.png"
 #define BULLET_WIDTH 8
 #define BULLET_HEIGHT 24

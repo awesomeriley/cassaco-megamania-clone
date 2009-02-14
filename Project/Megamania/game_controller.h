@@ -15,6 +15,7 @@
 #include "splash_screen.h"
 #include "ship.h"
 #include "level_screen_1.h"
+#include "level_screen_2.h"
 #include "menu_screen.h"
 #include "abstract_screen.h"
 
@@ -61,7 +62,7 @@ namespace Megamania
 			}
 			void InitSpashScreen(void);
 			void InitMenuScreen(void);
-			void InitGameScreen(int);			
+			void InitGameScreen(int, SDL_Event);			
 			void OnGameInit(void);
 			void OnGameLoop(void);
 			void OnGameStop(void);
