@@ -25,7 +25,7 @@ namespace Megamania
 			/** objeto que representa a nave principal do jogo*/
 			Ship *megamania;
 			/** flag que indica se o jogo já esta completo ou não*/
-			bool levelComplete;
+			int levelComplete;
 			/** variavel que indica a quantidade de naves por level*/
 			Uint16 shipCount;
 			/** referencia para o Objeto HUD*/

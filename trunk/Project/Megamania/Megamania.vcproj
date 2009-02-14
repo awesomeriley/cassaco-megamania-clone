@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="Megamania"
 	ProjectGUID="{A8D7EB5D-27E6-4FD9-A114-94C1EA7893F8}"
 	RootNamespace="Megamania"
@@ -291,6 +291,10 @@
 					RelativePath=".\space_ship_1.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\space_ship_2.cpp"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="Level"
@@ -301,6 +305,10 @@
 				</File>
 				<File
 					RelativePath=".\level_screen_1.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\level_screen_2.cpp"
 					>
 				</File>
 			</Filter>
@@ -449,6 +457,10 @@
 					RelativePath=".\space_ship_1.h"
 					>
 				</File>
+				<File
+					RelativePath=".\space_ship_2.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="Level"
@@ -459,6 +471,10 @@
 				</File>
 				<File
 					RelativePath=".\level_screen_1.h"
+					>
+				</File>
+				<File
+					RelativePath=".\level_screen_2.h"
 					>
 				</File>
 			</Filter>

@@ -126,7 +126,8 @@ namespace Megamania
 			}	
 			
 			if(!hasEnemyAlive){
-					FinishLevel();
+				levelComplete = 1;		
+				FinishLevel();
 			}
 		}		
 		
@@ -138,9 +139,9 @@ namespace Megamania
 	/** Finaliza o level */
 	void AbstractLevel::FinishLevel(void){
 		
-		levelComplete = true;
 		event.type = SDL_USEREVENT;
 		event.user.code = LEVEL1_FINISH_EVENT;
+		event.user.data1 = &levelComplete;
 		SDL_PushEvent(&event);
 	}
 

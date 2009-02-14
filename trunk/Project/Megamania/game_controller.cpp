@@ -75,10 +75,10 @@ namespace Megamania
 								InitMenuScreen();
 								break;
 							case MENU_SCREEN_FINISH_EVENT:
-								InitGameScreen(MENU_SCREEN_FINISH_EVENT);
+								InitGameScreen(MENU_SCREEN_FINISH_EVENT, event);
 								break;
 							case LEVEL1_FINISH_EVENT:
-								InitGameScreen(LEVEL1_FINISH_EVENT);
+								InitGameScreen(LEVEL1_FINISH_EVENT, event);
 								break;
 						}
 						break;
@@ -133,18 +133,21 @@ namespace Megamania
 	/*******************************************************************************
 	 * 
 	 *******************************************************************************/
-	void GameController::InitGameScreen(int completeLevelNumber) 
+	void GameController::InitGameScreen(int completeLevelNumber, SDL_Event event) 
 	{
 		//delete menuScreen;
 		screen->clip_rect.x = screen->clip_rect.y = 0;
 		screen->clip_rect.w = WIDTH_SCREEN;
 		screen->clip_rect.h = HEIGHT_SCREEN;
-		
+		int *value = (int*)event.user.data1;
 		switch(completeLevelNumber){
 			
 			case LEVEL1_FINISH_EVENT:
-				levelScreen = new LevelScreen1(screen);		
-				levelScreen->SetShipCount(LEVEL_1_NUMBER_SHIPS);
+				if(*value){
+					levelScreen = new LevelScreen2(screen);		
+					levelScreen->SetShipCount(LEVEL_2_NUMBER_SHIPS);
+					break;
+				}
 			default:
 				levelScreen = new LevelScreen1(screen);		
 				levelScreen->SetShipCount(LEVEL_1_NUMBER_SHIPS);
