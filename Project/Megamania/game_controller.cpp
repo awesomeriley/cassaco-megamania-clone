@@ -135,7 +135,7 @@ namespace Megamania
 	 *******************************************************************************/
 	void GameController::InitGameScreen(int completeLevelNumber) 
 	{
-		delete menuScreen;
+		//delete menuScreen;
 		screen->clip_rect.x = screen->clip_rect.y = 0;
 		screen->clip_rect.w = WIDTH_SCREEN;
 		screen->clip_rect.h = HEIGHT_SCREEN;
@@ -143,7 +143,6 @@ namespace Megamania
 		switch(completeLevelNumber){
 			
 			case LEVEL1_FINISH_EVENT:
-				//TODO should be level2
 				levelScreen = new LevelScreen1(screen);		
 				levelScreen->SetShipCount(LEVEL_1_NUMBER_SHIPS);
 			default:

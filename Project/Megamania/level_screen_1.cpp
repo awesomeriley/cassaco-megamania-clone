@@ -16,9 +16,7 @@ namespace Megamania
 	 * SDL_Surface *screen -> indica a tela do jogo
 	 * 
 	 **************************************************************/
-	LevelScreen1::LevelScreen1(SDL_Surface *screen)throw(SDLVideoException) : AbstractLevel(screen)
-	{		
-	}
+	LevelScreen1::LevelScreen1(SDL_Surface *screen)throw(SDLVideoException) : AbstractLevel(screen){}
 
 	/***************************************************************
 	 * Função responsavel por iniciar a posição de todas as naves

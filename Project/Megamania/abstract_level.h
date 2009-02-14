@@ -30,6 +30,8 @@ namespace Megamania
 			Uint16 shipCount;
 			/** referencia para o Objeto HUD*/
 			HUD *hud;
+			/** finaliza o level */
+			void FinishLevel(void);
 		public:
 			AbstractLevel(SDL_Surface *)throw(SDLVideoException);
 			~AbstractLevel(void);

@@ -71,6 +71,8 @@
 #define PATH_ENERGY_BAR2_HUD "energybar_2.png"
 #define PATH_SHIP_ICON "life_icon.png"
 #define PATH_BAR_HUD "bar.png"
+#define BAR_POSITION_X 150
+#define BAR_POSITION_Y 522
 #define POINT_BY_DECREMENT_HUD 100
 #define HUD_FONT MENU_FONT
 #define SCORE_FONT_SIZE 40
