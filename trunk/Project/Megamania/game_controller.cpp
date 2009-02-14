@@ -80,6 +80,9 @@ namespace Megamania
 							case LEVEL1_FINISH_EVENT:
 								InitGameScreen(LEVEL1_FINISH_EVENT, event);
 								break;
+							case LEVEL2_FINISH_EVENT:
+								InitGameScreen(LEVEL2_FINISH_EVENT, event);
+								break;
 						}
 						break;
 					default:
@@ -146,8 +149,20 @@ namespace Megamania
 				if(*value){
 					levelScreen = new LevelScreen2(screen);		
 					levelScreen->SetShipCount(LEVEL_2_NUMBER_SHIPS);
-					break;
+				}else{
+					levelScreen = new LevelScreen1(screen);		
+					levelScreen->SetShipCount(LEVEL_1_NUMBER_SHIPS);
 				}
+				break;
+			case LEVEL2_FINISH_EVENT:
+				if(*value){
+					levelScreen = new LevelScreen1(screen);		
+					levelScreen->SetShipCount(LEVEL_1_NUMBER_SHIPS);
+				}else{
+					levelScreen = new LevelScreen2(screen);		
+					levelScreen->SetShipCount(LEVEL_2_NUMBER_SHIPS);
+				}
+				break;
 			default:
 				levelScreen = new LevelScreen1(screen);		
 				levelScreen->SetShipCount(LEVEL_1_NUMBER_SHIPS);

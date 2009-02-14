@@ -140,7 +140,7 @@ namespace Megamania
 	void AbstractLevel::FinishLevel(void){
 		
 		event.type = SDL_USEREVENT;
-		event.user.code = LEVEL1_FINISH_EVENT;
+		event.user.code = levelFinishEvent;
 		event.user.data1 = &levelComplete;
 		SDL_PushEvent(&event);
 	}

@@ -6,6 +6,7 @@
  *
  ***************************************************************/
 #include "level_screen_1.h"
+#include "user_event_type.h"
 
 namespace Megamania
 {
@@ -25,6 +26,7 @@ namespace Megamania
 	 **************************************************************/
 	void LevelScreen1::Init() 
 	{
+		levelFinishEvent = LEVEL1_FINISH_EVENT;
 		levelComplete = false;
 		int w = WIDTH_SCREEN;
 		int lCol = LEVEL_1_SHIPS_COL;
