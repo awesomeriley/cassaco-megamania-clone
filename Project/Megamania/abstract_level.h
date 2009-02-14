@@ -30,6 +30,10 @@ namespace Megamania
 			Uint16 shipCount;
 			/** referencia para o Objeto HUD*/
 			HUD *hud;
+			/* variavel que guarda o codigo encapsulado no SDL_event 
+			 * para indicar qual o numero da fase
+			 */
+			int levelFinishEvent;
 			/** finaliza o level */
 			void FinishLevel(void);
 		public:
