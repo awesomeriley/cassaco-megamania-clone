@@ -65,7 +65,6 @@
 #define LEVEL_2_SHIPS_ROW 3
 #define LEVEL_2_SHIPS_COL 5
 
-
 #define PATH_BULLET "bullet.png"
 #define BULLET_WIDTH 8
 #define BULLET_HEIGHT 24
@@ -87,6 +86,7 @@
 #define HUD_FONT MENU_FONT
 #define SCORE_FONT_SIZE 40
 #define HUD_DELAY 15
+#define EFFECT_HUD "menu_select.wav"
 
 static SDL_Surface *screen = SDL_SetVideoMode(WIDTH_SCREEN, HEIGHT_SCREEN, BPP, SDL_SWSURFACE|SDL_DOUBLEBUF);
 
