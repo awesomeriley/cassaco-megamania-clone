@@ -58,6 +58,7 @@ namespace Megamania
 		for(int i = frames.size(); --i >= 0;) {
 			SDL_free(frames[i]);
 		}
+		frames.clear();
 	}
 
 	/*************************************************************
@@ -72,7 +73,7 @@ namespace Megamania
 		int w = image->w;
 		int maxFrameWidth = (w / frameWidth);
 		for(Uint32 i = 0; i < nFrames; ++i) {
-			SDL_Rect *rect = static_cast<SDL_Rect *>(SDL_malloc(sizeof(SDL_Rect)));
+			SDL_Rect *rect = reinterpret_cast<SDL_Rect *>(SDL_malloc(sizeof(SDL_Rect)));
 			rect->x = (i * frameWidth) % w;
 			rect->y = (i / maxFrameWidth) * frameHeight;
 			rect->w = frameWidth;
@@ -125,7 +126,7 @@ namespace Megamania
 	 *************************************************************/
 	void Sprite::SetFrame(int frameIndex){
 	
-		if(frameIndex >= 0 && frameIndex < nFrames){
+		if((frameIndex >= 0)&&(frameIndex < nFrames)){
 			cursor = frameIndex;
 		}
 	}
