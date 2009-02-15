@@ -10,10 +10,10 @@
 #ifndef __GAME_CONTROLLER_H__
 #define __GAME_CONTROLLER_H__
 
-#include "game_config.h"
 #include "SDL.h"
-#include "splash_screen.h"
 #include "ship.h"
+#include "game_config.h"
+#include "splash_screen.h"
 #include "level_screen_1.h"
 #include "level_screen_2.h"
 #include "menu_screen.h"
