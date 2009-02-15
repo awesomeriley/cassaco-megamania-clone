@@ -32,8 +32,7 @@ namespace Megamania
 	 **************************************************************/
 	void AbstractLevel::SetMegamania(Ship *megamania)
 	{
-		this->megamania = megamania;
-		//TODO TAKE IT OFF!!!
+		this->megamania = megamania;		
 		megamania->SetVisible(true);
 	}
 
@@ -155,5 +154,6 @@ namespace Megamania
 		for(Uint32 i = 0; i < LEVEL_1_NUMBER_SHIPS; ++i) {
 			delete enemies[i];
 		}
+		enemies.clear();
 	}
 }
