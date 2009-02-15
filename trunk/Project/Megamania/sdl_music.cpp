@@ -102,6 +102,18 @@ namespace Megamania
 	}
 
 	/***************************************************************
+	 * Função responsavel por tocar a musica, a musica será tocada
+	 * o numero de vezes informados no parametro, caso seja passado
+	 * como parametro o valor -1, indica a musica tocará indefini-
+	 * damente
+	 *
+	 **************************************************************/
+	int Music::Play(int loops)
+	{
+		return Mix_PlayMusic(music, loops); 
+	}
+
+	/***************************************************************
 	 * Função responsavel por parar a execução da musica
 	 *
 	 **************************************************************/
