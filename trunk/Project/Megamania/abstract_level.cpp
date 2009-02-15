@@ -24,6 +24,8 @@ namespace Megamania
 	AbstractLevel::AbstractLevel(SDL_Surface *screen)throw(SDLVideoException) : AbstractScreen(screen)
 	{   
 		hud = HUD::GetInstance();
+		lastTimer = SDL_GetTicks();
+		timerAcum = currentTimer = 0;
 	}
 
 	/***************************************************************
@@ -52,6 +54,10 @@ namespace Megamania
 	 **************************************************************/
 	void AbstractLevel::Init() 
 	{
+		megamania->SetPosition(WIDTH_SCREEN >> 1, hud->GetRect().y - megamania->GetHeightFrame());
+		megamania->SetFrame(2);				
+		Draw();
+		hud->Full();		
 	}
 
 	/***************************************************************
@@ -97,13 +103,13 @@ namespace Megamania
 			int randomShootShipNumber = 1 + rand() % shipCount;
 			SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
 			Bullet &bullet = megamania->GetBullet();
-			Bullet *enemyBullet = NULL;
+			Bullet *enemyBullet = NULL;			
 			for(Uint32 i = 0; i < shipCount; ++i) {
 				enemy = dynamic_cast<Enemy *>(enemies[i]);
 				enemyBullet = &enemy->GetBullet();
 				if(enemy->IsVisible()) {
 					hasEnemyAlive = true;
-					if(i == randomShootShipNumber && !enemy->GetBullet().IsVisible()){
+					if((i == randomShootShipNumber)&&(!enemy->GetBullet().IsVisible())){
 						enemy->Shoot();
 					}		
 					enemy->Draw(screen);
@@ -111,12 +117,13 @@ namespace Megamania
 					enemy->Update();					
 					if(enemyBullet->IsVisible() && megamania->IsVisible() && megamania->CollidesWith(*enemyBullet)){
 						megamania->SetVisible(false);
-						enemyBullet->SetVisible(false);
+						enemyBullet->SetVisible(false);				
 						FinishLevel();
 					}
 					if((bullet.IsVisible())&&(enemy->CollidesWith(bullet))) {
 						enemy->SetVisible(false);
 						bullet.SetVisible(false);
+						hud->IncrementPoint(enemy->GetPointValue());
 					}
 				} else if(enemyBullet->IsVisible()) {
 					enemyBullet->Draw(screen);
@@ -129,8 +136,17 @@ namespace Megamania
 				FinishLevel();
 			}
 		}		
-		
-		hud->Empty();
+		currentTimer = SDL_GetTicks();
+		if(currentTimer >= lastTimer) {
+			timerAcum += (currentTimer - lastTimer);
+		} 
+		lastTimer = currentTimer;
+		if(timerAcum >= DELAY) {
+			if(hud->Draw()) {
+				exit(0);
+			}
+			timerAcum = 0;
+		}		
 		megamania->Draw(screen);
 		SDL_Flip(screen);
 	}

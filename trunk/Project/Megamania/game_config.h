@@ -52,6 +52,7 @@
 #define SPACE_SHIP_1_WIDTH 50
 #define SPACE_SHIP_1_HEIGHT 25
 #define SPACE_SHIP_1_OFFSET 8
+#define SPACE_SHIP_1_SCORE 20
 #define LEVEL_1_NUMBER_SHIPS 15
 #define LEVEL_1_SHIPS_ROW 3
 #define LEVEL_1_SHIPS_COL 5
@@ -61,6 +62,7 @@
 #define SPACE_SHIP_2_WIDTH 50
 #define SPACE_SHIP_2_HEIGHT 25
 #define SPACE_SHIP_2_OFFSET 8
+#define SPACE_SHIP_2_SCORE 30
 #define LEVEL_2_NUMBER_SHIPS 15
 #define LEVEL_2_SHIPS_ROW 3
 #define LEVEL_2_SHIPS_COL 5
@@ -82,10 +84,12 @@
 #define PATH_BAR_HUD "bar.png"
 #define BAR_POSITION_X 150
 #define BAR_POSITION_Y 522
+#define BAR_WITDH 600
 #define POINT_BY_DECREMENT_HUD 100
 #define HUD_FONT MENU_FONT
 #define SCORE_FONT_SIZE 40
 #define HUD_DELAY 15
+#define HUD_DRAW_DELAY	500     // 1 sec * 1000 milli
 #define EFFECT_HUD "menu_select.wav"
 
 static SDL_Surface *screen = SDL_SetVideoMode(WIDTH_SCREEN, HEIGHT_SCREEN, BPP, SDL_SWSURFACE|SDL_DOUBLEBUF);
