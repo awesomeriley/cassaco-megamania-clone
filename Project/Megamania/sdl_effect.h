@@ -14,7 +14,6 @@
 #include "sdl_sound.h"
 #include "audio_exception.h"
 
-#define MIX_PLAY_FOREVER -1
 #define MIX_AVAILABLE_CHANNEL MIX_PLAY_FOREVER
 
 namespace Megamania

@@ -11,6 +11,8 @@
 
 #include "audio_exception.h"
 
+#define MIX_PLAY_FOREVER -1
+
 namespace Megamania
 {
 	class Sound
