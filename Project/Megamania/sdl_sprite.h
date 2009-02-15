@@ -58,7 +58,7 @@ namespace Megamania
 			const int GetFrameNumbers(void)const;
 			bool CollidesWith(Sprite&);
 			bool IsVisible(void);
-			void SetVisible(bool visible);
+			void SetVisible(bool);
 			virtual void Draw(SDL_Surface *);
 	};
 }
