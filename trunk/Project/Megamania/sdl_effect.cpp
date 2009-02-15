@@ -16,7 +16,7 @@ namespace Megamania
 	 * Effect, o construtor também irá iniciar o sistema
 	 * SDL_mixer
 	 **************************************************************/
-	Effect::Effect(void)
+	Effect::Effect(void) : Sound()
 	{
 	}
 

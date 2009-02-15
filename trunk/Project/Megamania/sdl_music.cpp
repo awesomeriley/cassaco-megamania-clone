@@ -21,7 +21,7 @@ namespace Megamania
 	 * Music, o construtor também irá iniciar o sistema
 	 * SDL_mixer
 	 **************************************************************/
-	Music::Music(void)
+	Music::Music(void) : Sound()
 	{
 	}
 
