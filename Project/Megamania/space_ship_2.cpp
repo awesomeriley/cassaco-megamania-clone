@@ -35,4 +35,14 @@ namespace Megamania
 			SetX(-GetWidthFrame());
 		}
 	}
+
+	/*************************************************************
+	 * Função que retorna a pontuação de cada nave, ou seja o
+	 * valor que cada nave acresce ao Score
+	 *
+	 *************************************************************/
+	int SpaceShip2::GetPointValue(void) 
+	{
+		return SPACE_SHIP_2_SCORE;	
+	}
 }

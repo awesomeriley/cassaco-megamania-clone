@@ -19,6 +19,7 @@ namespace Megamania
 		public: 
 			SpaceShip1(void)throw(SpriteException);
 			void Update(void);
+			int GetPointValue(void);
 	};
 }
 

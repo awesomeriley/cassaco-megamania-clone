@@ -43,9 +43,6 @@ namespace Megamania
 				enemies.push_back(space);
 			}
 		}		
-		megamania->SetPosition(WIDTH_SCREEN >> 1, hud->GetRect().y - megamania->GetHeightFrame());
-		megamania->SetFrame(2);		
-		Draw();
-		hud->Full();
+		AbstractLevel::Init();	
 	}
 }

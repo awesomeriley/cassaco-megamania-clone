@@ -36,6 +36,7 @@ namespace Megamania
 			~Enemy(void);
 			void Draw(SDL_Surface *);
 			virtual void Update(void) = 0;
+			virtual int GetPointValue(void) = 0;
 	};
 }
 

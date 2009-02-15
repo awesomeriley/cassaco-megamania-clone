@@ -30,24 +30,23 @@ namespace Megamania
 		SDL_SetColorKey(shipIcon, SDL_SRCCOLORKEY, SDL_MapRGB(shipIcon->format, 0, 0, 0));
 		energyBar = LoadImage(PATH_ENERGY_BAR_HUD);
 		energyBar2 = LoadImage(PATH_ENERGY_BAR2_HUD);
-		bar = LoadImage(PATH_BAR_HUD);
 		minP = 0;
 		maxP = 999999;
 		effect = new Effect();		
 		effect->Load(EFFECT_HUD);
 		font = new SDL_Font(HUD_FONT, SCORE_FONT_SIZE);
 		pointByDecrement = POINT_BY_DECREMENT_HUD;
-		point = 0;	
+		point = lifes = 0;	
 		surface = screen;
+		clipRect.x = clipRect.y = 0;
+		clipRect.w = surface->clip_rect.w;
+		clipRect.h = surface->clip_rect.h - panel->clip_rect.h;
 		rect.w = panel->clip_rect.w;
 		rect.h = panel->clip_rect.h;
 		rect.x = 0;
 		rect.y = surface->clip_rect.h - rect.h;
-		bar->clip_rect.x = BAR_POSITION_X;
-		bar->clip_rect.y = BAR_POSITION_Y; 		
-		energyBar->clip_rect.y = bar->clip_rect.y;
-		energyBar2->clip_rect.x = bar->clip_rect.w - energyBar2->clip_rect.w;
-		energyBar2->clip_rect.y = bar->clip_rect.y;
+		energyBar->clip_rect.y = BAR_POSITION_Y;
+		energyBar2->clip_rect.y = BAR_POSITION_Y;
 	}
 
 	/*************************************************************
@@ -66,7 +65,10 @@ namespace Megamania
 	 ************************************************************/
 	void HUD::IncrementPoint(int inc) 
 	{
-		this->point += inc;
+		this->point += inc;		
+		SDL_SetClipRect(surface, NULL);
+		UpdateScore();
+		SDL_SetClipRect(surface, &clipRect);
 	}
 
 	/*************************************************************
@@ -97,52 +99,28 @@ namespace Megamania
 	}
 	
 	/*************************************************************
-	 *
-	 *
-	 ************************************************************/
-	void HUD::SetOffsetEnergyBar(int)
-	{
-	}
-
-	/*************************************************************
-	 *
-	 *
-	 ************************************************************/
-	void HUD::IncrementEnergybar(void)
-	{
-	}
-	
-	/*************************************************************
-	 *
-	 *
-	 ************************************************************/
-	void HUD::DecrementEnergybar(void)
-	{
-	}
-	
-	/*************************************************************
 	 * Função responsavel por encher a barra de energias
 	 *
 	 ************************************************************/
 	void HUD::Full(void)
-	{
+	{	
 		SDL_BlitSurface(panel, NULL, surface, &rect);
-		SDL_BlitSurface(bar, NULL, surface, &bar->clip_rect);
 		UpdateLife();
 		UpdateScore();
-		register int w = bar->clip_rect.w;
 		register int offset = energyBar->clip_rect.w;
-		int x = bar->clip_rect.x;				
-		for(Uint32 i = 0; i < w; i += offset) {
+		int x = BAR_POSITION_X;				
+		effect->Play();
+		for(Uint32 i = 0; i < BAR_WITDH; i += offset) {
 			energyBar->clip_rect.x = x;
 			SDL_BlitSurface(energyBar, NULL, surface, &energyBar->clip_rect);	
 			SDL_Flip(surface);			
-			x += offset;
-			effect->Play();
+			x += offset;			
 			SDL_Delay(delay);
 		}
-		energyBar->clip_rect.x = bar->clip_rect.x;
-		surface->clip_rect.h -= rect.h;
+		cursor = BAR_WITDH + BAR_POSITION_X;
+		energyBar->clip_rect.x = BAR_POSITION_X;		
+		energyBar2->clip_rect.x = BAR_WITDH - energyBar2->clip_rect.w;		
+		SDL_SetClipRect(surface, &clipRect);
 	}
 	
 	/*************************************************************
@@ -176,7 +154,7 @@ namespace Megamania
 	 *
 	 ************************************************************/
 	void HUD::UpdateScore(void) 
-	{
+	{		
 		if((point >= minP)&&(point <= maxP)) {
 			int len = 0;
 			for(int i = 0; ; ++i) {
@@ -184,17 +162,22 @@ namespace Megamania
 				    len = sizeTable[i] + 1;
 					break;
 				}
-			}
+			}			
 			char *buffer = static_cast<char *>(SDL_malloc(sizeof(char) * len));
 			sprintf(buffer, "%d", point);
 			buffer[len - 1] = '\0';
 			SDL_Surface *text = font->RenderTextSolid(static_cast<char *>(buffer));
-			text->clip_rect.x = rect.w - text->clip_rect.w;
-			text->clip_rect.y = rect.y + rect.h - text->clip_rect.h;
-			SDL_BlitSurface(text, NULL, surface, &text->clip_rect);			
+			SDL_Rect r;
+			r.x = rect.w - text->clip_rect.w;
+			r.y = rect.y + rect.h - text->clip_rect.h;
+			r.w = text->clip_rect.w; 
+			r.h = text->clip_rect.h;					
+			SDL_BlitSurface(panel, &rect, surface, &r);			
+			SDL_BlitSurface(text, NULL, surface, &r);	
+			SDL_UpdateRect(surface, r.x, r.y, r.w, r.h);
 			SDL_FreeSurface(text);
 			SDL_free(buffer);
-		}
+		}		
 	}
 
 	/*************************************************************
@@ -210,15 +193,18 @@ namespace Megamania
 	 * Função responsavel por pintar o painel na surface
 	 *
 	 ************************************************************/
-	void HUD::Draw(void)
-	{				
-		surface->clip_rect.h += rect.h;
-		//SDL_BlitSurface(panel, NULL, surface, &rect);	
-		//UpdateScore();
-		//UpdateLife();
-		SDL_BlitSurface(energyBar2, NULL, surface, &energyBar2->clip_rect);	
-		energyBar2->clip_rect.x -= energyBar2->clip_rect.w;
-		SDL_Delay(2000);
-		surface->clip_rect.h -= rect.h;
+	bool HUD::Draw(void)
+	{						
+		SDL_SetClipRect(surface, NULL);
+		SDL_Rect rect;
+		rect.w = energyBar2->clip_rect.w;
+		rect.h = energyBar2->clip_rect.h;
+		rect.x = cursor - rect.w;
+		rect.y = BAR_POSITION_Y;
+		cursor -= rect.w;
+		SDL_BlitSurface(energyBar2, NULL, surface, &rect);
+		SDL_UpdateRect(surface, rect.x, rect.y, rect.w, rect.h);
+		SDL_SetClipRect(surface, &clipRect);
+		return rect.x == BAR_POSITION_X;
 	}
 }

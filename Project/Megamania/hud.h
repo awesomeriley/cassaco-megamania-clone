@@ -19,6 +19,8 @@ namespace Megamania
 		private:
 			/** retangulo usado para posicionar o componente HUD*/
 			SDL_Rect rect;
+			/** retangulo que indica a area que poderá ser pintada*/
+			SDL_Rect clipRect;
 			/** ponteiro para a unica instancia da classe*/
 			static HUD *singleton;
 			/** Objeto que indica onde o HUD será pintado*/
@@ -27,8 +29,6 @@ namespace Megamania
 			SDL_Font *font;
 			/** Objeto que representa o painel do HUD*/
 			SDL_Surface *panel;
-			/** Objeto que representa a barra do painel*/
-			SDL_Surface *bar;
 			/** 
 			 * Objeto que representa o energy Bar usado para incrementar
 			 * o painel
@@ -45,8 +45,6 @@ namespace Megamania
 			int point;
 			/** variavel que indica pontos a ser aplicado quando o HUD for decrementado*/
 			int pointByDecrement;
-			/** variavel que indica o offset do energy bar*/			
-			int offsetEB;
 			/** variavel que indica a pontuação minima*/
 			int minP;
 			/** variavel que indica a pontuação maxima*/
@@ -55,6 +53,8 @@ namespace Megamania
 			Effect *effect;
 			/** variavel que indica a quantidade de vidas*/
 			int lifes;
+			/** variavel que indica a posição atual a ser decrementada no HUD*/
+			int cursor;
 			/** variavel que indica o delay usado para desenhar a barra enchendo*/
 			const static int delay = HUD_DELAY;
 			HUD(void);
@@ -72,14 +72,11 @@ namespace Megamania
 			void SetLife(int);
 			void IncrementLife(void);
 			void DecrementLife(void);
-			void SetOffsetEnergyBar(int);
-			void IncrementEnergybar(void);
-			void DecrementEnergybar(void);
 			void Full(void);
 			void Empty(void);
 			void UpdateLife(void);
 			void UpdateScore(void);
-			void Draw(void);
+			bool Draw(void);
 	};
 }
 

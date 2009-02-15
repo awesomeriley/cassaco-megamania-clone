@@ -12,6 +12,7 @@
 #include "enemy.h"
 #include "hud.h"
 #include "video_exception.h"
+#include "game_config.h"
 #include "abstract_screen.h"
 #include <vector>
 
@@ -30,6 +31,14 @@ namespace Megamania
 			Uint16 shipCount;
 			/** referencia para o Objeto HUD*/
 			HUD *hud;
+			/** variavel que indica o tempo da ultima execução*/
+			int lastTimer;
+			/** variavel que indica o tempo atual da execução*/
+			int currentTimer;
+			/** variavel responsavel por acumular o tempo de execução*/
+			int timerAcum;
+			/** constante que indica o delay utilizado para a pintura*/
+			const static int DELAY = HUD_DRAW_DELAY;
 			/* variavel que guarda o codigo encapsulado no SDL_event 
 			 * para indicar qual o numero da fase
 			 */
