@@ -52,7 +52,7 @@ namespace Megamania
 		SplashScreen *splash = (SplashScreen *)param;
 		SDL_Surface *msg = splash->GetMsg();
 		rect.x = (screen->w >> 1) - (msg->w >> 1);
-		rect.y = (screen->h >> 1) + (msg->h) + (msg->h);
+		rect.y = (screen->h >> 1) + ((msg->h) << 1);
 		SDL_Rect clipRect;
 		clipRect.x = rect.x;
 		clipRect.y = rect.y;
@@ -141,7 +141,7 @@ namespace Megamania
 	{
 		logo = LoadImage(PATH_LOGO_IMAGE);
 		msg = LoadImage(PATH_MSG_IMAGE);
-		stfSound = new Effect();		
+		stfSound = new Effect();
 	}
 
 	/***************************************************************
@@ -188,7 +188,7 @@ namespace Megamania
 	void SplashScreen::Execute(void) 
 	{
 		stfSound->Load(PATH_FILE_AUDIO);
-		Uint32 wColor = 0xff;
+		Uint32 wColor = 0xff;    //white color
 		SDL_FillRect(screen, &screen->clip_rect, SDL_MapRGB(screen->format, wColor, wColor, wColor));
 		SDL_Rect rect;	
 		rect.w = logo->w;

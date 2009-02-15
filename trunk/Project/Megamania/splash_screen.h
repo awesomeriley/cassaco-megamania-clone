@@ -26,7 +26,7 @@ namespace Megamania
 			/** surface que representa a mensagem do splash_screen*/
 			SDL_Surface *msg;
 			/** Efeito sonoro que será tocado quando a tela for iniciada*/
-			Effect   *stfSound; //abreviação para smell the fun Sound
+			Effect *stfSound; //abreviação para smell the fun Sound
 		public:
 			SplashScreen(SDL_Surface *)throw(SDLVideoException);
 			~SplashScreen(void);
