@@ -120,7 +120,7 @@ namespace Megamania
 		if((text != NULL)&&(strlen(text))) {
 			TTF_SizeText(font, text, w, h);	
 		} else {
-			w = h = 0;
+			*w = *h = 0;
 		}
 	}
 }
