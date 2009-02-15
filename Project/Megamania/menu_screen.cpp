@@ -68,7 +68,7 @@ namespace Megamania
 		AddListener(scoreBT);
 		AddListener(optionsBT);
 		AddListener(creditsBT);
-		music->Play();
+		//music->Play(MIX_PLAY_FOREVER);
 	}
 
 	/***************************************************************
