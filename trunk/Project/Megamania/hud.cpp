@@ -34,10 +34,10 @@ namespace Megamania
 		minP = 0;
 		maxP = 999999;
 		effect = new Effect();		
+		effect->Load(EFFECT_HUD);
 		font = new SDL_Font(HUD_FONT, SCORE_FONT_SIZE);
 		pointByDecrement = POINT_BY_DECREMENT_HUD;
 		point = 0;	
-		lifes = 3;
 		surface = screen;
 		rect.w = panel->clip_rect.w;
 		rect.h = panel->clip_rect.h;
@@ -51,7 +51,7 @@ namespace Megamania
 	}
 
 	/*************************************************************
-	 *
+	 * Função que seta a pontuação a ser exibida
 	 *
 	 ************************************************************/
 	void HUD::SetPoint(int point) 
@@ -60,7 +60,8 @@ namespace Megamania
 	}
 	
 	/*************************************************************
-	 *
+	 * Função que incrementa a pontuação atual com o valor 
+	 * informado
 	 *
 	 ************************************************************/
 	void HUD::IncrementPoint(int inc) 
@@ -69,7 +70,7 @@ namespace Megamania
 	}
 
 	/*************************************************************
-	 *
+	 * Função que seta a quantidade de vidas a ser exibida
 	 *
 	 ************************************************************/
 	void HUD::SetLife(int lifes) 
@@ -78,7 +79,7 @@ namespace Megamania
 	}
 	
 	/*************************************************************
-	 *
+	 * Função que incrementa a quantidade de vida em um
 	 *
 	 ************************************************************/
 	void HUD::IncrementLife(void) 
@@ -87,7 +88,7 @@ namespace Megamania
 	}
 	
 	/*************************************************************
-	 *
+	 * Função que decrementa a quantidade de vida em um
 	 *
 	 ************************************************************/
 	void HUD::DecrementLife(void) 
@@ -120,13 +121,15 @@ namespace Megamania
 	}
 	
 	/*************************************************************
-	 *
+	 * Função responsavel por encher a barra de energias
 	 *
 	 ************************************************************/
 	void HUD::Full(void)
 	{
 		SDL_BlitSurface(panel, NULL, surface, &rect);
 		SDL_BlitSurface(bar, NULL, surface, &bar->clip_rect);
+		UpdateLife();
+		UpdateScore();
 		register int w = bar->clip_rect.w;
 		register int offset = energyBar->clip_rect.w;
 		int x = bar->clip_rect.x;				
@@ -135,6 +138,7 @@ namespace Megamania
 			SDL_BlitSurface(energyBar, NULL, surface, &energyBar->clip_rect);	
 			SDL_Flip(surface);			
 			x += offset;
+			effect->Play();
 			SDL_Delay(delay);
 		}
 		energyBar->clip_rect.x = bar->clip_rect.x;
@@ -142,7 +146,7 @@ namespace Megamania
 	}
 	
 	/*************************************************************
-	 *
+	 * Função que esvazia a barra de energia
 	 *
 	 ************************************************************/
 	void HUD::Empty(void)
@@ -153,7 +157,7 @@ namespace Megamania
 	}
 
 	/*************************************************************
-	 *
+	 * Função que pinta a quantidade de vidas no painel
 	 *
 	 ************************************************************/
 	void HUD::UpdateLife(void) 
@@ -168,7 +172,7 @@ namespace Megamania
 	}
 
 	/*************************************************************
-	 *
+	 * Função que pinta o score no painel
 	 *
 	 ************************************************************/
 	void HUD::UpdateScore(void) 
@@ -194,7 +198,7 @@ namespace Megamania
 	}
 
 	/*************************************************************
-	 *
+	 * Função que retorna a posição do painel
 	 *
 	 ************************************************************/
 	SDL_Rect & HUD::GetRect(void) 
@@ -203,7 +207,7 @@ namespace Megamania
 	}
 
 	/*************************************************************
-	 *
+	 * Função responsavel por pintar o painel na surface
 	 *
 	 ************************************************************/
 	void HUD::Draw(void)
