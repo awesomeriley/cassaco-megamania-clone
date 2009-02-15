@@ -34,7 +34,7 @@ namespace Megamania
 		public:
 			Enemy(const char *, Uint16, Uint16)throw(SpriteException);
 			~Enemy(void);
-			void Draw(SDL_Surface *surface);
+			void Draw(SDL_Surface *);
 			virtual void Update(void) = 0;
 	};
 }
