@@ -45,6 +45,9 @@ namespace Megamania
 	void GameObject::SetAnimation(const char *file, Uint16 frameWidth, Uint16 frameHeight)
 	throw(SpriteException)
 	{
+		if(animation != NULL) {
+		    delete animation;
+		}
 		animation = new Sprite(file, frameWidth, frameHeight);
 	}
 
