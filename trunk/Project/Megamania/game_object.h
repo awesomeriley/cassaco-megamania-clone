@@ -7,8 +7,8 @@
  * Author: Adriano Braga Alencar							
  * Email : adrianobragaalencar@gmail.com 
  *
- * Author : Marcelo Collyer
- * Email     : marcelocollyer@gmail.com
+ * Author: Marcelo Collyer
+ * Email : marcelocollyer@gmail.com
  *************************************************************/
 #ifndef __GAMEOBJECT_H__
 #define __GAMEOBJECT_H__
