@@ -6,8 +6,8 @@
  * Author: Adriano Braga Alencar							
  * Email : adrianobragaalencar@gmail.com 
  *
- * Author : Marcelo Collyer
- * Email     : marcelocollyer@gmail.com
+ * Author: Marcelo Collyer
+ * Email : marcelocollyer@gmail.com
  *************************************************************/
 #ifndef __SHIP_H__
 #define __SHIP_H__
