@@ -143,7 +143,7 @@ namespace Megamania
 		lastTimer = currentTimer;
 		if(timerAcum >= DELAY) {
 			if(hud->Draw()) {
-				exit(0);
+				//TODO matar o jogador aqui
 			}
 			timerAcum = 0;
 		}		

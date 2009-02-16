@@ -172,9 +172,8 @@ namespace Megamania
 			r.y = rect.y + rect.h - text->clip_rect.h;
 			r.w = text->clip_rect.w; 
 			r.h = text->clip_rect.h;					
-			SDL_BlitSurface(panel, &rect, surface, &r);			
-			SDL_BlitSurface(text, NULL, surface, &r);	
-			SDL_UpdateRect(surface, r.x, r.y, r.w, r.h);
+		SDL_FillRect(surface, &r, SDL_MapRGB(surface->format, 0, 0, 0));
+			SDL_BlitSurface(text, NULL, surface, &r);				
 			SDL_FreeSurface(text);
 			SDL_free(buffer);
 		}		
