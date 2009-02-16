@@ -89,7 +89,7 @@
 #define HUD_FONT MENU_FONT
 #define SCORE_FONT_SIZE 40
 #define HUD_DELAY 15
-#define HUD_DRAW_DELAY	500     // 1 sec * 1000 milli
+#define HUD_DRAW_DELAY	500     // 0.5 sec * 1000 milli
 #define EFFECT_HUD "menu_select.wav"
 
 static SDL_Surface *screen = SDL_SetVideoMode(WIDTH_SCREEN, HEIGHT_SCREEN, BPP, SDL_SWSURFACE|SDL_DOUBLEBUF);
