@@ -142,7 +142,7 @@ namespace Megamania
 		screen->clip_rect.x = screen->clip_rect.y = 0;
 		screen->clip_rect.w = WIDTH_SCREEN;
 		screen->clip_rect.h = HEIGHT_SCREEN;
-		int *value = (int*)event.user.data1;
+		int *value = reinterpret_cast<int *>(event.user.data1);
 		switch(completeLevelNumber){
 			
 			case LEVEL1_FINISH_EVENT:

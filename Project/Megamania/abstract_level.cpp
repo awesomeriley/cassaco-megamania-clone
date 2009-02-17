@@ -117,6 +117,7 @@ namespace Megamania
 					enemy->Update();					
 					if(enemyBullet->IsVisible() && megamania->IsVisible() && megamania->CollidesWith(*enemyBullet)){
 						megamania->SetVisible(false);
+						hud->DecrementLife();
 						enemyBullet->SetVisible(false);				
 						FinishLevel();
 					}
@@ -143,7 +144,7 @@ namespace Megamania
 		lastTimer = currentTimer;
 		if(timerAcum >= DELAY) {
 			if(hud->Draw()) {
-				//TODO matar o jogador aqui
+				megamania->Die(screen);
 			}
 			timerAcum = 0;
 		}		
