@@ -121,7 +121,7 @@ namespace Megamania
 						enemyBullet->SetVisible(false);				
 						FinishLevel();
 					}
-					if((bullet.IsVisible())&&(enemy->CollidesWith(bullet))) {
+					if((bullet.IsVisible())&&(bullet.CollidesWith(*enemy))) {
 						enemy->SetVisible(false);
 						bullet.SetVisible(false);
 						hud->IncrementPoint(enemy->GetPointValue());
