@@ -140,7 +140,7 @@ namespace Megamania
 	 ************************************************************/
 	void HUD::UpdateLife(void) 
 	{		
-		int x = shipIcon->clip_rect.w;
+		int x = BAR_POSITION_X;						
 		shipIcon->clip_rect.y = rect.y + (rect.h >> 1);
 		for(Uint16 i = 0; i < lifes; ++i) {
 			shipIcon->clip_rect.x = x;			
