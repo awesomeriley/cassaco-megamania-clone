@@ -116,19 +116,19 @@ namespace Megamania
 					enemy->NextFrame();
 					enemy->Update();					
 					if(enemyBullet->IsVisible() && megamania->IsVisible() && megamania->CollidesWith(*enemyBullet)){
-						megamania->SetVisible(false);
+						megamania->SetVisible(false);						
+						enemyBullet->SetVisible(false);							
 						hud->DecrementLife();
-						enemyBullet->SetVisible(false);				
 						FinishLevel();
 					}
-					if((bullet.IsVisible())&&(bullet.CollidesWith(*enemy))) {
-						enemy->SetVisible(false);
+					if((bullet.IsVisible())&&(bullet.CollidesWith(*enemy))) {						
 						bullet.SetVisible(false);
+						enemy->SetVisible(false);
 						hud->IncrementPoint(enemy->GetPointValue());
 					}
 				} else if(enemyBullet->IsVisible()) {
 					enemyBullet->Draw(screen);
-					enemyBullet->Update(Megamania::Bullet::Direction::DOWN);
+					enemyBullet->Update(Megamania::Bullet::Direction::DOWN);					
 				}
 			}	
 			
