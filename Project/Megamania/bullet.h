@@ -18,8 +18,6 @@ namespace Megamania
 	class Bullet : public GameObject	
 	{   		
 		public:
-			/** enumeration que indica a direção da bala*/
-			enum Direction { UP, DOWN };
 			Bullet(void)throw(SpriteException);
 			~Bullet(void);
 			void Update(Direction);
