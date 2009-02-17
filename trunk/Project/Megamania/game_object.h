@@ -21,13 +21,17 @@ namespace Megamania
 	class GameObject : public Sprite
 	{   
 		protected:
-			/** indica a quantidade de deslocamento em pixels a cada quadro*/
-			int offset;
+			/** indica a quantidade de deslocamento em pixels a cada quadro no eixo X*/
+			int offsetX;
+			/** indica a quantidade de deslocamento em pixels a cada quadro no eixo Y*/
+			int offsetY;
 			/** indica a direção do ator*/
 			int direction;
 			/** Sprite responsavel por realizar a animação de morte*/
 			Sprite *animation;
 		public:
+			/** enumeration que indica a direção do objeto*/
+			enum Direction { LEFT, RIGHT, UP, DOWN };
 			GameObject(const char *, Uint16, Uint16)throw(SpriteException);
 			virtual ~GameObject(void);
 			const int GetDirection(void)const;
