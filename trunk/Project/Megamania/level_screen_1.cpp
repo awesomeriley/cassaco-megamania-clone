@@ -36,9 +36,9 @@ namespace Megamania
 			for(Uint32 j = 0; j < lCol; ++j) {
 				SpaceShip1 *space = new SpaceShip1();
 				if((i & 1) == 0) {
-					space->SetPosition(j * offset_x - WIDTH_SCREEN, (i + 1) * offset_y);
+					space->SetPosition(j * offset_x - w, (i + 1) * offset_y);
 				} else {
-					space->SetPosition(j * offset_x + (offset_x >> 1) - WIDTH_SCREEN, (i + 1) * offset_y);
+					space->SetPosition(j * offset_x + (offset_x >> 1) - w, (i + 1) * offset_y);
 				}				
 				enemies.push_back(space);
 			}
