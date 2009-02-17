@@ -20,7 +20,7 @@ namespace Megamania
 	SpaceShip1::SpaceShip1(void)throw(SpriteException) : 
 	Enemy(PATH_SPACE_SHIP_1, SPACE_SHIP_1_WIDTH, SPACE_SHIP_1_HEIGHT)
 	{
-		offset = SPACE_SHIP_1_OFFSET;
+		offsetX = SPACE_SHIP_1_OFFSET_X;
 	}
 	
 	/*************************************************************
@@ -30,8 +30,8 @@ namespace Megamania
 	 *************************************************************/
 	void SpaceShip1::Update(void) 
 	{
-		if(GetX() + offset < width) {
-			Move(offset, 0);
+		if(GetX() + offsetX < width) {
+			Move(offsetX, 0);
 		} else {
 			SetX(-GetWidthFrame());
 		}
