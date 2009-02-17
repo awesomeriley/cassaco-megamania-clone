@@ -29,16 +29,18 @@ namespace Megamania
 		levelFinishEvent = LEVEL2_FINISH_EVENT;
 		levelComplete = false;
 		int w = WIDTH_SCREEN;
-		int lCol = LEVEL_1_SHIPS_COL;
-		int offset_x = w / lCol + SPACE_SHIP_1_WIDTH / lCol;		
-		int offset_y = SPACE_SHIP_1_HEIGHT + (SPACE_SHIP_1_HEIGHT >> 1);
-		for(Uint32 i = 0; i < LEVEL_1_SHIPS_ROW; ++i) {
+		int h = HEIGHT_SCREEN;
+		int lRow = LEVEL_2_SHIPS_ROW;
+		int lCol = LEVEL_2_SHIPS_COL;
+		int offset_x = w / lRow;		
+		int offset_y = (SPACE_SHIP_2_HEIGHT << 1) + SPACE_SHIP_2_HEIGHT;
+		for(Uint32 i = 0; i < lRow; ++i) {
 			for(Uint32 j = 0; j < lCol; ++j) {
 				SpaceShip2 *space = new SpaceShip2();
-				if((i & 1) == 0) {
-					space->SetPosition(j * offset_x - WIDTH_SCREEN, (i + 1) * offset_y);
+				if((i % 2) == 0) {
+					space->SetPosition(j * offset_x + (i * offset_x), i * offset_y - ((h >> 1) + offset_y));
 				} else {
-					space->SetPosition(j * offset_x + (offset_x >> 1) - WIDTH_SCREEN, (i + 1) * offset_y);
+					space->SetPosition(j * offset_x - (i * offset_x), i * offset_y - ((h >> 1) + offset_y));
 				}				
 				enemies.push_back(space);
 			}
