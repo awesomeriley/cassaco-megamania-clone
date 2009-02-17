@@ -23,7 +23,7 @@ namespace Megamania
 	GameObject::GameObject(const char *file, Uint16 frameWidth, Uint16 frameHeight)
 	throw(SpriteException) : Sprite(file, frameWidth, frameHeight)
 	{
-		offset = 0;
+		offsetX = offsetY = 0;
 	}
 	
 	/*************************************************************
