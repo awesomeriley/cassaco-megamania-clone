@@ -72,8 +72,9 @@ namespace Megamania
 		int y = 0;
 		int w = image->w;
 		int maxFrameWidth = (w / frameWidth);
+		SDL_Rect *rect = NULL;
 		for(Uint32 i = 0; i < nFrames; ++i) {
-			SDL_Rect *rect = reinterpret_cast<SDL_Rect *>(SDL_malloc(sizeof(SDL_Rect)));
+			rect = reinterpret_cast<SDL_Rect *>(SDL_malloc(sizeof(SDL_Rect)));
 			rect->x = (i * frameWidth) % w;
 			rect->y = (i / maxFrameWidth) * frameHeight;
 			rect->w = frameWidth;

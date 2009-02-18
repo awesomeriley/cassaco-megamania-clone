@@ -163,10 +163,10 @@ namespace Megamania
 					break;
 				}
 			}			
-			char *buffer = static_cast<char *>(SDL_malloc(sizeof(char) * len));
+			char *buffer = reinterpret_cast<char *>(SDL_malloc(sizeof(char) * len));
 			sprintf(buffer, "%d", point);
 			buffer[len - 1] = '\0';
-			SDL_Surface *text = font->RenderTextSolid(static_cast<char *>(buffer));
+			SDL_Surface *text = font->RenderTextSolid(reinterpret_cast<const char *>(buffer));
 			SDL_Rect r;
 			r.x = rect.w - text->clip_rect.w;
 			r.y = rect.y + rect.h - text->clip_rect.h;

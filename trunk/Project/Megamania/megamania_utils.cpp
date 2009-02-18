@@ -53,11 +53,11 @@ char * StringCopy(char *dst, const char *src)
 	}
 	size_t lenSrc = strlen(src);
 	if(dst == NULL) {
-	    dst = static_cast<char *>(malloc((sizeof(char) * lenSrc) + 1));
+	    dst = reinterpret_cast<char *>(malloc((sizeof(char) * lenSrc) + 1));
 	} else {
 	    size_t lenDst = strlen(dst);
 		if((lenDst > lenSrc)||(lenDst < lenSrc)) {
-		    dst = static_cast<char *>(malloc((sizeof(char) * lenSrc) + 1));
+		    dst = reinterpret_cast<char *>(malloc((sizeof(char) * lenSrc) + 1));
 		}
 	}
 	memcpy(dst, src, lenSrc);
