@@ -144,6 +144,7 @@ namespace Megamania
 		lastTimer = currentTimer;
 		if(timerAcum >= DELAY) {
 			if(hud->Draw()) {
+				exit(0);
 				megamania->Die(screen);
 			}
 			timerAcum = 0;
