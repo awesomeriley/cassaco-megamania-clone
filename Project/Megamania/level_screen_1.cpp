@@ -35,7 +35,7 @@ namespace Megamania
 		for(Uint32 i = 0; i < LEVEL_1_SHIPS_ROW; ++i) {
 			for(Uint32 j = 0; j < lCol; ++j) {
 				SpaceShip1 *space = new SpaceShip1();
-				if((i & 1) == 0) {
+				if((i & 1) == 0) {    //i % 2
 					space->SetPosition(j * offset_x - w, (i + 1) * offset_y);
 				} else {
 					space->SetPosition(j * offset_x + (offset_x >> 1) - w, (i + 1) * offset_y);
