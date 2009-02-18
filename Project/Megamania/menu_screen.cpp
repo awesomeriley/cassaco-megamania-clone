@@ -80,9 +80,9 @@ namespace Megamania
 	void MenuScreen::AddListener(MenuScreenListener *listener) 
 	{
 		if(listener != NULL) {
-			std::vector<MenuScreenListener *>::iterator end = listeners.end();
-			for(std::vector<MenuScreenListener *>::iterator iter = listeners.begin(); iter != end; ++iter) {
-				if(*iter == listener) {
+			std::vector<MenuScreenListener *>::const_iterator const_end = listeners.end();
+			for(std::vector<MenuScreenListener *>::const_iterator const_iter = listeners.begin(); const_iter != const_end; ++const_iter) {
+				if(*const_iter == listener) {
 					return;
 				}
 			}

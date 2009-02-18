@@ -147,9 +147,8 @@ namespace Megamania
 	{
 		if(bullet->GetDirection() == bullet->UP){
 			bullet->SetPosition(GetX() + (GetWidthFrame() >> 1), GetY() + GetHeightFrame());
-		}else{
-			bullet->SetPosition(GetX() + (GetWidthFrame() >> 1), GetY());
-			
+		} else { 
+			bullet->SetPosition(GetX() + (GetWidthFrame() >> 1), GetY());			
 		}
 	}
 }

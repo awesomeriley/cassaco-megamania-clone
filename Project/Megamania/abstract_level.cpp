@@ -35,7 +35,7 @@ namespace Megamania
 	void AbstractLevel::SetMegamania(Ship *megamania)
 	{
 		this->megamania = megamania;		
-		megamania->SetVisible(true);
+		this->megamania->SetVisible(true);
 	}
 
 	/***************************************************************
@@ -115,9 +115,9 @@ namespace Megamania
 					enemy->Draw(screen);
 					enemy->NextFrame();
 					enemy->Update();					
-					if(enemyBullet->IsVisible() && megamania->IsVisible() && megamania->CollidesWith(*enemyBullet)){
-						megamania->SetVisible(false);						
+					if(enemyBullet->IsVisible() && megamania->IsVisible() && enemyBullet->CollidesWith(*megamania)){
 						enemyBullet->SetVisible(false);							
+						megamania->SetVisible(false);												
 						hud->DecrementLife();
 						FinishLevel();
 					}
