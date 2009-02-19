@@ -17,7 +17,17 @@ namespace Megamania
 	 * SDL_Surface *screen -> indica a tela do jogo
 	 * 
 	 **************************************************************/
-	LevelScreen2::LevelScreen2(SDL_Surface *screen)throw(SDLVideoException) : AbstractLevel(screen){}
+	LevelScreen2::LevelScreen2(SDL_Surface *screen)throw(SDLVideoException) : AbstractLevel(screen)
+	{
+		SpaceShip2 *spaceShip = NULL;
+		for(Uint32 i = 0; i < LEVEL_2_NUMBER_SHIPS; ++i) {
+			spaceShip = new SpaceShip2();
+			enemies.push_back(spaceShip);
+			spaceShip = NULL;
+		}
+		levelFinishEvent = LEVEL2_FINISH_EVENT;
+		levelComplete = false;	
+	}
 
 	/***************************************************************
 	 * Função responsavel por iniciar a posição de todas as naves
@@ -26,8 +36,7 @@ namespace Megamania
 	 **************************************************************/
 	void LevelScreen2::Init() 
 	{
-		levelFinishEvent = LEVEL2_FINISH_EVENT;
-		levelComplete = false;
+		Enemy *space = NULL;
 		int w = WIDTH_SCREEN;
 		int h = HEIGHT_SCREEN;
 		int lRow = LEVEL_2_SHIPS_ROW;
@@ -36,7 +45,7 @@ namespace Megamania
 		int offset_y = (SPACE_SHIP_2_HEIGHT << 1) + SPACE_SHIP_2_HEIGHT;
 		for(Uint32 i = 0; i < lRow; ++i) {
 			for(Uint32 j = 0; j < lCol; ++j) {
-				SpaceShip2 *space = new SpaceShip2();
+				space = reinterpret_cast<Enemy *>(enemies[i * lCol + j]);
 				if((i % 2) == 0) {
 					space->SetPosition(j * offset_x + (i * offset_x), i * offset_y - ((h >> 1) + offset_y));
 				} else {
