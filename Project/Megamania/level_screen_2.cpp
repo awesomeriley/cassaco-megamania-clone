@@ -46,7 +46,7 @@ namespace Megamania
 		for(Uint32 i = 0; i < lRow; ++i) {
 			for(Uint32 j = 0; j < lCol; ++j) {
 				space = reinterpret_cast<Enemy *>(enemies[i * lCol + j]);
-				if((i % 2) == 0) {
+				if((i & 1) == 0) {    //i % 2
 					space->SetPosition(j * offset_x + (i * offset_x), i * offset_y - ((h >> 1) + offset_y));
 				} else {
 					space->SetPosition(j * offset_x - (i * offset_x), i * offset_y - ((h >> 1) + offset_y));
