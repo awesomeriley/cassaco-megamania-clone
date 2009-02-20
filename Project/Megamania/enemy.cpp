@@ -46,4 +46,22 @@ namespace Megamania
 		}
 		GameObject::Draw(surface);
 	}
+
+	/*******************************************************************************
+	 * Função que retorna o retangulo que indica a area de movimentação da nave
+	 * indicando a posição maxima e minima de movimentação da mesma, por exemplo:
+	 *  
+	 * clipRect.x = 10;
+	 * clipRect.y = 10;
+	 * clipRect.w = 300;
+	 * clipRect.h = 300;
+	 *
+	 * A atribuição acima, indica que a nave tem como posição minima no eixo X e Y
+	 * 10 pixels e como posição maxima para o eixo X e Y 300 pixels - a altura da
+	 * nave
+	 ********************************************************************************/
+	SDL_Rect & Enemy::GetClipPosition()
+	{
+		return this->clipRect;
+	}
 }
