@@ -16,6 +16,7 @@
 #include "splash_screen.h"
 #include "level_screen_1.h"
 #include "level_screen_2.h"
+#include "level_screen_3.h"
 #include "menu_screen.h"
 #include "abstract_screen.h"
 
