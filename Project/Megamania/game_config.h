@@ -70,6 +70,18 @@
 #define LEVEL_2_DISPLACEMENT_X WIDTH_SCREEN
 #define LEVEL_2_DISPLACEMENT_Y 80
 
+/** level 3*/
+#define PATH_SPACE_SHIP_3 "enemy_3.png"
+#define SPACE_SHIP_3_WIDTH 50
+#define SPACE_SHIP_3_HEIGHT 25
+#define SPACE_SHIP_3_OFFSET_X 10
+#define SPACE_SHIP_3_OFFSET_Y 10
+#define SPACE_SHIP_3_SCORE 40
+#define LEVEL_3_NUMBER_SHIPS 15
+#define LEVEL_3_SHIPS_ROW 3
+#define LEVEL_3_SHIPS_COL 5
+#define LEVEL_3_DISPLACEMENT_X ((WIDTH_SCREEN) / 4)    //displacement = 200
+
 #define PATH_BULLET "bullet.png"
 #define BULLET_WIDTH 8
 #define BULLET_HEIGHT 24
@@ -92,7 +104,7 @@
 #define HUD_FONT MENU_FONT
 #define SCORE_FONT_SIZE 40
 #define HUD_DELAY 15
-#define HUD_DRAW_DELAY	500     // 0.5 sec * 1000 milli
+#define HUD_DRAW_DELAY	700     // 0.7 sec * 1000 milli
 #define EFFECT_HUD "menu_select.wav"
 #define INITIAL_LIFE 3
 
