@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="8.00"
 	Name="Megamania"
 	ProjectGUID="{A8D7EB5D-27E6-4FD9-A114-94C1EA7893F8}"
 	RootNamespace="Megamania"
@@ -295,6 +295,10 @@
 					RelativePath=".\space_ship_2.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\space_ship_3.cpp"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="Level"
@@ -309,6 +313,10 @@
 				</File>
 				<File
 					RelativePath=".\level_screen_2.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\level_screen_3.cpp"
 					>
 				</File>
 			</Filter>
@@ -457,6 +465,10 @@
 					RelativePath=".\space_ship_2.h"
 					>
 				</File>
+				<File
+					RelativePath=".\space_ship_3.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="Level"
@@ -473,6 +485,10 @@
 					RelativePath=".\level_screen_2.h"
 					>
 				</File>
+				<File
+					RelativePath=".\level_screen_3.h"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
@@ -484,10 +500,6 @@
 				Name="Images"
 				>
 				<File
-					RelativePath=".\bar.png"
-					>
-				</File>
-				<File
 					RelativePath=".\bullet.png"
 					>
 				</File>
@@ -497,6 +509,10 @@
 				</File>
 				<File
 					RelativePath=".\enemy_2.png"
+					>
+				</File>
+				<File
+					RelativePath=".\enemy_3.png"
 					>
 				</File>
 				<File
@@ -541,10 +557,6 @@
 				</File>
 				<File
 					RelativePath=".\panel.png"
-					>
-				</File>
-				<File
-					RelativePath=".\panelPrototype.png"
 					>
 				</File>
 				<File
