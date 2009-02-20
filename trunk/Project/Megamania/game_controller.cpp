@@ -133,6 +133,7 @@ namespace Megamania
 		currentScreen = dynamic_cast<AbstractScreen *>(menuScreen);
 		menuScreen->Execute();
 	}
+
 	/*******************************************************************************
 	 * 
 	 *******************************************************************************/
@@ -147,25 +148,25 @@ namespace Megamania
 			
 			case LEVEL1_FINISH_EVENT:
 				if(*value){
-					levelScreen = new LevelScreen2(screen);		
-					levelScreen->SetShipCount(LEVEL_2_NUMBER_SHIPS);
+					levelScreen = new LevelScreen3(screen);		
+					levelScreen->SetShipCount(LEVEL_3_NUMBER_SHIPS);
 				}else{
-					levelScreen = new LevelScreen1(screen);		
-					levelScreen->SetShipCount(LEVEL_1_NUMBER_SHIPS);
+					levelScreen = new LevelScreen3(screen);		
+					levelScreen->SetShipCount(LEVEL_3_NUMBER_SHIPS);
 				}
 				break;
 			case LEVEL2_FINISH_EVENT:
 				if(*value){
-					levelScreen = new LevelScreen1(screen);		
-					levelScreen->SetShipCount(LEVEL_1_NUMBER_SHIPS);
+					levelScreen = new LevelScreen3(screen);		
+					levelScreen->SetShipCount(LEVEL_3_NUMBER_SHIPS);
 				}else{
-					levelScreen = new LevelScreen2(screen);		
-					levelScreen->SetShipCount(LEVEL_2_NUMBER_SHIPS);
+					levelScreen = new LevelScreen3(screen);		
+					levelScreen->SetShipCount(LEVEL_3_NUMBER_SHIPS);
 				}
 				break;
 			default:
-				levelScreen = new LevelScreen1(screen);		
-				levelScreen->SetShipCount(LEVEL_1_NUMBER_SHIPS);
+				levelScreen = new LevelScreen3(screen);		
+				levelScreen->SetShipCount(LEVEL_3_NUMBER_SHIPS);
 		}
 		
 		levelScreen->SetMegamania(megamania);
