@@ -1,6 +1,6 @@
 /***************************************************************
  * Classe que representa a tela da primeira fase do jogo 
- * Megamania, esta fase é composta por 15 naves inimigas que
+ * Megamania, esta fase é composta por 15 naves inimigas 
  *
  * Author Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
  *
