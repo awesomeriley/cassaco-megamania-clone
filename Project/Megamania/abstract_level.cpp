@@ -34,8 +34,7 @@ namespace Megamania
 	 **************************************************************/
 	void AbstractLevel::SetMegamania(Ship *megamania)
 	{
-		this->megamania = megamania;		
-		this->megamania->SetVisible(true);
+		this->megamania = megamania;				
 	}
 
 	/***************************************************************
@@ -55,6 +54,7 @@ namespace Megamania
 	void AbstractLevel::Init() 
 	{
 		megamania->SetPosition(WIDTH_SCREEN >> 1, hud->GetRect().y - megamania->GetHeightFrame());
+		megamania->SetVisible(true);
 		megamania->SetFrame(2);				
 		Draw();
 		hud->Full();		
@@ -144,8 +144,8 @@ namespace Megamania
 		lastTimer = currentTimer;
 		if(timerAcum >= DELAY) {
 			if(hud->Draw()) {
-				exit(0);
 				megamania->Die(screen);
+				Init();
 			}
 			timerAcum = 0;
 		}		

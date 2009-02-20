@@ -16,10 +16,6 @@ namespace Megamania
 	class SpaceShip2 : public Enemy
 	{
 		private:
-			/** variavel que indica o deslocamento no eixo X*/
-			int dx;
-			/** variavel que indica o deslocamento no eixo Y*/
-			int dy;
 			/** flag responsavel por indicar que a nave movimenta para baixo*/
 			bool isDown;
 		public: 
