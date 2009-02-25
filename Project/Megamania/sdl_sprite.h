@@ -13,6 +13,8 @@
 #include "sprite_exception.h"
 #include <vector>
 
+#define BLOCK_MEMORY_RESERVE 25
+
 namespace Megamania
 {
 	class Sprite 
