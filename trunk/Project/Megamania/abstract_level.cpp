@@ -26,6 +26,7 @@ namespace Megamania
 		hud = HUD::GetInstance();
 		lastTimer = SDL_GetTicks();
 		timerAcum = currentTimer = 0;
+		levelComplete = false;
 	}
 
 	/***************************************************************
@@ -118,7 +119,7 @@ namespace Megamania
 					if(enemyBullet->IsVisible() && megamania->IsVisible() && enemyBullet->CollidesWith(*megamania)){
 						enemyBullet->SetVisible(false);							
 						megamania->SetVisible(false);												
-						hud->DecrementLife();
+						hud->DecrementLife();						
 						FinishLevel();
 					}
 					if((bullet.IsVisible())&&(bullet.CollidesWith(*enemy))) {						
@@ -133,7 +134,7 @@ namespace Megamania
 			}	
 			
 			if(!hasEnemyAlive){
-				levelComplete = 1;		
+				levelComplete = true;		
 				FinishLevel();
 			}
 		}		
@@ -144,7 +145,7 @@ namespace Megamania
 		lastTimer = currentTimer;
 		if(timerAcum >= DELAY) {
 			if(hud->Draw()) {
-				megamania->Die(screen);
+				megamania->Die(screen);				
 				Init();
 			}
 			timerAcum = 0;
@@ -153,12 +154,15 @@ namespace Megamania
 		SDL_Flip(screen);
 	}
 
-	/** Finaliza o level */
+	/***************************************************************
+	 * Função que insere um evento indicando que o level atual foi
+	 * finalizado e que se deve começar uma nova fase
+	 *
+	 **************************************************************/
 	void AbstractLevel::FinishLevel(void){
 		
 		event.type = SDL_USEREVENT;
 		event.user.code = levelFinishEvent;
-		event.user.data1 = &levelComplete;
 		SDL_PushEvent(&event);
 	}
 
@@ -169,7 +173,7 @@ namespace Megamania
 	 **************************************************************/
 	void AbstractLevel::Clear(void) 
 	{
-		for(Uint32 i = 0; i < shipCount; ++i) {
+		for(Uint32 i = shipCount; --i >= 0;) {
 			delete enemies[i];
 		}
 		enemies.clear();
