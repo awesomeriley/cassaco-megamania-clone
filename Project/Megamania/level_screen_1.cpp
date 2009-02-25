@@ -20,13 +20,13 @@ namespace Megamania
 	LevelScreen1::LevelScreen1(SDL_Surface *screen)throw(SDLVideoException) : AbstractLevel(screen)
 	{
 		SpaceShip1 *spaceShip = NULL;
-		for(Uint32 i = 0; i < LEVEL_1_NUMBER_SHIPS; ++i) {
+		SetShipCount(LEVEL_1_NUMBER_SHIPS);
+		for(Uint32 i = 0; i < shipCount; ++i) {
 			spaceShip = new SpaceShip1();
 			enemies.push_back(spaceShip);
 			spaceShip = NULL;
 		}
 		levelFinishEvent = LEVEL1_FINISH_EVENT;
-		levelComplete = false;
 	}
 
 	/***************************************************************
