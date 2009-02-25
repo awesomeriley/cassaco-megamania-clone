@@ -243,6 +243,10 @@
 					RelativePath=".\sdl_sprite.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\sdl_tiled_layer.cpp"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="Config"
@@ -435,6 +439,10 @@
 				</File>
 				<File
 					RelativePath=".\sdl_sprite.h"
+					>
+				</File>
+				<File
+					RelativePath=".\sdl_tiled_layer.h"
 					>
 				</File>
 			</Filter>
