@@ -33,6 +33,7 @@ namespace Megamania
 		if(file == NULL) {
             throw SpriteException("O objeto Sprite não pode ser criado, [PATH NULL]");
 		}
+		this->frames.reserve(BLOCK_MEMORY_RESERVE);    //evita o overhead de cópia dos dados a cada inserção
 		this->image = LoadImage(file);
 		int w = image->w;
 		int h = image->h;
