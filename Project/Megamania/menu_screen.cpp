@@ -52,7 +52,7 @@ namespace Megamania
 		music = new Music();
 		music->Load(PATH_MENU_MUSIC);
  		startBT   = new CSButton(MENU_BUTTON, x, y);
-		scoreBT   = new CSButton(MENU_BUTTON, x, y + vSpace);
+		scoreBT   = new CSButton(MENU_BUTTON, x, y + vSpace);                      // vSpace * 1 
 		optionsBT = new CSButton(MENU_BUTTON, x, y + (vSpace << 1));               // vSpace * 2
 		creditsBT = new CSButton(MENU_BUTTON, x, y + ((vSpace << 1) + vSpace));    // vSpace * 3
 		SDL_Font *font = new SDL_Font(MENU_FONT, MENU_BUTTON_FONT_SIZE);
@@ -68,7 +68,7 @@ namespace Megamania
 		AddListener(scoreBT);
 		AddListener(optionsBT);
 		AddListener(creditsBT);
-		//music->Play(MIX_PLAY_FOREVER);
+		music->Play(MIX_PLAY_FOREVER);
 	}
 
 	/***************************************************************
