@@ -13,7 +13,7 @@
 
 namespace Megamania 
 {
-
+	
 	/*
 	 * Inicialização do Singleton da classe
 	 */
@@ -29,8 +29,7 @@ namespace Megamania
 		width = WIDTH_SCREEN;
 		height = HEIGHT_SCREEN;
 		running = false;
-		splashScreen = new SplashScreen(screen);
-		currentScreen = dynamic_cast<AbstractScreen *>(splashScreen);
+		currentScreen = new SplashScreen(screen);
 		megamania = new Ship(MEGAMANIA, MEGAMANIA_WIDTH, MEGAMANIA_HEIGHT);
 	}			
 
@@ -42,7 +41,8 @@ namespace Megamania
 	void GameController::OnGameInit(void) 
 	{
 		Initializer::Init();
-		InitSpashScreen();
+		InitSpashScreen();				
+		SDL_EnableKeyRepeat(REPEAT_DELAY, REPEAT_INTERVAL);
 		running = true;
 	}
 
@@ -75,13 +75,10 @@ namespace Megamania
 								InitMenuScreen();
 								break;
 							case MENU_SCREEN_FINISH_EVENT:
-								InitGameScreen(MENU_SCREEN_FINISH_EVENT, event);
-								break;
 							case LEVEL1_FINISH_EVENT:
-								InitGameScreen(LEVEL1_FINISH_EVENT, event);
-								break;
 							case LEVEL2_FINISH_EVENT:
-								InitGameScreen(LEVEL2_FINISH_EVENT, event);
+							case LEVEL3_FINISH_EVENT:
+								InitLevel(event.user.code);
 								break;
 						}
 						break;
@@ -90,17 +87,14 @@ namespace Megamania
 						break;
 				}				
 			} 
-			currentScreen->Draw();
 			currentTimer = SDL_GetTicks() - lastTimer;
-			if(currentTimer < TIME_PER_TICKS) {
-				if(currentTimer < 0) {
-					currentTimer = 0;
-				}
-				SDL_Delay(TIME_PER_TICKS - currentTimer);
-			} else {
-				SDL_Delay(TIME_PER_TICKS);
+			if(currentTimer < 0) {
+				currentTimer = 0;
 			}
+			SDL_Delay(currentTimer < TIME_PER_TICKS ? 
+					  TIME_PER_TICKS - currentTimer: TIME_PER_TICKS);
 			lastTimer = currentTimer;			
+			currentScreen->Draw();
 		}
 	}
 
@@ -117,7 +111,7 @@ namespace Megamania
 	 *******************************************************************************/
 	void GameController::InitSpashScreen(void) 
 	{
-		splashScreen->Execute();
+		currentScreen->Execute();
 	}
 
 	/*******************************************************************************
@@ -125,54 +119,45 @@ namespace Megamania
 	 *******************************************************************************/
 	void GameController::InitMenuScreen(void) 
 	{
-		delete splashScreen;
+		delete currentScreen;
 		screen->clip_rect.x = screen->clip_rect.y = 0;
 		screen->clip_rect.w = WIDTH_SCREEN;
 		screen->clip_rect.h = HEIGHT_SCREEN;
-		menuScreen = new MenuScreen(screen);
-		currentScreen = dynamic_cast<AbstractScreen *>(menuScreen);
-		menuScreen->Execute();
+		currentScreen = new MenuScreen(screen);
+		currentScreen->Execute();
 	}
 
 	/*******************************************************************************
 	 * 
 	 *******************************************************************************/
-	void GameController::InitGameScreen(int completeLevelNumber, SDL_Event event) 
-	{
-		//delete menuScreen;
-		screen->clip_rect.x = screen->clip_rect.y = 0;
-		screen->clip_rect.w = WIDTH_SCREEN;
-		screen->clip_rect.h = HEIGHT_SCREEN;
-		int *value = reinterpret_cast<int *>(event.user.data1);
-		switch(completeLevelNumber){
-			
+	void GameController::LoadGame(void) {
+	
+	}
+
+	/*******************************************************************************
+	 * 
+	 *******************************************************************************/
+	void GameController::InitLevel(int code) 
+	{		
+		if(currentScreen != NULL) {
+			delete currentScreen;
+		}
+		switch(event.user.code) {
+			case MENU_SCREEN_FINISH_EVENT:
+				currentScreen = new LevelScreen1(screen);
+				break;
 			case LEVEL1_FINISH_EVENT:
-				if(*value){
-					levelScreen = new LevelScreen3(screen);		
-					levelScreen->SetShipCount(LEVEL_3_NUMBER_SHIPS);
-				}else{
-					levelScreen = new LevelScreen3(screen);		
-					levelScreen->SetShipCount(LEVEL_3_NUMBER_SHIPS);
-				}
+				currentScreen = new LevelScreen2(screen);
 				break;
 			case LEVEL2_FINISH_EVENT:
-				if(*value){
-					levelScreen = new LevelScreen3(screen);		
-					levelScreen->SetShipCount(LEVEL_3_NUMBER_SHIPS);
-				}else{
-					levelScreen = new LevelScreen3(screen);		
-					levelScreen->SetShipCount(LEVEL_3_NUMBER_SHIPS);
-				}
+				currentScreen = new LevelScreen3(screen);
 				break;
-			default:
-				levelScreen = new LevelScreen3(screen);		
-				levelScreen->SetShipCount(LEVEL_3_NUMBER_SHIPS);
-		}
-		
-		levelScreen->SetMegamania(megamania);
-		SDL_EnableKeyRepeat(REPEAT_DELAY, REPEAT_INTERVAL);
-		currentScreen = dynamic_cast<AbstractLevel *>(levelScreen);
-		levelScreen->Init();
-		levelScreen->Execute();
+			case LEVEL3_FINISH_EVENT:
+				currentScreen = new LevelScreen1(screen);
+				break;
+		}		
+		(reinterpret_cast<AbstractLevel *>(currentScreen))->SetMegamania(megamania);
+		currentScreen->Init();
+		currentScreen->Execute();		
 	}
 }
