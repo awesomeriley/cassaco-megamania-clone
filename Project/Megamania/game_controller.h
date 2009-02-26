@@ -44,12 +44,6 @@ namespace Megamania
 			int width;
 			/** indica a altura da tela do jogo*/
 			int height;
-			/** Objeto que representa a SplashScreen do jogo*/
-			SplashScreen *splashScreen;
-			/** Objeto que repreenta o Menu do jogo*/
-			MenuScreen *menuScreen;
-			/** Objeto que repreenta o jogo em si*/
-			AbstractLevel *levelScreen;
 			/** objeto que representa a nave principal do jogo*/
 			Ship *megamania;
 			GameController(void);
@@ -63,7 +57,8 @@ namespace Megamania
 			}
 			void InitSpashScreen(void);
 			void InitMenuScreen(void);
-			void InitGameScreen(int, SDL_Event);			
+			void LoadGame(void);
+			void InitLevel(int);
 			void OnGameInit(void);
 			void OnGameLoop(void);
 			void OnGameStop(void);

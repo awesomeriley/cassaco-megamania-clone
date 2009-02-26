@@ -42,8 +42,7 @@ namespace Megamania
 			/* variavel que guarda o codigo encapsulado no SDL_event 
 			 * para indicar qual o numero da fase
 			 */
-			int levelFinishEvent;
-			/** finaliza o level */
+			int levelFinishEvent;			
 			void FinishLevel(void);
 		public:
 			AbstractLevel(SDL_Surface *)throw(SDLVideoException);
