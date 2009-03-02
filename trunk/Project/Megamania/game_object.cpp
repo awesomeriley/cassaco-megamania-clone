@@ -8,7 +8,7 @@
  * Email : adrianobragaalencar@gmail.com 
  *
  * Author : Marcelo Collyer
- * Email     : marcelocollyer@gmail.com
+ * Email  : marcelocollyer@gmail.com
  *************************************************************/
 #include "game_object.h"
 
@@ -24,6 +24,7 @@ namespace Megamania
 	throw(SpriteException) : Sprite(file, frameWidth, frameHeight)
 	{
 		offsetX = offsetY = 0;
+		animation = NULL;
 	}
 	
 	/*************************************************************
@@ -31,6 +32,7 @@ namespace Megamania
 	 * alocados pelo ator
 	 *
 	 *************************************************************/
+
 	GameObject::~GameObject(void)
 	{
 		if(animation != NULL) {
