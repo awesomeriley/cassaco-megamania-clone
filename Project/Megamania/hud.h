@@ -1,9 +1,11 @@
-/*************************************************************
+/*****************************************************************
+ * Classe que representa a barra de status do jogo, aqui são
+ * visualizados o timer do jogo, as vidas e os respectivos 
+ * pontos adquiridos
  *
+ * Author: Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
  *
- *
- *
- ************************************************************/
+ ****************************************************************/
 #ifndef __HUD_H__
 #define __HUD_H__
 
