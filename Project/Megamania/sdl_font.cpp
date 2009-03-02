@@ -41,6 +41,7 @@ namespace Megamania
 	SDL_Font::~SDL_Font(void)
 	{
 		TTF_CloseFont(font);
+		font = NULL;
 	}
 
 	/******************************************************************
