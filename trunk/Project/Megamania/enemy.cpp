@@ -26,15 +26,6 @@ namespace Megamania
 	}
 
 	/*************************************************************
-	 * Destruidor responsavel por desalocar todos os recursos
-	 * alocados pelo inimigo
-	 *
-	 *************************************************************/
-	Enemy::~Enemy(void)
-	{
-	}
-
-	/*************************************************************
 	 * Função responsavel por desenhar na tela todos os objetos
 	 *
 	 *************************************************************/
