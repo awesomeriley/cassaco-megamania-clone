@@ -33,7 +33,9 @@ namespace Megamania
 	 *************************************************************/
 	GameObject::~GameObject(void)
 	{
-		delete animation;
+		if(animation != NULL) {
+			delete animation;
+		}			
 	}
 
 
