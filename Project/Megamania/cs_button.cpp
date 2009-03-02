@@ -33,6 +33,7 @@ namespace Megamania
 	{
 		SDL_FreeSurface(surface);
 		FreeMemory(text);
+		delete font;
 		delete validate; 
 	}
 
@@ -53,8 +54,7 @@ namespace Megamania
 			switch(event->type) {
 				case SDL_MOUSEBUTTONDOWN:
 					if(event->button.button == SDL_BUTTON_LEFT) {
-						ChangeState(MENU_BUTTON_DOWN, DOWN);
-						//validate->Play();
+						ChangeState(MENU_BUTTON_DOWN, DOWN);						
 					}
 					break;
 				case SDL_MOUSEMOTION:
