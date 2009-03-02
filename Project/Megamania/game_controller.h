@@ -55,7 +55,7 @@ namespace Megamania
 				}
 				return *singleton;
 			}
-			void InitSpashScreen(void);
+			void InitSplashScreen(void);
 			void InitMenuScreen(void);
 			void LoadGame(void);
 			void InitLevel(int);
