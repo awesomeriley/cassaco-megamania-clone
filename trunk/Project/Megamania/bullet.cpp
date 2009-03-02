@@ -21,15 +21,6 @@ namespace Megamania
 	}
 
 	/*************************************************************
-	 * Destruidor responsavel por desalocar todos os recursos
-	 * alocados pelo Objeto Bullet
-	 *
-	 *************************************************************/
-	Bullet::~Bullet(void) 
-	{
-	}
-
-	/*************************************************************
 	 * Função que atualiza a posição atual da bala, esta função
 	 * recebe como parametro um valor indicando se a bala deverá
 	 * subir ou deverá descer

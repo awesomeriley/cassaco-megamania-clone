@@ -18,8 +18,7 @@ namespace Megamania
 	class Bullet : public GameObject	
 	{   		
 		public:
-			Bullet(void)throw(SpriteException);
-			~Bullet(void);
+			Bullet(void)throw(SpriteException);			
 			void Update(Direction);
 	};
 }
