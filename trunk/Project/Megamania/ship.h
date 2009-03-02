@@ -36,7 +36,7 @@ namespace Megamania
 			void ResetBulletPosition(void);
 		public:
 			Ship(const char *, Uint16, Uint16)throw(SpriteException);
-			~Ship(void);
+			virtual ~Ship(void);
 			virtual void Die(SDL_Surface *);
 			virtual void Shoot(void);
 			void SetState(ShipState);
