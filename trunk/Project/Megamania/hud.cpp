@@ -1,9 +1,11 @@
-/*************************************************************
+/*****************************************************************
+ * Classe que representa a barra de status do jogo, aqui são
+ * visualizados o timer do jogo, as vidas e os respectivos 
+ * pontos adquiridos
  *
+ * Author: Adriano Braga Alencar (adrianobragaalencar@gmail.com) 
  *
- *
- *
- ************************************************************/
+ ****************************************************************/
 #include "hud.h"
 #include "megamania_utils.h"
 #include "stdio.h"
@@ -20,7 +22,8 @@ namespace Megamania
 	HUD * HUD::singleton = NULL;
 
 	/*************************************************************
-	 *
+	 * Construtor default, que inicializa todas as informações
+	 * necessarias ao Objeto HUD
 	 *
 	 ************************************************************/
 	HUD::HUD(void)
@@ -103,24 +106,24 @@ namespace Megamania
 	 *
 	 ************************************************************/
 	void HUD::Full(void)
-	{	
+	{			
 		SDL_BlitSurface(panel, NULL, surface, &rect);
 		UpdateLife();
 		UpdateScore();
 		register int offset = energyBar->clip_rect.w;
 		int x = BAR_POSITION_X;				
-		effect->Play();
+		effect->Play();		
 		for(Uint32 i = 0; i < BAR_WITDH; i += offset) {
 			energyBar->clip_rect.x = x;
 			SDL_BlitSurface(energyBar, NULL, surface, &energyBar->clip_rect);	
-			SDL_Flip(surface);			
+			SDL_Flip(surface);		
 			x += offset;			
 			SDL_Delay(delay);
-		}
+		}		
 		cursor = BAR_WITDH + BAR_POSITION_X;
 		energyBar->clip_rect.x = BAR_POSITION_X;		
 		energyBar2->clip_rect.x = BAR_WITDH - energyBar2->clip_rect.w;		
-		SDL_SetClipRect(surface, &clipRect);
+		SDL_SetClipRect(surface, &clipRect);		
 	}
 	
 	/*************************************************************
