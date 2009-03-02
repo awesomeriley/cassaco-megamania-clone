@@ -32,9 +32,9 @@ namespace Megamania
 	CSButton::~CSButton()
 	{
 		SDL_FreeSurface(surface);
-		FreeMemory(text);
-		delete font;
+		FreeMemory(text);		
 		delete validate; 
+		font = NULL;
 	}
 
 	/****************************************************
