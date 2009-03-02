@@ -173,7 +173,7 @@ namespace Megamania
 	 **************************************************************/
 	void AbstractLevel::Clear(void) 
 	{
-		for(Uint32 i = shipCount; --i >= 0;) {
+		for(Uint32 i = 0; i < shipCount; ++i) {
 			delete enemies[i];
 		}
 		enemies.clear();
