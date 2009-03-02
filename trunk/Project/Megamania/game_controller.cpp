@@ -92,7 +92,7 @@ namespace Megamania
 				currentTimer = 0;
 			}
 			SDL_Delay(currentTimer < TIME_PER_TICKS ? 
-					  TIME_PER_TICKS - currentTimer: TIME_PER_TICKS);
+					  TIME_PER_TICKS - currentTimer : TIME_PER_TICKS);
 			lastTimer = currentTimer;			
 			currentScreen->Draw();
 		}
