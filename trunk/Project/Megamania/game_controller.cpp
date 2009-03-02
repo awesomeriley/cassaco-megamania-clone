@@ -41,7 +41,7 @@ namespace Megamania
 	void GameController::OnGameInit(void) 
 	{
 		Initializer::Init();
-		InitSpashScreen();				
+		InitSplashScreen();				
 		SDL_EnableKeyRepeat(REPEAT_DELAY, REPEAT_INTERVAL);
 		running = true;
 	}
@@ -109,7 +109,7 @@ namespace Megamania
 	/*******************************************************************************
 	 * 
 	 *******************************************************************************/
-	void GameController::InitSpashScreen(void) 
+	void GameController::InitSplashScreen(void) 
 	{
 		currentScreen->Execute();
 	}
@@ -138,12 +138,13 @@ namespace Megamania
 	 * 
 	 *******************************************************************************/
 	void GameController::InitLevel(int code) 
-	{		
-		if(currentScreen != NULL) {
+	{				
+		if(currentScreen != NULL) {	
 			delete currentScreen;
+			currentScreen = NULL;
 		}
 		switch(event.user.code) {
-			case MENU_SCREEN_FINISH_EVENT:
+			case MENU_SCREEN_FINISH_EVENT:	
 				currentScreen = new LevelScreen1(screen);
 				break;
 			case LEVEL1_FINISH_EVENT:
@@ -155,7 +156,7 @@ namespace Megamania
 			case LEVEL3_FINISH_EVENT:
 				currentScreen = new LevelScreen1(screen);
 				break;
-		}		
+		}				
 		(reinterpret_cast<AbstractLevel *>(currentScreen))->SetMegamania(megamania);
 		currentScreen->Init();
 		currentScreen->Execute();		
