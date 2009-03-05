@@ -1,0 +1,7 @@
+MIDlet-Version: 0.1b
+MIDlet-Vendor: Cassaco
+MIDlet-Jar-URL: Pong.jar
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0
+MIDlet-1: Pong,,pong.Pong
+MIDlet-Name: The Pong
