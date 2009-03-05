@@ -65,6 +65,7 @@ namespace Megamania
 			{
 				if(singleton == NULL) {
 					singleton = new HUD();
+					singleton->SetLife(INITIAL_LIFE);
 				}
 				return singleton;
 			}
@@ -72,6 +73,7 @@ namespace Megamania
 			void SetPoint(int);
 			void IncrementPoint(int);
 			void SetLife(int);
+			int GetLife(void);
 			void IncrementLife(void);
 			void DecrementLife(void);
 			void Full(void);
