@@ -12,6 +12,10 @@
 /** objeto global para o tratamento de eventos*/
 extern SDL_Event event;
 
+/** Macro definida somente para uso interno da classe*/
+#define CHECK_LIFE(o)   o->GetLife() < 0            
+
+
 namespace Megamania
 {
 	/***************************************************************
@@ -54,7 +58,7 @@ namespace Megamania
 	 **************************************************************/
 	void AbstractLevel::Init() 
 	{
-		megamania->SetPosition(WIDTH_SCREEN >> 1, hud->GetRect().y - megamania->GetHeightFrame());
+		megamania->SetPosition(WIDTH_SCREEN >> 1, hud->GetRect().y - megamania->GetHeightFrame());		
 		megamania->SetVisible(true);
 		megamania->SetFrame(2);				
 		Draw();
@@ -119,7 +123,9 @@ namespace Megamania
 					if(enemyBullet->IsVisible() && megamania->IsVisible() && enemyBullet->CollidesWith(*megamania)){
 						enemyBullet->SetVisible(false);							
 						megamania->SetVisible(false);												
-						hud->DecrementLife();						
+						hud->DecrementLife();												
+						if(CHECK_LIFE(hud)) {
+						}
 						FinishLevel();
 					}
 					if((bullet.IsVisible())&&(bullet.CollidesWith(*enemy))) {						
@@ -134,7 +140,8 @@ namespace Megamania
 			}	
 			
 			if(!hasEnemyAlive){
-				levelComplete = true;		
+				levelComplete = true;	
+				hud->Empty();
 				FinishLevel();
 			}
 		}		
@@ -145,8 +152,7 @@ namespace Megamania
 		lastTimer = currentTimer;
 		if(timerAcum >= DELAY) {
 			if(hud->Draw()) {
-				megamania->Die(screen);				
-				Init();
+				megamania->Die(screen);								
 			}
 			timerAcum = 0;
 		}		
