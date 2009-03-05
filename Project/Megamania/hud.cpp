@@ -82,6 +82,16 @@ namespace Megamania
 	{
 		this->lifes = lifes;
 	}
+
+	/*************************************************************
+	 * Função que retorna a quantidade corrente de vidas que o
+	 * Objeto HUD contém
+	 *
+	 ************************************************************/
+	int HUD::GetLife(void) 
+	{
+		return this->lifes;
+	}
 	
 	/*************************************************************
 	 * Função que incrementa a quantidade de vida em um
@@ -103,22 +113,30 @@ namespace Megamania
 	
 	/*************************************************************
 	 * Função responsavel por encher a barra de energias
+	 * Esta função utiliza um objeto SDL_Rect auxiliar para a 
+	 * realização da animação e não a propria estrutura definida 
+	 * no objeto SDL_Surface, para evitar que a aplicação trave
+	 * durante a animação
 	 *
 	 ************************************************************/
 	void HUD::Full(void)
-	{			
+	{
+		SDL_SetClipRect(surface, NULL);
 		SDL_BlitSurface(panel, NULL, surface, &rect);
 		UpdateLife();
 		UpdateScore();
 		register int offset = energyBar->clip_rect.w;
-		int x = BAR_POSITION_X;				
 		effect->Play();		
+		SDL_Rect rect;    
+		rect.x = BAR_POSITION_X; 
+		rect.y = energyBar->clip_rect.y;
+		rect.w = energyBar->clip_rect.w;
+		rect.h = energyBar->clip_rect.h;		
 		for(Uint32 i = 0; i < BAR_WITDH; i += offset) {
-			energyBar->clip_rect.x = x;
-			SDL_BlitSurface(energyBar, NULL, surface, &energyBar->clip_rect);	
-			SDL_Flip(surface);		
-			x += offset;			
-			SDL_Delay(delay);
+			SDL_BlitSurface(energyBar, NULL, surface, &rect);	
+			SDL_Flip(surface);					
+			rect.x += offset;			
+			SDL_Delay(delay);            			
 		}		
 		cursor = BAR_WITDH + BAR_POSITION_X;
 		energyBar->clip_rect.x = BAR_POSITION_X;		
@@ -126,15 +144,25 @@ namespace Megamania
 		SDL_SetClipRect(surface, &clipRect);		
 	}
 	
-	/*************************************************************
-	 * Função que esvazia a barra de energia
-	 *
-	 ************************************************************/
-	void HUD::Empty(void)
+	void HUD::Empty(void) 
 	{
-		SDL_BlitSurface(panel, NULL, surface, &rect);
-		UpdateLife();
-		UpdateScore();
+		SDL_SetClipRect(surface, NULL);		
+		SDL_Rect rect;
+		rect.w = energyBar2->clip_rect.w;
+		rect.h = energyBar2->clip_rect.h;
+		rect.x = cursor;
+		rect.y = BAR_POSITION_Y;
+		register int offset = energyBar2->clip_rect.w;
+		for(Uint32 i = cursor; i >= BAR_POSITION_X; i -= rect.w) {
+			SDL_BlitSurface(energyBar2, NULL, surface, &rect);	
+			//Não usar HUD::IncrementPoint(int);
+			this->point += POINT_BY_DECREMENT_HUD;
+			UpdateScore();
+			SDL_Flip(surface);					
+			rect.x -= offset;			
+			SDL_Delay(delay);            				
+		}
+		cursor = BAR_POSITION_X;
 	}
 
 	/*************************************************************
@@ -171,8 +199,8 @@ namespace Megamania
 			buffer[len - 1] = '\0';
 			SDL_Surface *text = font->RenderTextSolid(reinterpret_cast<const char *>(buffer));
 			SDL_Rect r;
-			r.x = rect.w - text->clip_rect.w;
-			r.y = rect.y + rect.h - text->clip_rect.h;
+			r.x = panel->clip_rect.w - text->clip_rect.w;
+			r.y = rect.y + panel->clip_rect.h - text->clip_rect.h;
 			r.w = text->clip_rect.w; 
 			r.h = text->clip_rect.h;					
 			SDL_FillRect(surface, &r, SDL_MapRGB(surface->format, 0, 0, 0));
