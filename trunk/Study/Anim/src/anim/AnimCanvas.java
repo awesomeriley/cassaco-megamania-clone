@@ -9,6 +9,7 @@ public class AnimCanvas extends GameCanvas implements Runnable{
   
   private int[] WALK = {1, 2, 3, 4, 5, 6, 7, 8};
   private int[] STAND = {0};
+  private int sleepTime = 60;
   private boolean isWalking = false;
   private Image girl;
   private Sprite girlSprite;
@@ -34,6 +35,7 @@ public class AnimCanvas extends GameCanvas implements Runnable{
     while(true) {
       try {
         updateScreen(getGraphics());
+        Thread.sleep(sleepTime);
       } catch (Exception e) {
         e.printStackTrace();
       }
@@ -48,6 +50,7 @@ public class AnimCanvas extends GameCanvas implements Runnable{
   private void updateScreen(Graphics g) {
     createBackground(g);
     girlSprite.setPosition(getWidth()/2 - girlSprite.getWidth()/2, getHeight()/2 - girlSprite.getHeight()/2);
+    
     if (!isWalking) {
       girlSprite.setFrameSequence(this.WALK);
       isWalking = true;
