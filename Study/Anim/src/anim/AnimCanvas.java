@@ -9,8 +9,10 @@ public class AnimCanvas extends GameCanvas implements Runnable{
   
   private int[] WALK = {1, 2, 3, 4, 5, 6, 7, 8};
   private int[] STAND = {0};
+  private boolean isWalking = false;
   private Image girl;
   private Sprite girlSprite;
+  
 
   protected AnimCanvas() {
     super(false);
@@ -46,9 +48,13 @@ public class AnimCanvas extends GameCanvas implements Runnable{
   private void updateScreen(Graphics g) {
     createBackground(g);
     girlSprite.setPosition(getWidth()/2 - girlSprite.getWidth()/2, getHeight()/2 - girlSprite.getHeight()/2);
-    girlSprite.setFrameSequence(this.WALK);
-    girlSprite.nextFrame();
-    girlSprite.paint(g);
-    flushGraphics();
+    if (!isWalking) {
+      girlSprite.setFrameSequence(this.WALK);
+      isWalking = true;
+    } else {
+      girlSprite.nextFrame();
+      girlSprite.paint(g);
+      flushGraphics();
+    }
   }
 }
