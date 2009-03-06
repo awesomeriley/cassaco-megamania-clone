@@ -3,6 +3,7 @@ package anim;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.GameCanvas;
+import javax.microedition.lcdui.game.LayerManager;
 import javax.microedition.lcdui.game.Sprite;
 
 public class AnimCanvas extends GameCanvas implements Runnable{
@@ -10,12 +11,15 @@ public class AnimCanvas extends GameCanvas implements Runnable{
   private final int girlXVel = 4;
   private int[] WALK = {1, 2, 3, 4, 5, 6, 7, 8};
   private int[] STAND = {0};
-  private int sleepTime = 60;
-  private int girlY = 0;
+  private int sleepTime = 50;
+  private int girlY = 90;
   private int girlX = 0;
   private boolean isWalking = false;
   private Image girl;
+  private Image background;
   private Sprite girlSprite;
+  private Sprite BackgroundSprite;
+  private LayerManager layerManager;
 
 
   public AnimCanvas() {
@@ -25,8 +29,12 @@ public class AnimCanvas extends GameCanvas implements Runnable{
   public void start() {
     try {
       girl = Image.createImage("/girl_sprites.png");
+      background = Image.createImage("/bg.png");
       girlSprite = new Sprite(girl, 64, 64);
-      girlSprite.setRefPixelPosition(girlSprite.getWidth()/2, girlSprite.getHeight()/2);
+      BackgroundSprite = new Sprite(background);
+      layerManager = new LayerManager();
+      layerManager.append(girlSprite);
+      layerManager.append(BackgroundSprite);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -47,13 +55,13 @@ public class AnimCanvas extends GameCanvas implements Runnable{
   }
 
   private void createBackground(Graphics g) {
-    g.setColor(200, 200, 200);
-    g.fillRect(0, 0, getWidth(), getHeight());
+    layerManager.insert(BackgroundSprite, 1);
   }
 
   private void updateScreen(Graphics g) {
     createBackground(g);
-    girlSprite.setPosition(girlX, girlY);
+    
+    layerManager.paint(g, 32, 48);
     
     if (getKeyStates() != 0) {
       moveGirl(g);
@@ -66,7 +74,7 @@ public class AnimCanvas extends GameCanvas implements Runnable{
   private void moveGirl(Graphics g) {
     int keyState = getKeyStates();
     
-    if ((keyState & RIGHT_PRESSED) != 0 && girlX < (getWidth() - girlSprite.getWidth())) {
+    if ((keyState & RIGHT_PRESSED) != 0 && girlX < (BackgroundSprite.getWidth() - girlSprite.getWidth())) {
       girlSprite.setTransform(Sprite.TRANS_NONE);
       
       if (!isWalking) {
@@ -74,9 +82,10 @@ public class AnimCanvas extends GameCanvas implements Runnable{
         girlSprite.setFrameSequence(this.WALK);
       } else {
         girlSprite.nextFrame();
-        girlSprite.paint(g);
       }
       girlX += girlXVel;
+      girlSprite.setPosition(girlX, girlY);
+      layerManager.insert(girlSprite, 0);
     } else if ((keyState & LEFT_PRESSED) != 0 && girlX > 0) {
       girlSprite.setTransform(Sprite.TRANS_MIRROR);
       
@@ -85,16 +94,16 @@ public class AnimCanvas extends GameCanvas implements Runnable{
         girlSprite.setFrameSequence(this.WALK);
       } else {
         girlSprite.nextFrame();
-        girlSprite.paint(g);
       }
       girlX -= girlXVel;
+      girlSprite.setPosition(girlX, girlY);
+      layerManager.insert(girlSprite, 0);
     }
   }
   
   private void standGirl(Graphics g) {
     isWalking = false;
     girlSprite.setFrameSequence(this.STAND);
-    girlSprite.nextFrame();
-    girlSprite.paint(g);
+    layerManager.insert(girlSprite, 0);
   }
 }
