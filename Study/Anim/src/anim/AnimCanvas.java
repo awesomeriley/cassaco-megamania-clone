@@ -97,7 +97,7 @@ public class AnimCanvas extends GameCanvas implements Runnable{
       layerManager.insert(girlSprite, 0);
     } else if ((keyState & LEFT_PRESSED) != 0 && girlX > 0) {
       girlSprite.setTransform(Sprite.TRANS_MIRROR);
-      
+      System.out.println("Girl: " + girlX + "\nWIDTH: " + BackgroundSprite.getWidth());
       if (!isWalking) {
         isWalking = true;
         girlSprite.setFrameSequence(this.WALK);
