@@ -3,6 +3,7 @@ package anim;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.GameCanvas;
+import javax.microedition.lcdui.game.Layer;
 import javax.microedition.lcdui.game.LayerManager;
 import javax.microedition.lcdui.game.Sprite;
 
@@ -11,7 +12,7 @@ public class AnimCanvas extends GameCanvas implements Runnable{
   private final int girlXVel = 4;
   private int[] WALK = {1, 2, 3, 4, 5, 6, 7, 8};
   private int[] STAND = {0};
-  private int sleepTime = 50;
+  private int sleepTime = 60;
   private int girlY = 90;
   private int girlX = 0;
   private boolean isWalking = false;
@@ -58,11 +59,6 @@ public class AnimCanvas extends GameCanvas implements Runnable{
   private void createBackground(Graphics g) {
     g.setColor(0);
     g.fillRect(0, 0, getWidth(), getHeight());
-    
-    if (girlX == (BackgroundSprite.getWidth() - girlX)) {
-      BackgroundSprite.setTransform(Sprite.TRANS_MIRROR);
-      layerManager.insert(BackgroundSprite, 1);
-    }
     layerManager.insert(BackgroundSprite, 1);
   }
 
@@ -108,11 +104,24 @@ public class AnimCanvas extends GameCanvas implements Runnable{
       girlSprite.setPosition(girlX, girlY);
       layerManager.insert(girlSprite, 0);
     }
+    
+    if ((keyState & RIGHT_PRESSED) != 0 && girlX == (BackgroundSprite.getWidth() - girlSprite.getWidth())) {
+      girlX = 0;
+      girlSprite.setPosition(girlX, girlY);
+      layerManager.insert(girlSprite, 0);
+      layerManager.insert(changeBackground(), 1);
+    }
   }
-  
+
   private void standGirl(Graphics g) {
     isWalking = false;
     girlSprite.setFrameSequence(this.STAND);
     layerManager.insert(girlSprite, 0);
+  }
+  
+  private Layer changeBackground() {
+    BackgroundSprite.setTransform(Sprite.TRANS_MIRROR);
+    BackgroundSprite.setPosition(0, 0);
+    return BackgroundSprite;
   }
 }
