@@ -58,6 +58,11 @@ public class AnimCanvas extends GameCanvas implements Runnable{
   private void createBackground(Graphics g) {
     g.setColor(0);
     g.fillRect(0, 0, getWidth(), getHeight());
+    
+    if (girlX == (BackgroundSprite.getWidth() - girlX)) {
+      BackgroundSprite.setTransform(Sprite.TRANS_MIRROR);
+      layerManager.insert(BackgroundSprite, 1);
+    }
     layerManager.insert(BackgroundSprite, 1);
   }
 
@@ -71,6 +76,7 @@ public class AnimCanvas extends GameCanvas implements Runnable{
     } else {
       standGirl(g);
     }
+    
     flushGraphics();
   }
 
@@ -79,7 +85,7 @@ public class AnimCanvas extends GameCanvas implements Runnable{
     
     if ((keyState & RIGHT_PRESSED) != 0 && girlX < (BackgroundSprite.getWidth() - girlSprite.getWidth())) {
       girlSprite.setTransform(Sprite.TRANS_NONE);
-      
+      System.out.println("Girl: " + girlX + "\nWIDTH: " + BackgroundSprite.getWidth());
       if (!isWalking) {
         isWalking = true;
         girlSprite.setFrameSequence(this.WALK);
