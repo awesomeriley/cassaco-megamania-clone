@@ -56,6 +56,8 @@ public class AnimCanvas extends GameCanvas implements Runnable{
   }
 
   private void createBackground(Graphics g) {
+    g.setColor(0);
+    g.fillRect(0, 0, getWidth(), getHeight());
     layerManager.insert(BackgroundSprite, 1);
   }
 
