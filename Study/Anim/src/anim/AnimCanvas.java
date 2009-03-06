@@ -31,6 +31,7 @@ public class AnimCanvas extends GameCanvas implements Runnable{
       girl = Image.createImage("/girl_sprites.png");
       background = Image.createImage("/bg.png");
       girlSprite = new Sprite(girl, 64, 64);
+      girlSprite.setPosition(girlX, girlY);
       BackgroundSprite = new Sprite(background);
       layerManager = new LayerManager();
       layerManager.append(girlSprite);
