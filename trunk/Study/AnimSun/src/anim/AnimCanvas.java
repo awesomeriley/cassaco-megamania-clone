@@ -170,6 +170,7 @@ public class AnimCanvas extends GameCanvas implements Runnable{
       crouchGirl(g);
     } 
 
+    //Por nao ter sprite de ataque, estou usando o movimento DOWN para atacar provisoriamente.
     if ((keyState & DOWN_PRESSED) != 0 && girlSprite.collidesWith(monsterSprite, false)) {
       crouchGirl(g);
       monsterAlive = false;
