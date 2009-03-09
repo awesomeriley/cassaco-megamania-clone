@@ -147,11 +147,13 @@ public class AnimCanvas extends GameCanvas implements Runnable{
     }
 
     if ((keyState & RIGHT_PRESSED) != 0 && girlX == (BackgroundSprite.getWidth() - girlSprite.getWidth())) {
-      girlX = 0;
-      girlSprite.setPosition(girlX, girlY);
-      layerManager.insert(girlSprite, 0);
-      layerManager.insert(changeBackground(), 1);
-      levelCount += 1;
+      if (levelCount < 1) {
+        girlX = 0;
+        girlSprite.setPosition(girlX, girlY);
+        layerManager.insert(girlSprite, 0);
+        layerManager.insert(changeBackground(), 1);
+        levelCount += 1;
+      }
     } else if ((keyState & LEFT_PRESSED) != 0 && girlX == 4) {
       if (levelCount != 0) {
         girlX = BackgroundSprite.getWidth() - girlSprite.getWidth();
