@@ -172,7 +172,6 @@ public class AnimCanvas extends GameCanvas implements Runnable{
 
     if ((keyState & DOWN_PRESSED) != 0 && girlSprite.collidesWith(monsterSprite, false)) {
       crouchGirl(g);
-      System.out.println("KILL!");
       monsterAlive = false;
       layerManager.remove(monsterSprite);
     }
