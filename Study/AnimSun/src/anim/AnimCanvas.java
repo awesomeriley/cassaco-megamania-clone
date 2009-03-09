@@ -22,6 +22,7 @@ public class AnimCanvas extends GameCanvas implements Runnable{
   private boolean isWalking = false;
   private boolean monsterUp = true;
   private boolean monsterAlive = true;
+  private boolean girlIsDead = false;
   private Image girl;
   private Image monster;
   private Image background;
@@ -133,6 +134,10 @@ public class AnimCanvas extends GameCanvas implements Runnable{
       girlX += girlXVel;
       girlSprite.setPosition(girlX, girlY);
       layerManager.insert(girlSprite, 0);
+
+      if (girlSprite.collidesWith(monsterSprite, false)) {
+        girlIsDead = true;
+      }
     } else if ((keyState & LEFT_PRESSED) != 0 && girlX > 0) {
       girlSprite.setTransform(Sprite.TRANS_MIRROR);
       if (!isWalking) {
@@ -188,6 +193,10 @@ public class AnimCanvas extends GameCanvas implements Runnable{
     isWalking = false;
     girlSprite.setFrameSequence(this.CROUCH);
     layerManager.insert(girlSprite, 0);
+  }
+
+  private void killGirl() {
+    girlIsDead = true;
   }
 
   private Layer changeBackground() {
