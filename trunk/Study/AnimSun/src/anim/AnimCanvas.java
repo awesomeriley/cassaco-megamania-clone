@@ -81,15 +81,12 @@ public class AnimCanvas extends GameCanvas implements Runnable{
 	}
 
 	private void moveMonster(Graphics g) {
-		for (int i = monsterY; i > 120; i -= 5) {
-			monsterSprite.setPosition(monsterX, monsterY);
-			layerManager.insert(monsterSprite, 1);
-		}
+		//TODO Realizar movimentação do mosntro.
 	}
 
 	private void updateScreen(Graphics g) {
 		createBackground(g);
-
+		moveMonster(g);
 		layerManager.paint(g, 32, 48);
 
 		if (getKeyStates() != 0) {
@@ -147,6 +144,11 @@ public class AnimCanvas extends GameCanvas implements Runnable{
 
 		if ((keyState & DOWN_PRESSED) != 0) {
 			crouchGirl(g);
+		} 
+		
+		if ((keyState & DOWN_PRESSED) != 0 && girlSprite.collidesWith(monsterSprite, false)) {
+		  crouchGirl(g);
+		  System.out.println("KILL!");
 		}
 	}
 
