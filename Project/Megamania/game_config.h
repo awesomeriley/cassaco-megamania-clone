@@ -107,6 +107,8 @@
 #define HUD_DRAW_DELAY	700     // 0.7 sec * 1000 milli
 #define EFFECT_HUD "menu_select.wav"
 #define INITIAL_LIFE 3
+#define MAX_BULLET 3
+#define BLOCK_MEMORY_RESERVE 13
 
 static SDL_Surface *screen = SDL_SetVideoMode(WIDTH_SCREEN, HEIGHT_SCREEN, BPP, SDL_SWSURFACE|SDL_DOUBLEBUF);
 
