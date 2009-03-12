@@ -112,6 +112,17 @@ namespace Megamania
 	}
 	
 	/*************************************************************
+	 * Função responsavel por resetar todos os dados do
+	 * componente HUD
+	 *
+	 ************************************************************/
+	void HUD::Reset(void) 
+	{
+		SetLife(INITIAL_LIFE);
+		SetPoint(0);
+	}
+	
+	/*************************************************************
 	 * Função responsavel por encher a barra de energias
 	 * Esta função utiliza um objeto SDL_Rect auxiliar para a 
 	 * realização da animação e não a propria estrutura definida 
