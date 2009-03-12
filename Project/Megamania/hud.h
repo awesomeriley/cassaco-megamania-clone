@@ -80,6 +80,7 @@ namespace Megamania
 			void Empty(void);
 			void UpdateLife(void);
 			void UpdateScore(void);
+			void Reset(void);
 			bool Draw(void);
 	};
 }
