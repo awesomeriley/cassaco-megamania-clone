@@ -11,10 +11,12 @@
 #include "ship.h"
 #include "enemy.h"
 #include "hud.h"
+#include "game_config.h"
 #include "video_exception.h"
 #include "game_config.h"
 #include "abstract_screen.h"
 #include <vector>
+#include <algorithm>
 
 namespace Megamania
 {
@@ -23,6 +25,8 @@ namespace Megamania
 		protected:
 			/** vetor que contém os inimigos a serem exibidos*/
 			std::vector<Enemy *> enemies;
+			/** vetor que contém todas as balas visiveis na tela*/
+			std::vector<Bullet *> bullets;
 			/** objeto que representa a nave principal do jogo*/
 			Ship *megamania;
 			/** flag que indica se o jogo já esta completo ou não*/
@@ -39,11 +43,14 @@ namespace Megamania
 			int timerAcum;
 			/** constante que indica o delay utilizado para a pintura*/
 			const static int DELAY = HUD_DRAW_DELAY;
+			/** variavel que indica a quantidade de balas atualmente na tela*/
+			int bulletCount;
 			/* variavel que guarda o codigo encapsulado no SDL_event 
 			 * para indicar qual o numero da fase
 			 */
 			int levelFinishEvent;			
 			void FinishLevel(void);
+			void RestartLevel(void);
 		public:
 			AbstractLevel(SDL_Surface *)throw(SDLVideoException);
 			~AbstractLevel(void);
