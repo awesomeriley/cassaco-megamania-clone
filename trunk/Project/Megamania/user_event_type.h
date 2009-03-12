@@ -16,5 +16,6 @@ const static Uint8 MENU_SCREEN_FINISH_EVENT   = 0x00000002;
 const static Uint8 LEVEL1_FINISH_EVENT		  = 0x00000003;
 const static Uint8 LEVEL2_FINISH_EVENT		  = 0x00000004;
 const static Uint8 LEVEL3_FINISH_EVENT		  = 0x00000005;
+const static Uint8 GAME_OVER                  = 0x00000006; 
 
 #endif //__USER_EVENT_TYPE_H__
