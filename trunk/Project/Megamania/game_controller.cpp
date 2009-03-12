@@ -67,18 +67,19 @@ namespace Megamania
 			if(SDL_PollEvent(&event)) {
 				switch(event.type) {
 					case SDL_QUIT:
-						running = false;
+						OnGameStop();
 						break;
 					case SDL_USEREVENT: 
-						switch(event.user.code) {
-							case SPLASH_SCREEN_FINISH_EVENT:
-								InitMenuScreen();
-								break;
+						switch(event.user.code) {							
 							case MENU_SCREEN_FINISH_EVENT:
 							case LEVEL1_FINISH_EVENT:
 							case LEVEL2_FINISH_EVENT:
 							case LEVEL3_FINISH_EVENT:
 								InitLevel(event.user.code);
+								break;
+							case SPLASH_SCREEN_FINISH_EVENT:
+							case GAME_OVER:								
+								InitMenuScreen();
 								break;
 						}
 						break;
