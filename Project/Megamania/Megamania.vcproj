@@ -528,6 +528,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\enemy_5.png"
+					>
+				</File>
+				<File
 					RelativePath=".\energybar_2.png"
 					>
 				</File>
