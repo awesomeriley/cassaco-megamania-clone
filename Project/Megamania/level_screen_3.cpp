@@ -45,7 +45,8 @@ namespace Megamania
 		int hLimitSup = HEIGHT_SCREEN / 3 * 2 - SPACE_SHIP_3_HEIGHT;				
 		for(Uint32 i = 0; i < lRow; ++i) {
 			for(Uint32 j = 0; j < lCol; ++j) {
-				space = reinterpret_cast<Enemy *>(enemies[i * lCol + j]);
+				space = reinterpret_cast<Enemy *>(enemies[i * lCol + j]);				
+				space->GetBullet().SetVisible(false);
 				space->SetVisible(true);
 				if((i & 1) == 0) {    //i % 2
 					space->SetPosition(j * offset_x - w, (i + 1) * offset_y);										
