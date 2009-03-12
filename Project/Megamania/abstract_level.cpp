@@ -13,7 +13,8 @@
 extern SDL_Event event;
 
 /** Macro definida somente para uso interno da classe*/
-#define CHECK_LIFE(o)   o->GetLife() < 0            
+#define CHECK_LIFE(o)   o->GetLife() <= 0     
+#define Restart RestartLevel
 
 
 namespace Megamania
@@ -27,6 +28,8 @@ namespace Megamania
 	 **************************************************************/
 	AbstractLevel::AbstractLevel(SDL_Surface *screen)throw(SDLVideoException) : AbstractScreen(screen)
 	{   
+		enemies.reserve(BLOCK_MEMORY_RESERVE);
+		bullets.reserve(BLOCK_MEMORY_RESERVE);
 		hud = HUD::GetInstance();
 		lastTimer = SDL_GetTicks();
 		timerAcum = currentTimer = 0;
@@ -58,6 +61,7 @@ namespace Megamania
 	 **************************************************************/
 	void AbstractLevel::Init() 
 	{
+		bulletCount = 0;
 		megamania->SetPosition(WIDTH_SCREEN >> 1, hud->GetRect().y - megamania->GetHeightFrame());		
 		megamania->SetVisible(true);
 		megamania->SetFrame(2);				
@@ -103,30 +107,36 @@ namespace Megamania
 	void AbstractLevel::Draw(void) 
 	{	
 		if(!levelComplete){
-			bool hasEnemyAlive = false;
+			bool hasEnemyAlive = false;			
 			Enemy *enemy= NULL;
 			int randomShootShipNumber = 1 + rand() % shipCount;
 			SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
 			Bullet &bullet = megamania->GetBullet();
 			Bullet *enemyBullet = NULL;			
+			int x = 0xffffffff;
+			int y = 0xffffffff;			
 			for(Uint32 i = 0; i < shipCount; ++i) {
 				enemy = dynamic_cast<Enemy *>(enemies[i]);
 				enemyBullet = &enemy->GetBullet();
+				x = enemy->GetX();
+				y = enemy->GetY();
 				if(enemy->IsVisible()) {
 					hasEnemyAlive = true;
-					if((i == randomShootShipNumber)&&(!enemy->GetBullet().IsVisible())){
-						enemy->Shoot();
-					}		
+					if((i == randomShootShipNumber)&&(!enemyBullet->IsVisible())) {						
+						if((bulletCount < MAX_BULLET)&&(x > 0)&&(x + enemy->GetWidthFrame() < WIDTH_SCREEN)
+							&&(y > 0)&&(y + enemy->GetHeightFrame() < HEIGHT_SCREEN)) {
+							enemy->Shoot();
+							++bulletCount;
+							bullets.push_back(enemyBullet);
+						}												
+					}
 					enemy->Draw(screen);
 					enemy->NextFrame();
 					enemy->Update();					
 					if(enemyBullet->IsVisible() && megamania->IsVisible() && enemyBullet->CollidesWith(*megamania)){
 						enemyBullet->SetVisible(false);							
-						megamania->SetVisible(false);												
-						hud->DecrementLife();												
-						if(CHECK_LIFE(hud)) {
-						}
-						FinishLevel();
+						Restart();
+						break;						
 					}
 					if((bullet.IsVisible())&&(bullet.CollidesWith(*enemy))) {						
 						bullet.SetVisible(false);
@@ -137,11 +147,20 @@ namespace Megamania
 					enemyBullet->Draw(screen);
 					enemyBullet->Update(Megamania::Bullet::Direction::DOWN);					
 				}
+				for(int i = 0, len = bullets.size(); i < len; ++i) {
+					enemyBullet = bullets[i];
+					if((enemyBullet != NULL)&&(!enemyBullet->IsVisible())) {
+						--bulletCount;
+						bullets.erase(std::find(bullets.begin(), bullets.end(), enemyBullet));
+						--len;
+					}
+				}
 			}	
 			
 			if(!hasEnemyAlive){
 				levelComplete = true;	
 				hud->Empty();
+				megamania->GetBullet().SetVisible(false);
 				FinishLevel();
 			}
 		}		
@@ -152,12 +171,34 @@ namespace Megamania
 		lastTimer = currentTimer;
 		if(timerAcum >= DELAY) {
 			if(hud->Draw()) {
-				megamania->Die(screen);								
+				Restart();						
 			}
 			timerAcum = 0;
 		}		
 		megamania->Draw(screen);
 		SDL_Flip(screen);
+	}
+
+	/***************************************************************
+	 * Função que insere um evento indicando que o level atual deve
+	 * ser reiniciado, pois o jogador morreu
+	 *
+	 **************************************************************/
+	void AbstractLevel::RestartLevel(void) 
+	{
+		megamania->SetVisible(false);												
+		if(CHECK_LIFE(hud)) {
+			hud->Reset();
+			event.type = SDL_USEREVENT;
+			event.user.code = GAME_OVER;
+			SDL_PushEvent(&event);
+			return;
+		}
+		hud->DecrementLife();												
+		bulletCount = 0;
+		bullets.clear();
+		megamania->Die(screen);
+		Init();
 	}
 
 	/***************************************************************
