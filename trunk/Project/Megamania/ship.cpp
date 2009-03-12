@@ -44,6 +44,7 @@ namespace Megamania
 	 *************************************************************/
 	void Ship::Die(SDL_Surface *screen)
 	{
+		bullet->SetVisible(false);
 	}
 
 	/*************************************************************
