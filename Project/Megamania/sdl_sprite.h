@@ -10,10 +10,9 @@
 #define __SDL_SPRITE_H__
 
 #include "SDL.h"
+#include "game_config.h"
 #include "sprite_exception.h"
 #include <vector>
-
-#define BLOCK_MEMORY_RESERVE 25
 
 namespace Megamania
 {
