@@ -15,7 +15,7 @@
 #ifdef LOG
 #  ifndef FILE_LOG_CREATED
 #    define FILE_LOG_CREATED
-     static FILE *log = fopen("log.log", "a");
+     static FILE *log = fopen("log.log", "w");    //rewrite
 #  endif
 #endif
 
